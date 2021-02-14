@@ -1,0 +1,793 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapee</title>
+    <script src="https://kit.fontawesome.com/1f2890de0d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <!-- Mobile responsiv sections black start -->
+        <div class="bg-black"></div>
+
+        <!-- Header top start-->
+        <section id="header-top">
+            <div class="container">
+                <div class="row header-row">
+                    <div class="header-col-left col-lg-6 col-md-6">
+                        <div class="language">
+                            <ul class="language-items">
+                                <li class="language-item">
+                                    <a class="language-text" href="#">English</a>
+                                    <i class="fas fa-angle-down"></i>
+                                    <ul class="sublanguge-items">
+                                        <li class="sublanguage-item">
+                                            <a class="sublanguage-text" href="#">Franch</a>
+                                        </li>
+                                        <li class="sublanguage-item">
+                                            <a href="#">Deutsch</a>
+                                        </li>
+                                        <li class="sublanguage-item">
+                                            <a href="#">Arabic</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="currency">
+                            <ul class="currency-items">
+                                <li class="currency-item">
+                                    <a class="currency-text" href="#">$ Dollar (US)</a>
+                                    <i class="fas fa-angle-down"></i>
+                                    <ul class="subcurrency-items">
+                                        <li class="subcurrency-item">
+                                            <a class="subcurrency-text" href="#">₹ RUPEE (INR)</a>
+                                        </li>
+                                        <li class="subcurrency-item">
+                                            <a href="#">£ Pound (UK)</a>
+                                        </li>
+                                        <li class="subcurrency-item">
+                                            <a href="#">€ Euro (EUR)</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header-col-right col-lg-6 col-md-6">
+                        <div class="welcome">
+                            <span>Welcome to Our Store!</span>
+                        </div>
+                        <div class="page-navbar">
+                            <ul class="menu-items">
+                                <li class="menu-item">
+                                    <a href="#">
+                                        <i class="far fa-folder-open"></i>
+                                        <span>Blog</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">
+                                        <i class="far fa-clone"></i>
+                                        <span>FAQ</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item-last">
+                                    <a href="#">
+                                        <i class="far fa-envelope"></i>
+                                        <span>Contact Us</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Header search start -->
+        <section id="header-serch">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="logo ">
+                            <a href="#">
+                                <img src="~/assets/img/logo.png" alt="logo">
+                            </a>
+                        </div>
+                        <div class="mobile-navbar">
+                            <a href="#">
+                                <span class="navbar-icon"></span>
+                                <i class="fas fa-bars"></i>
+                            </a>
+                        </div>
+                        <div class="logo-mobil">
+                            <a href="#">
+                                <img src="~/assets/img/logo-light.png" alt="logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 search-product-icon">
+                        <div class="search">
+                            <form>
+                                <input type="search" placeholder="Search for products, categories, brands, sku...">
+                                <div class="select-search">
+                                    <select class="search-category">
+                                        <option>All Categories</option>
+                                        <option>Accessories</option>
+                                        <option>Analog</option>
+                                        <option>Anklets</option>
+                                        <option>Beauty Accessory</option>
+                                        <option>Belts</option>
+                                        <option>Bracelets</option>
+                                        <option>Casual Shoes</option>
+                                        <option>Digital</option>
+                                        <option>Dresses</option>
+                                        <option>Earrings</option>
+                                        <option>Electronics</option>
+                                        <option>Formal Shoes</option>
+                                        <option>Handbags</option>
+                                        <option>Hats & Caps</option>
+                                        <option>Jackets & Coats</option>
+                                        <option>Jeans</option>
+                                        <option value="women-jeans">Jeans</option>
+                                        <option>Laptop Bag</option>
+                                        <option>Leather</option>
+                                        <option>Lingerie & Nightwear</option>
+                                        <option>Luggage & Travel</option>
+                                        <option>Makeup Kit</option>
+                                        <option>Necklaces</option>
+                                        <option>Pearl Jewelry</option>
+                                        <option>Sandals & Floaters</option>
+                                        <option>Shirts</option>
+                                        <option>Shorts & Skirts</option>
+                                        <option>Smart Analog</option>
+                                        <option>Smart Watches</option>
+                                        <option>Sneakers</option>
+                                        <option>Socks</option>
+                                        <option>Sunglasses</option>
+                                        <option>T-Shirts</option>
+                                        <option>Tops</option>
+                                        <option>Trolley Bag</option>
+                                        <option>Trousers & Capris</option>
+                                        <option>Wallets</option>
+                                        <option value="men-vallet">Wallets</option>
+                                        <option>Watches</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="search-select">Search</button>
+                                <i class="fas fa-search"></i>
+                            </form>
+                            <div class="add-product">
+                                <a href="#">
+                                    <i class="far fa-plus-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-account-heart-cart">
+                        <div class="header-account">
+                            <a href="#">
+                                <i class="fas fa-user-tie"></i>
+                                <div class="my-account">
+                                    <small>Hello,</small>
+                                    <span>Sign In</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="header-heart">
+                            <a href="#">
+                                <i class="far fa-heart"></i>
+                                <span>0</span>
+                            </a>
+                        </div>
+                        <div class="header-cart">
+                            <a href="#">
+                                <div class="cart-icon">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>0</span>
+                                </div>
+                                <div class="cart-content">
+                                    <small>Cart</small>
+                                    <span>$0.00</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Header page start -->
+        <section id="header-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="category-menu">
+                            <div class="category-menu-title">
+                                <span>Shop By Categories</span>
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            <div class="categories-menu">
+                                <ul class="subcategory-menu-items">
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Men’s Clothing</span>
+                                            <i class="fas fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Women’s Clothing</span>
+                                            <i class="fas fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Accessories</span>
+                                            <i class="fas fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Shoes</span>
+                                            <i class="fas fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Jewellery</span>
+                                            <i class="fas fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Bags & Backpacks</span>
+                                            <i class="fas fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Watches</span>
+                                            <i class="fas fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Dresses</span>
+                                        </a>
+                                    </li>
+                                    <li class="subcategory-menu-item">
+                                        <a href="#" class="subcategory-menu-link">
+                                            <span>Shirts</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9">
+                        <div class="main-pages">
+                            <ul class="main-pages-items">
+                                <li class="main-pages-item">
+                                    <a href="#" class="main-pages-link">
+                                        <span>Home</span>
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                                <li class="main-pages-item">
+                                    <a href="#" class="main-pages-link">
+                                        <span>Shop</span>
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                                <li class="main-pages-item">
+                                    <a href="#" class="main-pages-link">
+                                        <span>Pages</span>
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                                <li class="main-pages-item">
+                                    <a href="#" class="main-pages-link">
+                                        <span>Blog</span>
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                                <li class="main-pages-item">
+                                    <a href="#" class="main-pages-link">
+                                        <span>Elements</span>
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                                <li class="main-pages-item">
+                                    <a href="#" class="main-pages-link">
+                                        <span>Buy Now</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile responsive start -->
+        <section id="left-sidebar">
+            <div class="mobile-menu">
+                <div class="menu-header">
+                    <a href="#"><i class="far fa-user"></i> Login/Signup</a>
+                    <a href="#"><i class="fas fa-angle-right"></i></a>
+                </div>
+                <div class="mobile-nav-tabs">
+                    <ul>
+                        <li data-id="1" class="primary active">
+                            <span>Menu</span>
+                        </li>
+                        <li data-id="2" class="primary">
+                            <span>Categories</span>
+                        </li>
+                    </ul>
+                </div>
+                <div data-id="1" class="mobile-primary-menu">
+                    <ul class="main-munu">
+                        <li class="munu-item ">
+                            <a href="#" class="menu-btn d-flex justify-content-between">
+                                <span>Home</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                            <ul class="sab-menu">
+                                <li>
+                                    <a href="#">
+                                        <span>Basic</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Catalog</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Marketplace</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Fullscreen</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Boxed</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Electronics</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Dokan</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>WCMP</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>WCVenoders</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>WCFM</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>RTL</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="munu-item">
+                            <a href="#">
+                                <span>Shop</span>
+                            </a>
+                        </li>
+                        <li class="munu-item">
+                            <a href="#" class="menu-buton d-flex justify-content-between">
+                                <span>Pages</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                            <ul class="sab-menu ">
+                                <li>
+                                    <a href="#">
+                                        <span>About Us</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Contact Us</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>FAQ</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Our Team</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="munu-item">
+                            <a href="#">
+                                <span>Blog</span>
+                            </a>
+                        </li>
+                        <li class="munu-item">
+                            <a href="#">
+                                <span>Portfolio</span>
+                            </a>
+                        </li>
+                        <li class="munu-item">
+                            <a href="#">
+                                <span>Elements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div data-id="2" class="mobile-category-menu d-none">
+                    <ul class="main-menu">
+                        <li class="menu-item">
+                            <a href="#">
+                                <span>Men’s Clothing</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <span>Women’s Clothing</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <span>Accessories</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <span>Shoes</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-btn d-flex justify-content-between">
+                                <span>Jewellery</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                            <ul class="sub-menu d-none">
+                                <li>
+                                    <a href="#">
+                                        <span>Precious Jewellery</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Silver Jewellery</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Artificial Jewellery</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <span>Bags & Backpacks</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <span>Watches</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <span>Dresses</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <span>Shirts</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mobile-topbar">
+                    <div class="language">
+                        <ul>
+                            <li>
+                                <a href="#">English</a>
+                                <ul class="sab-dropdown">
+                                    <li>
+                                        <a href="#">Franch</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Deutsch</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Arabic</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="currency">
+                        <ul>
+                            <li>
+                                <a href="#">$ Dollar (US)</a>
+                                <ul class="sub-dropdown">
+                                    <li>
+                                        <a href="#">₹ RUPEE (INR)</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">£ Pound (UK)</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">€ Euro (EUR)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="social-link">
+                        <a href="#">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-flickr"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <!-- Footer-main start-->
+        <section id="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="footer-kape">
+                            <p class="footer-logo">
+                                <a href="#">
+                                    <img src="~/assets/img/logo2.png" alt="Logo">
+                                </a>
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-home"></i>
+                                    <span>Lorem Ipsum, 2046 Lorem Ipsum</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <span>576-245-2478</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span>
+                                        <a href="#">info@kapee.com</a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>Mon - Fri / 9:00 AM - 6:00 PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-3">
+                        <div class="footer-info-content">
+                            <h2>Information</h2>
+                            <div class="footer-info-text">
+                                <ul>
+                                    <li>
+                                        <a href="#">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Store Location</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Contact Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Shipping & Delivery</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Latest News</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Our Sitemap</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-3">
+                        <div class="footer-service-content">
+                            <h2>Our Service</h2>
+                            <div class="footer-service-text">
+                                <ul>
+                                    <li>
+                                        <a href="#">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Terms of Sale</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Customer Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Delivery Information</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Payments</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Saved Cards</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-3">
+                        <div class="footer-account-content">
+                            <h2>My Account</h2>
+                            <div class="footer-account-text">
+                                <ul>
+                                    <li>
+                                        <a href="#">My Account</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">My Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">My Cart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Checkout</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">My Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tracking Order</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="footer-news">
+                            <h2>Newsletter</h2>
+                            <div class="footer-news-letter">
+                                <div class="footer-subscribe">Subscribe to our mailing list to get the new updates!</div>
+                                <form>
+                                    <div class="footer-form">
+                                        <p>
+                                            <i class="far fa-envelope"></i>
+                                            <input type="email" placeholder="Your email address" required>
+                                        </p>
+                                        <p>
+                                            <input type="submit" value="Sign up">
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="footer-link">
+                            <div class="social-link">
+                                <a class="social-facebook" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a class="social-twitter" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a class="social-linkedin" href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a class="social-instagram" href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a class="social-flickr" href="#">
+                                    <i class="fa fa-flickr"></i>
+                                </a>
+                                <a class="social-rss" href="#">
+                                    <i class="fa fa-rss"></i>
+                                </a>
+                                <a class="social-youtube" href="#">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer-copyright start-->
+        <section id="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="copyright-text">
+                            Kapee © 2021 by
+                            <a href="#">PressLayouts</a>
+                            All Rights Reserved.
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="copyright-img">
+                            <img src="~/assets/img/payments-method.png" alt="Payment logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <!-- Bact to top start -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+</body>
+
+</html>
