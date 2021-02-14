@@ -20,6 +20,9 @@ namespace Kapee.Data
         public DbSet<CategoryCallection> CategoryCallections { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<TestimonialItem> TestimonialItems { get; set; }
+        public DbSet<FashionSlider> FashionSliders { get; set; }
+        public DbSet<News> Newses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
 }

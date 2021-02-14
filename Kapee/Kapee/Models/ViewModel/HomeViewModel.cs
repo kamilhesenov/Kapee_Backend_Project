@@ -14,5 +14,8 @@ namespace Kapee.Models.ViewModel
         public List<CategoryCallection> CategoryCallections { get; set; }
         public List<Testimonial> Testimonials { get; set; }
         public TestimonialItem TestimonialItem { get; set; }
+        public List<FashionSlider> FashionSliders { get; set; }
+        public List<News> Newses { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }

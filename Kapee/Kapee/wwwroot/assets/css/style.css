@@ -3534,6 +3534,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #header-serch .mobile-navbar {
   position: relative;
   padding-right: 10px;
+  display: none;
 }
 
 #header-serch .mobile-navbar a {
@@ -4873,6 +4874,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         -ms-flex-align: start !important;
             align-items: flex-start !important;
   }
+  #header-serch .mobile-navbar {
+    display: block;
+  }
   #header-serch .search {
     position: relative;
     top: 60px;
@@ -5076,6 +5080,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   #category .fashion-categories .fashion-category .category-content .item .category-product a h3 {
     padding: 0px !important;
     font-size: 10px !important;
+  }
+  #customer .testimonial-detail {
+    width: 100% !important;
   }
   #customer .owl-nav .owl-next {
     top: 230px !important;
@@ -6935,11 +6942,28 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   text-align: center;
 }
 
+#customer .our-customer .customer-testimonial .customer-slider .item .testimonial .testimonial-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 #customer .our-customer .customer-testimonial .customer-slider .item .testimonial .testimonial-content .testimonial-detail {
   font-size: 15px;
   font-weight: 400;
   font-style: normal;
   font-family: "Lato";
+  width: 60%;
 }
 
 #customer .our-customer .customer-testimonial .customer-slider .item .testimonial .testimonial-content .testimonial-detail i {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kamil\\Desktop\\Kapee\\Kapee\\Kapee.csproj": {}
+    "C:\\Users\\Kamil\\Desktop\\Kapee_Backend_Project\\Kapee\\Kapee\\Kapee.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kamil\\Desktop\\Kapee\\Kapee\\Kapee.csproj": {
+    "C:\\Users\\Kamil\\Desktop\\Kapee_Backend_Project\\Kapee\\Kapee\\Kapee.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kamil\\Desktop\\Kapee\\Kapee\\Kapee.csproj",
+        "projectUniqueName": "C:\\Users\\Kamil\\Desktop\\Kapee_Backend_Project\\Kapee\\Kapee\\Kapee.csproj",
         "projectName": "Kapee",
-        "projectPath": "C:\\Users\\Kamil\\Desktop\\Kapee\\Kapee\\Kapee.csproj",
+        "projectPath": "C:\\Users\\Kamil\\Desktop\\Kapee_Backend_Project\\Kapee\\Kapee\\Kapee.csproj",
         "packagesPath": "C:\\Users\\Kamil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kamil\\Desktop\\Kapee\\Kapee\\obj\\",
+        "outputPath": "C:\\Users\\Kamil\\Desktop\\Kapee_Backend_Project\\Kapee\\Kapee\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kamil\\AppData\\Roaming\\NuGet\\NuGet.Config",

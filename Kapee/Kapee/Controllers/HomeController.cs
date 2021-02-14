@@ -30,7 +30,10 @@ namespace Kapee.Controllers
                 Infos = _context.Infos.ToList(),
                 CategoryCallections = _context.CategoryCallections.ToList(),
                 TestimonialItem = _context.TestimonialItems.FirstOrDefault(),
-                Testimonials = _context.Testimonials.ToList()
+                Testimonials = _context.Testimonials.ToList(),
+                FashionSliders = _context.FashionSliders.ToList(),
+                Newses = _context.Newses.ToList(),
+                Categories = _context.Categories.ToList()
             };
 
             return View(model);

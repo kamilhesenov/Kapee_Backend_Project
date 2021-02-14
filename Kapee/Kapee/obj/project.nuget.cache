@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FauLjSOX/ouiijyES8swvArTyb2RC9IJih8jfJ9WNKbrTudmE+olpI8FKzQhWNfp1/lRxwsae1SBOMHHIZSYDA==",
+  "dgSpecHash": "lAEBXUN2pg1qWXbUhZ2rxZMSicNW3AZq2xi9gLWVkGQuxP5QcmAh/qKTnNHPkgx/cn5bdGOn2yDqm1gbPf8p4w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kamil\\Desktop\\Kapee\\Kapee\\Kapee.csproj",
+  "projectFilePath": "C:\\Users\\Kamil\\Desktop\\Kapee_Backend_Project\\Kapee\\Kapee\\Kapee.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kamil\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

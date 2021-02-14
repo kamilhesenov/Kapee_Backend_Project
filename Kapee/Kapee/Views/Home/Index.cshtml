@@ -9,27 +9,16 @@
         <div class="container-fluid px-0">
             <div class="slider">
                 <div class="owl-carousel owl-them">
-                    <div class="item bg-img" style="background-image: url(assets/img/fashion-slider-1.jpg)">
-                        <div class="title text-style-left">
-                            <h1>Fashion Collection</h1>
-                            <p><span>Huge Sale</span> Min. 40-80% Off</p>
+                    @foreach (var item in Model.FashionSliders)
+	                {
+                    <div class="item bg-img" style="background-image: url(assets/img/@item.Photo)">
+                        <div class="title @item.TextStyleLeft @item.TextStyleRight">
+                            <h1>@item.Title</h1>
+                            <p><span>@item.Content</span> @item.Description</p>
                             <a href="#">Shop Now</a>
                         </div>
                     </div>
-                    <div class="item bg-img" style="background-image: url(assets/img/fashion-slider-2.jpg)">
-                        <div class="title text-style-right">
-                            <h1>New Collections 2019</h1>
-                            <p><span>Men's Clothes</span> Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor!</p>
-                            <a href="#">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="item bg-img" style="background-image: url(assets/img/fashion-slider-3.jpg)">
-                        <div class="title text-style-left">
-                            <h1>Festive Feast</h1>
-                            <p><span>Fashion Accessories</span> Minimum 50% Off</p>
-                            <a href="#">Shop Now</a>
-                        </div>
-                    </div>
+	                }
                 </div>
             </div>
         </div>
@@ -2031,94 +2020,21 @@
                             </div>
                             <div class="category-content">
                                 <div class="owl-carousel owl-them">
-                                    <div class="item">
-                                        <div class="category-product">
-                                            <a href="#">
-                                                <img src="~/assets/img/beauty-category-300x350.jpg" alt="Beauty & Care">
-                                                <h3>
-                                                    Beauty & Care
-                                                    <span>2 Products</span>
-                                                </h3>
-                                            </a>
+                                    @foreach (var item in Model.Categories)
+                                    {
+                                        <div class="item">
+                                            <div class="category-product">
+                                                <a href="#">
+                                                    <img src="~/assets/img/@item.Photo" alt="Beauty & Care">
+                                                    <h3>
+                                                        @item.Name
+                                                        <span>@item.ProductCount Products</span>
+                                                    </h3>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="category-product">
-                                            <a href="#">
-                                                <img src="~/assets/img/Accessories-300x350.jpg" alt="Accessories">
-                                                <h3>
-                                                    Accessories
-                                                    <span>7 Products</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="category-product">
-                                            <a href="#">
-                                                <img src="~/assets/img/Jewellery-300x350.jpg" alt="Jewellery">
-                                                <h3>
-                                                    Jewellery
-                                                    <span>4 Products</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="category-product">
-                                            <a href="#">
-                                                <img src="~/assets/img/Watch-300x350.jpg" alt="Watch">
-                                                <h3>
-                                                    Watches
-                                                    <span>4 Products</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="category-product">
-                                            <a href="#">
-                                                <img src="~/assets/img/Bags-300x350.png" alt="Bags">
-                                                <h3>
-                                                    Bags & Backpacks
-                                                    <span>4 Products</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="category-product">
-                                            <a href="#">
-                                                <img src="~/assets/img/Shoes-300x350.jpg" alt="Shoes">
-                                                <h3>
-                                                    Shoes
-                                                    <span>3 Products</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="category-product">
-                                            <a href="#">
-                                                <img src="~/assets/img/women-300x350.jpg" alt="Women">
-                                                <h3>
-                                                    Women
-                                                    <span>9 Products</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="category-product">
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-300x350.jpg" alt="Men">
-                                                <h3>
-                                                    Men
-                                                    <span>7 Products</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -2150,10 +2066,7 @@
                                             <div class="testimonial-content">
                                                 <div class="testimonial-detail">
                                                     <i class="fas fa-quote-left"></i>
-                                                    @foreach (var elem in item.Content.Split(","))
-                                                    {
-                                                     @elem<br/>
-                                                    }
+                                                    @item.Content
                                                     <i class="fas fa-quote-right"></i>
                                                 </div>
                                                 <div class="testimonial-img">
@@ -2220,40 +2133,40 @@
                     </div>
                     <div class="news-content">
                         <div class="owl-carousel owl-them">
+                            @foreach (var item in Model.Newses)
+	                         {
                             <div class="item">
                                 <div class="news-img">
                                     <a href="#">
-                                        <img src="~/assets/img/Do-you-Have-A-Passion-for-Photography-480x360.jpg" alt="Photography">
+                                        <img src="~/assets/img/@item.Photo" alt="">
                                     </a>
                                 </div>
                                 <div class="new-text">
                                     <div class="news-header">
                                         <div class="news-category">
                                             <span>
-                                                <a href="#">Beauty,</a>
-                                                <a href="#">Lifestyle</a>
+                                                @foreach (var elem in item.Title)
+                                                {
+                                                <a href="#">@elem</a>
+                                                }
                                             </span>
                                         </div>
                                         <h2>
-                                            <a href="#">Do you Have A Passion for Photography</a>
+                                            <a href="#">@item.Content</a>
                                         </h2>
                                         <div class="news-meta">
                                             <span class="news-author">
                                                 <i class="far fa-user"></i> By
-                                                <a href="#">Martin Gray</a>
+                                                <a href="#">@item.AddedBy</a>
                                             </span>
                                             <span class="new-date">
                                                 <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">May 31, 2019</a>
+                                                <a href="#">@item.Date.ToString("dd.MM.yyyy")</a>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="news-body">
-                                        <p>
-                                            Sed velit mattis ipsum mi, quam turpis porttitor duis,
-                                            ipsum fusce congue at, etiam sit nec erat. Massa ut in risus mi,
-                                            dictum nam odio elementum, massa amet et libero,…
-                                        </p>
+                                        <p>@item.Description</p>
                                     </div>
                                     <div class="news-footer">
                                         <p>
@@ -2262,300 +2175,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="news-img">
-                                    <a href="#">
-                                        <img src="~/assets/img/Notify-What-Makes-You-Happy-Smile-More-480x360.jpg" alt="Smile More">
-                                    </a>
-                                </div>
-                                <div class="new-text">
-                                    <div class="news-header">
-                                        <div class="news-category">
-                                            <span>
-                                                <a href="#">Lifestyle,</a>
-                                                <a href="#">Travel</a>
-                                            </span>
-                                        </div>
-                                        <h2>
-                                            <a href="#">Notify What Makes You Happy, Smile More!</a>
-                                        </h2>
-                                        <div class="news-meta">
-                                            <span class="news-author">
-                                                <i class="far fa-user"></i> By
-                                                <a href="#">Martin Gray</a>
-                                            </span>
-                                            <span class="new-date">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">May 30, 2019</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="news-body">
-                                        <p>
-                                            Sed velit mattis ipsum mi, quam turpis porttitor duis,
-                                            ipsum fusce congue at, etiam sit nec erat. Massa ut in risus mi,
-                                            dictum nam odio elementum, massa amet et libero,…
-                                        </p>
-                                    </div>
-                                    <div class="news-footer">
-                                        <p>
-                                            <a href="#">Continue Reading </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="news-img">
-                                    <a href="#">
-                                        <img src="~/assets/img/Fashion-Elements-In-This-Right-Summer-480x360.jpg" alt="Fashion">
-                                    </a>
-                                </div>
-                                <div class="new-text">
-                                    <div class="news-header">
-                                        <div class="news-category">
-                                            <span>
-                                                <a href="#">Beauty,</a>
-                                                <a href="#">Lifestyle,</a>
-                                                <a href="#">Travel</a>
-                                            </span>
-                                        </div>
-                                        <h2>
-                                            <a href="#">Fashion Elements In This Right Summer</a>
-                                        </h2>
-                                        <div class="news-meta">
-                                            <span class="news-author">
-                                                <i class="far fa-user"></i> By
-                                                <a href="#">Martin Gray</a>
-                                            </span>
-                                            <span class="new-date">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">May 27, 2019</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="news-body">
-                                        <p>
-                                            Sed velit mattis ipsum mi, quam turpis porttitor duis,
-                                            ipsum fusce congue at, etiam sit nec erat. Massa ut in risus mi,
-                                            dictum nam odio elementum, massa amet et libero,…
-                                        </p>
-                                    </div>
-                                    <div class="news-footer">
-                                        <p>
-                                            <a href="#">Continue Reading </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="news-img">
-                                    <a href="#">
-                                        <img src="~/assets/img/Understanding-My-Brand-I-Go-Beyond-The-Surface-480x360.jpg" alt="Bag">
-                                    </a>
-                                </div>
-                                <div class="new-text">
-                                    <div class="news-header">
-                                        <div class="news-category">
-                                            <span>
-                                                <a href="#">Accessories,</a>
-                                                <a href="#">Beauty,</a>
-                                                <a href="#">Travel</a>
-                                            </span>
-                                        </div>
-                                        <h2>
-                                            <a href="#">Understanding My Brand, I Go Beyond The Surface</a>
-                                        </h2>
-                                        <div class="news-meta">
-                                            <span class="news-author">
-                                                <i class="far fa-user"></i> By
-                                                <a href="#">Martin Gray</a>
-                                            </span>
-                                            <span class="new-date">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">May 24, 2019</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="news-body">
-                                        <p>
-                                            Sed velit mattis ipsum mi, quam turpis porttitor duis,
-                                            ipsum fusce congue at, etiam sit nec erat. Massa ut in risus mi,
-                                            dictum nam odio elementum, massa amet et libero,…
-                                        </p>
-                                    </div>
-                                    <div class="news-footer">
-                                        <p>
-                                            <a href="#">Continue Reading </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="news-img">
-                                    <a href="#">
-                                        <img src="~/assets/img/My-Life-Style-Is..-480x360.jpg" alt="Shoes">
-                                    </a>
-                                </div>
-                                <div class="new-text">
-                                    <div class="news-header">
-                                        <div class="news-category">
-                                            <span>
-                                                <a href="#">Accessories,</a>
-                                                <a href="#">Travel</a>
-                                            </span>
-                                        </div>
-                                        <h2>
-                                            <a href="#">My Life Style Is..</a>
-                                        </h2>
-                                        <div class="news-meta">
-                                            <span class="news-author">
-                                                <i class="far fa-user"></i> By
-                                                <a href="#">Martin Gray</a>
-                                            </span>
-                                            <span class="new-date">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">May 21, 2019</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="news-body">
-                                        <p>
-                                            Sed velit mattis ipsum mi, quam turpis porttitor duis,
-                                            ipsum fusce congue at, etiam sit nec erat. Massa ut in risus mi,
-                                            dictum nam odio elementum, massa amet et libero,…
-                                        </p>
-                                    </div>
-                                    <div class="news-footer">
-                                        <p>
-                                            <a href="#">Continue Reading </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="news-img">
-                                    <a href="#">
-                                        <img src="~/assets/img/Exciting-Handbag-Colors-That-Go-With-Everything-480x360.jpg" alt="Handbag">
-                                    </a>
-                                </div>
-                                <div class="new-text">
-                                    <div class="news-header">
-                                        <div class="news-category">
-                                            <span>
-                                                <a href="#">Accessories</a>
-                                            </span>
-                                        </div>
-                                        <h2>
-                                            <a href="#">Exciting Handbag Colors That Go With Everything</a>
-                                        </h2>
-                                        <div class="news-meta">
-                                            <span class="news-author">
-                                                <i class="far fa-user"></i> By
-                                                <a href="#">Martin Gray</a>
-                                            </span>
-                                            <span class="new-date">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">May 20, 2019</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="news-body">
-                                        <p>
-                                            Sed velit mattis ipsum mi, quam turpis porttitor duis,
-                                            ipsum fusce congue at, etiam sit nec erat. Massa ut in risus mi,
-                                            dictum nam odio elementum, massa amet et libero,…
-                                        </p>
-                                    </div>
-                                    <div class="news-footer">
-                                        <p>
-                                            <a href="#">Continue Reading </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="news-img">
-                                    <a href="#">
-                                        <img src="~/assets/img/Blue-Sea-Family-Adventure-480x360.jpg" alt="Family">
-                                    </a>
-                                </div>
-                                <div class="new-text">
-                                    <div class="news-header">
-                                        <div class="news-category">
-                                            <span>
-                                                <a href="#">Beauty,</a>
-                                                <a href="#">Lifestyle</a>
-                                            </span>
-                                        </div>
-                                        <h2>
-                                            <a href="#">Blue Sea Family Adventure</a>
-                                        </h2>
-                                        <div class="news-meta">
-                                            <span class="news-author">
-                                                <i class="far fa-user"></i> By
-                                                <a href="#">Martin Gray</a>
-                                            </span>
-                                            <span class="new-date">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">May 18, 2019</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="news-body">
-                                        <p>
-                                            Sed velit mattis ipsum mi, quam turpis porttitor duis,
-                                            ipsum fusce congue at, etiam sit nec erat. Massa ut in risus mi,
-                                            dictum nam odio elementum, massa amet et libero,…
-                                        </p>
-                                    </div>
-                                    <div class="news-footer">
-                                        <p>
-                                            <a href="#">Continue Reading </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="news-img">
-                                    <a href="#">
-                                        <img src="~/assets/img/Most-Popular-Shoes-Loved-By-People-In-Summer-480x360.jpg" alt="Popular Shoes">
-                                    </a>
-                                </div>
-                                <div class="new-text">
-                                    <div class="news-header">
-                                        <div class="news-category">
-                                            <span>
-                                                <a href="#">Accessories</a>
-                                            </span>
-                                        </div>
-                                        <h2>
-                                            <a href="#">Most Popular Shoes Loved By People In Summer</a>
-                                        </h2>
-                                        <div class="news-meta">
-                                            <span class="news-author">
-                                                <i class="far fa-user"></i> By
-                                                <a href="#">Martin Gray</a>
-                                            </span>
-                                            <span class="new-date">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">May 11, 2019</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="news-body">
-                                        <p>
-                                            Sed velit mattis ipsum mi, quam turpis porttitor duis,
-                                            ipsum fusce congue at, etiam sit nec erat. Massa ut in risus mi,
-                                            dictum nam odio elementum, massa amet et libero,…
-                                        </p>
-                                    </div>
-                                    <div class="news-footer">
-                                        <p>
-                                            <a href="#">Continue Reading </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+	                         }
+                            
                         </div>
                     </div>
                 </div>
