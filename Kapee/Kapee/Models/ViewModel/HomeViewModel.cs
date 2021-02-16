@@ -1,8 +1,6 @@
 ﻿using Kapee.Models.Home;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Kapee.Models.ViewModel
 {
@@ -17,5 +15,6 @@ namespace Kapee.Models.ViewModel
         public List<FashionSlider> FashionSliders { get; set; }
         public List<News> Newses { get; set; }
         public List<Category> Categories { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

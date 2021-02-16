@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,10 +16,10 @@ namespace Kapee.Models.Home
         [Required]
         public int ProductCount { get; set; }
 
-        [Required, MaxLength(100)]
         public string Photo { get; set; }
 
         [NotMapped]
         public IFormFile Upload { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

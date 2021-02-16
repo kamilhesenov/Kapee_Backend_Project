@@ -296,3 +296,5 @@ C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.Views.pdb
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.csproj.CopyComplete
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.genruntimeconfig.cache
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\HeaderComponent\Default.cshtml.g.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\FooterComponent\Default.cshtml.g.cs

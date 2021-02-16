@@ -27,7 +27,6 @@ namespace Kapee.Models.Home
         [MaxLength(200)]
         public string? Link { get; set; }
 
-        [Required, MaxLength(100)]
         public string Photo { get; set; }
 
         [NotMapped]

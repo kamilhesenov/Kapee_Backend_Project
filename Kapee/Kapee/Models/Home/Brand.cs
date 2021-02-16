@@ -9,7 +9,6 @@ namespace Kapee.Models.Home
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(100)]
         public string Photo { get; set; }
 
         [NotMapped]

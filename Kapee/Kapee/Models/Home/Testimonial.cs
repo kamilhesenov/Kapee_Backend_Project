@@ -21,7 +21,6 @@ namespace Kapee.Models.Home
         [Required]
         public byte Star { get; set; }
 
-        [Required, MaxLength(100)]
         public string Photo { get; set; }
 
         [NotMapped]

@@ -29,7 +29,6 @@ namespace Kapee.Models.Home
         [Required]
         public bool Status { get; set; }
 
-        [Required, MaxLength(100)]
         public string Photo { get; set; }
 
         [NotMapped]

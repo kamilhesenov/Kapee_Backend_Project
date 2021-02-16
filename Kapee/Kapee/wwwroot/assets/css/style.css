@@ -5229,6 +5229,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background-color: #fff;
   width: 45px;
   height: 45px;
+  line-height: 45px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5238,7 +5239,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 15px;
+  font-size: 30px;
   color: #333333;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -5251,7 +5252,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 #fashion .slider .owl-nav .owl-next:hover {
-  font-size: 25px;
+  font-size: 40px;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -5270,6 +5271,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   background-color: #fff;
   width: 45px;
   height: 45px;
+  line-height: 45px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5285,14 +5287,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
-  font-size: 15px;
+  font-size: 30px;
   z-index: 1;
   opacity: 0;
   visibility: hidden;
 }
 
 #fashion .slider .owl-nav .owl-prev:hover {
-  font-size: 25px;
+  font-size: 40px;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -5413,10 +5415,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #category-sliders .category-slider-content:hover .owl-nav .owl-next {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInRightBig;
-          animation-name: fadeInRightBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease 0s;
   -webkit-transition: all 0.5s ease 0s;
   -moz-transition: all 0.5s ease 0s;
@@ -5427,10 +5425,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #category-sliders .category-slider-content:hover .owl-nav .owl-prev {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInLeftBig;
-          animation-name: fadeInLeftBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease 0s;
   -webkit-transition: all 0.5s ease 0s;
   -moz-transition: all 0.5s ease 0s;
@@ -5810,10 +5804,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #products .slider .tab-content .tab-pane:hover .owl-nav .owl-next {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInRightBig;
-          animation-name: fadeInRightBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -5824,10 +5814,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #products .slider .tab-content .tab-pane:hover .owl-nav .owl-prev {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInLeftBig;
-          animation-name: fadeInLeftBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -6503,7 +6489,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
   color: #333333;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -6553,7 +6539,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
-  font-size: 30px;
+  font-size: 50px;
   z-index: 1;
   opacity: 0;
   visibility: hidden;
@@ -6644,10 +6630,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #category .fashion-categories .fashion-category .category-content:hover .owl-nav .owl-next {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInRightBig;
-          animation-name: fadeInRightBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -6658,10 +6640,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #category .fashion-categories .fashion-category .category-content:hover .owl-nav .owl-prev {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInLeftBig;
-          animation-name: fadeInLeftBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -6913,10 +6891,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #customer .our-customer .customer-testimonial .customer-slider:hover .owl-nav .owl-next {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInRightBig;
-          animation-name: fadeInRightBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -6927,10 +6901,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #customer .our-customer .customer-testimonial .customer-slider:hover .owl-nav .owl-prev {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInLeftBig;
-          animation-name: fadeInLeftBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -7280,10 +7250,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #news .news-content:hover .owl-nav .owl-next {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInRightBig;
-          animation-name: fadeInRightBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -7294,10 +7260,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #news .news-content:hover .owl-nav .owl-prev {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInLeftBig;
-          animation-name: fadeInLeftBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -7627,10 +7589,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #brand:hover .owl-nav .owl-next {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInRightBig;
-          animation-name: fadeInRightBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -7641,10 +7599,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #brand:hover .owl-nav .owl-prev {
   opacity: 1;
   visibility: visible;
-  -webkit-animation-name: fadeInLeftBig;
-          animation-name: fadeInLeftBig;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
   transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;

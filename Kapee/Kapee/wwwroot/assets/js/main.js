@@ -164,9 +164,7 @@ $(document).ready(function () {
             }
         })
     }
-    $( ".slider .owl-carousel .owl-prev").html('<i class="fas fa-angle-left"></i>');
-    $( ".slider .owl-carousel .owl-next").html('<i class="fas fa-angle-right"></i>');
-
+    
 
     // Brand corusel start
     if ($("#brand").length) {
@@ -176,7 +174,6 @@ $(document).ready(function () {
             loop: false,
             nav: true,
             mouseDrag: true,
-            autoplay: false,
             responsive: {
                 0: {
                     items: 2
@@ -190,9 +187,7 @@ $(document).ready(function () {
             }
         })
     }
-    $( ".slider .owl-carousel .owl-prev").html('<i class="fas fa-angle-left"></i>');
-    $( ".slider .owl-carousel .owl-next").html('<i class="fas fa-angle-right"></i>');
-
+    
 
     //  Header Scroll start 
     if($("#header-serch").length){

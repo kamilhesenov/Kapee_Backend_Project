@@ -116,1891 +116,417 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="best-seling" role="tabpanel" aria-labelledby="home-tab">
                         <div class="owl-carousel owl-them">
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Solid-Men-Hooded-Blue-Grey-T-Shirt-300x350.jpg" alt="Men-Hooded-Blue-T-Shirt">
-                                                <img data-id="2" class="hide-img" src="~/assets/img/Men-Hooded-Charcoal-Grey-T-Shirt-1-300x350.jpg" alt="Men-Hooded-Grey-T-Shirt">
-                                                <img data-id="3" class="hide-img" src="~/assets/img/Men-Hooded-Colourblocked-Maroon-T-Shirt-1-300x350.jpg" alt="Men-Hooded-Red-T-Shirt">
-                                                <img class="hover-image hide-img" src="~/assets/img/Solid-Men-Hooded-Blue-Grey-T-Shirt-2-300x350.jpg" alt="Men-Hooded-Blue-Grey-T-Shirt">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">T-Shirts</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Hooded  Navy Blue & Grey T-Shirt</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>5 ★</span>
+                            @{ var ysel = 0; var jsel = 2;}
+                            @for (var x = 0; x < Model.Products.Where(x => x.IsFeatured == false).Count(); x += 2)
+                            {
+                                <div class="item">
+
+                                    @foreach (var item in Model.Products.Where(x => x.IsFeatured == false).Skip(ysel).Take(jsel))
+                                    {
+                                        <div class="product-group">
+                                            <div class="product-item">
+                                                <div class="product-img">
+                                                    @if (item.IsFeatured == true)
+                                                    {
+                                                        <div class="product-featured">
+                                                            <span>Featured</span>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="product-featured d-none">
+                                                            <span>Featured</span>
+                                                        </div>
+                                                    }
+
+                                                    <div class="product-button">
+                                                        <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                            <i class="far fa-heart"></i>
+                                                        </a>
                                                     </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
+                                                    <a href="#">
+                                                        @{ var zsel = 1;}
+                                                        @foreach (var img in item.ProductGalleries)
+                                                        {
+                                                            @if (zsel == 1)
+                                                            {
+                                                                <img data-id=@zsel src="~/assets/img/@img.Photo" alt="">
+                                                            }
+                                                            else
+                                                            {
+                                                                <img class="hide-img" data-id=@zsel src="~/assets/img/@img.Photo" alt="">
+                                                            }
+
+                                                            zsel++;
+                                                        }
+                                                        <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="product-text">
+                                                    <div class="product-title">
+                                                        <div class="product-category">
+                                                            <a href="#">@item.Name</a>
+                                                        </div>
+                                                        <h3 class="product-content">
+                                                            <a href="#">@item.Description</a>
+                                                        </h3>
+                                                        <div class="product-start">
+                                                            <div class="@item.StarColor">
+                                                                <span>@item.StarCount ★</span>
+                                                            </div>
+                                                            <div class="rating-counts">
+                                                                <a href="#"><span> (@item.RatingCount) </span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span class="price">
+                                                            <span>@item.Price.ToString("#.00")</span>
+                                                        </span>
+                                                        <span class="on-sale">
+                                                            <span>@item.OnSale</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-buttons">
+                                                        <div class="cart-button">
+                                                            <a href="#">Select options</a>
+                                                        </div>
+                                                        <div class="compare-button">
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
+                                                        </div>
+                                                        <div class="search-button">
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-variations">
+                                                        <div class="product-colors">
+                                                            @{ int csel = 1;}
+                                                            @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                            {
+                                                                @if (csel == 1)
+                                                                {
+                                                                    <span data-id=@csel class="product-color active">
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span data-id=@csel class="product-color">
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                    </span>
+                                                                }
+                                                                csel++;
+                                                            }
+                                                        </div>
+                                                        <div class="product-sizes">
+                                                            @{ string active = "active";}
+
+                                                            @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                            {
+                                                                @foreach (var size in sizes.Value.Split(","))
+                                                                {
+                                                                    @if (active == "active")
+                                                                    {
+                                                                        <span class="product-size active">
+                                                                            <span>@size</span>
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="product-size">
+                                                                            <span>@size</span>
+                                                                        </span>
+                                                                    }
+                                                                    { active = "deactive"; }
+                                                                }
+                                                            }
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$70.00 -</span>
-                                                    <span> $90.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>19 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Blue" class="bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Grey" class="grey-color"></span>
-                                                    </span>
-                                                    <span data-id="3" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Maroon" class="dark-red-color"></span>
-                                                    </span>
-                                                </div>
-                                                <div class="product-sizes">
-                                                    <span class="product-size active">
-                                                        <span>L</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>M</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>S</span>
-                                                    </span>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
+                                    }
+
+                                    @{ ysel += 2; }
+
                                 </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Navy-BlueSilver-White-Multifunction-Analog-Watch-300x350.jpg" alt="Watch">
-                                                <img class="hover-image" src="~/assets/img/Navy-BlueSilver-White-Multifunction-Analog-Watch-2-300x350.jpg" alt="Watch">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Leather</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Navy Blue-Silver-White Multifunction Analog Watch</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>4 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$85.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Women-Off-White-Printed-Blouson-Top-300x350.jpg" alt="Women-Off-White-Printed-Blouson">
-                                                <img class="hide-img" data-id="2" src="~/assets/img/Women-Blue-Printed-Blouson-Top-1-300x350.jpg" alt="Women-Off-White-Printed-Blouson">
-                                                <img class="hide-img" data-id="3" src="~/assets/img/Women-Off-White-Printed-Top-1-300x350.jpg" alt="Women-Off-White-Printed-Blouson">
-                                                <img class="hover-image hide-img" src="~/assets/img/Women-Off-White-Printed-Blouson-Top-2-300x350.jpg" alt="Women-Off-White-Printed-Blouson">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Shorts & Skirts</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Off White Printed Blouson Top</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap yellow-star">
-                                                        <span>2.7 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (3) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>47.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Red" class="red-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Sky Blue" class="bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="3" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="White" class="white-color"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Unisex-Blue-Graphic-Backpack-300x350.jpg" alt="Blue-Backpack">
-                                                <img class="hide-img" data-id="2" src="~/assets/img/Unisex-Red-Orange-Brand-Logo-Backpack-1-430x502.jpg" alt="Red-Orange-Brand-Logo-Backpack">
-                                                <img class="hover-image hide-img" src="~/assets/img/Unisex-Blue-Graphic-Backpack-2-430x502.jpg" alt="Blue-Backpack">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Luggage & Travel</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Unisex Blue Graphic Backpack</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>3 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$12.00 -</span>
-                                                    <span> $15.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>20 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Dark Blue" class="dark-bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Red" class="red-color"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-Blue-Colourblocked-Mid-Top-Sneakers-300x350.jpg" alt="Men Shoes">
-                                                <img class="hover-image" src="~/assets/img/Men-Blue-Colourblocked-Mid-Top-Sneakers-2-300x350.jpg" alt="Men Shoes">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Casual Shoes</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Blue Colourblocked Mid-Top Sneakers</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>5 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (3) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$40.00</span>
-                                                    <span class="product-discount"> $45.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>11 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-Blue-Skinny-Fit-Stretchable-Jeans-300x350.jpg" alt="Men Jeans">
-                                                <img class="hover-image" src="~/assets/img/Men-Blue-Skinny-Fit-Stretchable-Jeans-2-300x350.jpg" alt="Men Jeans">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Jeans</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Blue Skinny Fit Stretchable Jeans</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap yellow-star">
-                                                        <span>2 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$120.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-sizes">
-                                                    <span class="product-size active">
-                                                        <span>30</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>32</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>34</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Women-Blue-Skinny-Fit-Stretchable-Jeans-300x350.jpg" alt="Women Blue Jeans">
-                                                <img class="hide-img" data-id="2" src="~/assets/img/Women-Blue-Skinny-Fit-Stretchable-Jeans-1-300x350.jpg" alt="Women Blue Jeans">
-                                                <img class="hide-img" data-id="3" src="~/assets/img/Women-Blue-Skinny-Fit-Stretchable-Cropped-Jeans-1-300x350.jpg" alt="Women Blue Jeans">
-                                                <img class="hover-image hide-img" src="~/assets/img/Women-Blue-Skinny-Fit-Stretchable-Jeans-2-300x350.jpg" alt="Women Blue Jeans">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Lingerie & Nightwear</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Blue Skinny Fit Stretchable Jeans</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>5 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$70.00 -</span>
-                                                    <span> $78.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Blue" class="bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Dark Blue" class="dark-bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="3" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Sky Blue" class="sky-bluer-color"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="2" src="~/assets/img/Brown-Quilted-Satchel-300x350.jpg" alt="Red-Hand-Bag">
-                                                <img class="hide-img" data-id="1" src="~/assets/img/Purple-Textured-Satchel-1-300x350.jpg" alt="Purple-Hand-Bag">
-                                                <img class="hide-img" data-id="3" src="~/assets/img/Beige-Quilted-Satchel-1-300x350.jpg" alt="Siver-Hand-Bag">
-                                                <img class="hover-image hide-img" src="~/assets/img/Brown-Quilted-Satchel-2-300x350.jpg" alt="Red-Hand-Bag">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Handbags</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Brown Quilted Satchel</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap pink-star">
-                                                        <span>1 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$35.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Grey" class="grey-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Maroon" class="dark-red-color"></span>
-                                                    </span>
-                                                    <span data-id="3" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Silver" class="grey-silver-color"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-Navy-Red-Checked-Slim-Fit-Casual-Shirt-300x350.jpg" alt="Men Shirts">
-                                                <img class="hover-image" src="~/assets/img/Men-Navy-Red-Checked-Slim-Fit-Casual-Shirt-2-300x350.jpg" alt="Men Shirts">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Shirts, Wallets</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Navy & Red Checked Slim Fit Casual Shirt</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>3.5 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$124.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-sizes">
-                                                    <span class="product-size active">
-                                                        <span>L</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>M</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>XL</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Women-Brown-Solid-Synthetic-Mid-Top-Flat-Boots-300x350.jpg" alt="Boots">
-                                                <img class="hover-image" src="~/assets/img/Women-Brown-Solid-Synthetic-Mid-Top-Flat-Boots-2-300x350.jpg" alt="Boots">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Sneakers</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Brown Solid Synthetic Mid Top Flat Boots</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap pink-star">
-                                                        <span>1 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>189.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                     <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="owl-carousel owl-them">
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Solid-Men-Hooded-Blue-Grey-T-Shirt-300x350.jpg" alt="Men-Hooded-Blue-T-Shirt">
-                                                <img data-id="2" class="hide-img" src="~/assets/img/Men-Hooded-Charcoal-Grey-T-Shirt-1-300x350.jpg" alt="Men-Hooded-Grey-T-Shirt">
-                                                <img data-id="3" class="hide-img" src="~/assets/img/Men-Hooded-Colourblocked-Maroon-T-Shirt-1-300x350.jpg" alt="Men-Hooded-Red-T-Shirt">
-                                                <img class="hover-image hide-img" src="~/assets/img/Solid-Men-Hooded-Blue-Grey-T-Shirt-2-300x350.jpg" alt="Men-Hooded-Blue-Grey-T-Shirt">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">T-Shirts</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Hooded  Navy Blue & Grey T-Shirt</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>5 ★</span>
+                            @{ var yfet = 0; var jfet = 2;}
+                            @for (int i = 0; i < Model.Products.Where(x => x.IsFeatured == true).Count(); i += 2)
+                            {
+                                <div class="item">
+                                    @foreach (var item in Model.Products.Where(x => x.IsFeatured == true).Skip(yfet).Take(jfet))
+                                    {
+                                        <div class="product-group">
+                                            <div class="product-item">
+                                                <div class="product-img">
+                                                    @if (item.IsFeatured == true)
+                                                    {
+                                                        <div class="product-featured">
+                                                            <span>Featured</span>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="product-featured d-none">
+                                                            <span>Featured</span>
+                                                        </div>
+                                                    }
+                                                    <div class="product-button">
+                                                        <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                            <i class="far fa-heart"></i>
+                                                        </a>
                                                     </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
+                                                    <a href="#">
+                                                        @{ var zfet = 1;}
+                                                        @foreach (var img in item.ProductGalleries)
+                                                        {
+                                                            @if (zfet == 1)
+                                                            {
+                                                                <img data-id=@zfet src="~/assets/img/@img.Photo" alt="">
+                                                            }
+                                                            else
+                                                            {
+                                                                <img class="hide-img" data-id=@zfet src="~/assets/img/@img.Photo" alt="">
+                                                            }
+                                                            zfet++;
+                                                        }
+
+                                                        <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="product-text">
+                                                    <div class="product-title">
+                                                        <div class="product-category">
+                                                            <a href="#">@item.Name</a>
+                                                        </div>
+                                                        <h3 class="product-content">
+                                                            <a href="#">@item.Description</a>
+                                                        </h3>
+                                                        <div class="product-start">
+                                                            <div class="@item.StarColor">
+                                                                <span>@item.StarCount ★</span>
+                                                            </div>
+                                                            <div class="rating-counts">
+                                                                <a href="#"><span> (@item.RatingCount) </span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span class="price">
+                                                            <span>@item.Price</span>
+                                                        </span>
+                                                        <span class="on-sale">
+                                                            <span>@item.OnSale</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-buttons">
+                                                        <div class="cart-button">
+                                                            <a href="#">Select options</a>
+                                                        </div>
+                                                        <div class="compare-button">
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
+                                                        </div>
+                                                        <div class="search-button">
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-variations">
+                                                        <div class="product-colors">
+                                                            @{ var cfed = 1;}
+                                                            @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                            {
+                                                                if (cfed == 1)
+                                                                {
+                                                                    <span data-id=@cfed class="product-color active">
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span data-id=@cfed class="product-color">
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                    </span>
+                                                                }
+                                                                cfed++;
+                                                            }
+                                                        </div>
+                                                        <div class="product-sizes">
+                                                            @{ var active = "active";}
+                                                            @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                            {
+                                                                @foreach (var size in sizes.Value.Split(","))
+                                                                {
+                                                                    @if (active == "active")
+                                                                    {
+                                                                        <span class="product-size active">
+                                                                            <span>@size</span>
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="product-size">
+                                                                            <span>@size</span>
+                                                                        </span>
+                                                                    }
+                                                                    { active = "deactive"; }
+                                                                }
+                                                            }
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$70.00 -</span>
-                                                    <span> $90.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>19 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Blue" class="bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Grey" class="grey-color"></span>
-                                                    </span>
-                                                    <span data-id="3" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Maroon" class="dark-red-color"></span>
-                                                    </span>
-                                                </div>
-                                                <div class="product-sizes">
-                                                    <span class="product-size active">
-                                                        <span>L</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>M</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>S</span>
-                                                    </span>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    @{ yfet += 2; }
                                 </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Women-Off-White-Printed-Blouson-Top-300x350.jpg" alt="Women-Off-White-Printed-Blouson">
-                                                <img class="hide-img" data-id="2" src="~/assets/img/Women-Blue-Printed-Blouson-Top-1-300x350.jpg" alt="Women-Off-White-Printed-Blouson">
-                                                <img class="hide-img" data-id="3" src="~/assets/img/Women-Off-White-Printed-Top-1-300x350.jpg" alt="Women-Off-White-Printed-Blouson">
-                                                <img class="hover-image hide-img" src="~/assets/img/Women-Off-White-Printed-Blouson-Top-2-300x350.jpg" alt="Women-Off-White-Printed-Blouson">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Shorts & Skirts</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Off White Printed Blouson Top</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap yellow-star">
-                                                        <span>2.7 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (3) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>47.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Red" class="red-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Sky Blue" class="bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="3" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="White" class="white-color"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-Blue-Skinny-Fit-Stretchable-Jeans-300x350.jpg" alt="Men Jeans">
-                                                <img class="hover-image" src="~/assets/img/Men-Blue-Skinny-Fit-Stretchable-Jeans-2-300x350.jpg" alt="Men Jeans">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Jeans</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Blue Skinny Fit Stretchable Jeans</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap yellow-star">
-                                                        <span>2 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$120.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-sizes">
-                                                    <span class="product-size active">
-                                                        <span>30</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>32</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>34</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Women-Brown-Solid-Synthetic-Mid-Top-Flat-Boots-300x350.jpg" alt="Boots">
-                                                <img class="hover-image" src="~/assets/img/Women-Brown-Solid-Synthetic-Mid-Top-Flat-Boots-2-300x350.jpg" alt="Boots">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Sneakers</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Brown Solid Synthetic Mid Top Flat Boots</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap pink-star">
-                                                        <span>1 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>189.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Women-Blue-Solid-Denim-Pencil-Skirt-300x350.jpg" alt="Women-Blue-Skirt">
-                                                <img class="hover-image" src="~/assets/img/Women-Blue-Solid-Denim-Pencil-Skirt-2-300x350.jpg" alt="Women-Blue-Skirt">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Jeans</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Blue Solid Denim Pencil Skirt</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>3.3 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (3) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$49.00</span>
-                                                    <span class="product-discount"> $89.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>$45 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-Black-Analogue-and-Digital-Watch-1-300x350.jpg" alt="Men-Watch">
-                                                <img class="hover-image" src="~/assets/img/Men-Black-Analogue-and-Digital-Watch-2-300x350.jpg" alt="Men-Watch">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Digital,Smart Analog</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Black Analogue and Digital Watch</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>4 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$199.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Women-Navy-Blue-Striped-Round-Neck-T-Shirt-300x350.jpg" alt="Women-Blue-T-Shirt">
-                                                <img data-id="2" class="hide-img" src="~/assets/img/Women-Navy-Blue-Solid-Round-Neck-T-Shirt-1-300x350.jpg" alt="Women-Blue-T-Shirt">
-                                                <img data-id="3" class="hide-img" src="~/assets/img/Women-Burgundy-Solid-Round-Neck-T-Shirt-1-300x350.jpg" alt="Women-Red-T-Shirt">
-                                                <img class="hover-image hide-img" src="~/assets/img/Women-Navy-Blue-Striped-Round-Neck-T-Shirt-3-300x350.jpg" alt="Women-Blue-T-Shirt">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Shorts & Skirts</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Navy Blue Striped Round Neck T-Shirt</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>4 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$70.00 -</span>
-                                                    <span> $76.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Blue" class="bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Dark Blue" class="dark-bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="3" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Red" class="red-color"></span>
-                                                    </span>
-                                                </div>
-                                                <div class="product-sizes">
-                                                    <span class="product-size">
-                                                        <span>L</span>
-                                                    </span>
-                                                    <span class="product-size active">
-                                                        <span>M</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>XL</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-Coffee-Brown-Genuine-Leather-Wallet-2-300x350.jpg" alt="Men-Coffee-Brown-Wallet">
-                                                <img class="hover-image" src="~/assets/img/Men-Coffee-Brown-Genuine-Leather-Wallet-1-300x350.jpg" alt="Men-Coffee-Brown-Wallet">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Wallets</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Coffee Brown Genuine Leather Wallet</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>4 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$40.00</span>
-                                                    <span class="product-discount"> $45.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>11% Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Apple-AirPods-with-Wireless-Charging-300x350.jpg" alt="Apple-AirPods">
-                                                <img class="hover-image" src="~/assets/img/Apple-AirPods-with-Wireless-Charging-2-300x350.jpg" alt="Apple-AirPods">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Electronics</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Apple AirPods with Wireless Charging</a>
-                                                </h3>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$85.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item" style="margin-top: 30px;">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/JBL-Wireless-Bluetooth-Speaker-300x350.jpg" alt="JBL-Bluetooth-Speaker">
-                                                <img class="hover-image hide-img" src="~/assets/img/JBL-Wireless-Bluetooth-Speaker-2-300x350.jpg" alt="JBL-Bluetooth-Speaker">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Electronics</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">JBL Wireless Bluetooth Speaker</a>
-                                                </h3>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$96.00</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                     <div class="tab-pane fade" id="on-sale" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="owl-carousel owl-them">
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Solid-Men-Hooded-Blue-Grey-T-Shirt-300x350.jpg" alt="Men-Hooded-Blue-T-Shirt">
-                                                <img data-id="2" class="hide-img" src="~/assets/img/Men-Hooded-Charcoal-Grey-T-Shirt-1-300x350.jpg" alt="Men-Hooded-Grey-T-Shirt">
-                                                <img data-id="3" class="hide-img" src="~/assets/img/Men-Hooded-Colourblocked-Maroon-T-Shirt-1-300x350.jpg" alt="Men-Hooded-Red-T-Shirt">
-                                                <img class="hover-image hide-img" src="~/assets/img/Solid-Men-Hooded-Blue-Grey-T-Shirt-2-300x350.jpg" alt="Men-Hooded-Blue-Grey-T-Shirt">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">T-Shirts</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Hooded  Navy Blue & Grey T-Shirt</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>5 ★</span>
+                            @{ var yonsel = 0; var jonsel = 2;}
+                            @for (var x = 0; x < Model.Products.Where(x => x.IsSale == true).Count(); x += 2)
+                            {
+                                <div class="item">
+
+                                    @foreach (var item in Model.Products.Where(x => x.IsSale == true).Skip(yonsel).Take(jonsel))
+                                    {
+                                        <div class="product-group">
+                                            <div class="product-item">
+                                                <div class="product-img">
+                                                    @if (item.IsFeatured == true)
+                                                    {
+                                                        <div class="product-featured">
+                                                            <span>Featured</span>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="product-featured d-none">
+                                                            <span>Featured</span>
+                                                        </div>
+                                                    }
+
+                                                    <div class="product-button">
+                                                        <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                            <i class="far fa-heart"></i>
+                                                        </a>
                                                     </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
+                                                    <a href="#">
+                                                        @{ var zonsel = 1;}
+                                                        @foreach (var img in item.ProductGalleries)
+                                                        {
+                                                            @if (zonsel == 1)
+                                                            {
+                                                                <img data-id=@zonsel src="~/assets/img/@img.Photo" alt="">
+                                                            }
+                                                            else
+                                                            {
+                                                                <img class="hide-img" data-id=@zonsel src="~/assets/img/@img.Photo" alt="">
+                                                            }
+
+                                                            zonsel++;
+                                                        }
+                                                        <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="product-text">
+                                                    <div class="product-title">
+                                                        <div class="product-category">
+                                                            <a href="#">@item.Name</a>
+                                                        </div>
+                                                        <h3 class="product-content">
+                                                            <a href="#">@item.Description</a>
+                                                        </h3>
+                                                        <div class="product-start">
+                                                            <div class="@item.StarColor">
+                                                                <span>@item.StarCount ★</span>
+                                                            </div>
+                                                            <div class="rating-counts">
+                                                                <a href="#"><span> (@item.RatingCount) </span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span class="price">
+                                                            <span>@item.Price.ToString("#.00")</span>
+                                                        </span>
+                                                        <span class="on-sale">
+                                                            <span>@item.OnSale</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-buttons">
+                                                        <div class="cart-button">
+                                                            <a href="#">Select options</a>
+                                                        </div>
+                                                        <div class="compare-button">
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
+                                                        </div>
+                                                        <div class="search-button">
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-variations">
+                                                        <div class="product-colors">
+                                                            @{ int consel = 1;}
+                                                            @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                            {
+                                                                @if (consel == 1)
+                                                                {
+                                                                    <span data-id=@consel class="product-color active">
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span data-id=@consel class="product-color">
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                    </span>
+                                                                }
+                                                                consel++;
+                                                            }
+                                                        </div>
+                                                        <div class="product-sizes">
+                                                            @{ string active = "active";}
+
+                                                            @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                            {
+                                                                @foreach (var size in sizes.Value.Split(","))
+                                                                {
+                                                                    @if (active == "active")
+                                                                    {
+                                                                        <span class="product-size active">
+                                                                            <span>@size</span>
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="product-size">
+                                                                            <span>@size</span>
+                                                                        </span>
+                                                                    }
+                                                                    { active = "deactive"; }
+                                                                }
+                                                            }
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$70.00 -</span>
-                                                    <span> $90.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>19 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Blue" class="bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Grey" class="grey-color"></span>
-                                                    </span>
-                                                    <span data-id="3" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Maroon" class="dark-red-color"></span>
-                                                    </span>
-                                                </div>
-                                                <div class="product-sizes">
-                                                    <span class="product-size active">
-                                                        <span>L</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>M</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>S</span>
-                                                    </span>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
+                                    }
+
+                                    @{ yonsel += 2; }
+
                                 </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Unisex-Blue-Graphic-Backpack-300x350.jpg" alt="Blue-Backpack">
-                                                <img class="hide-img" data-id="2" src="~/assets/img/Unisex-Red-Orange-Brand-Logo-Backpack-1-430x502.jpg" alt="Red-Orange-Brand-Logo-Backpack">
-                                                <img class="hover-image hide-img" src="~/assets/img/Unisex-Blue-Graphic-Backpack-2-430x502.jpg" alt="Blue-Backpack">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Luggage & Travel</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Unisex Blue Graphic Backpack</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>3 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$12.00 -</span>
-                                                    <span> $15.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>20 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Dark Blue" class="dark-bluer-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Red" class="red-color"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-Blue-Colourblocked-Mid-Top-Sneakers-300x350.jpg" alt="Men Shoes">
-                                                <img class="hover-image" src="~/assets/img/Men-Blue-Colourblocked-Mid-Top-Sneakers-2-300x350.jpg" alt="Men Shoes">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Casual Shoes</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Blue Colourblocked Mid-Top Sneakers</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>5 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (3) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$40.00</span>
-                                                    <span class="product-discount"> $45.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>11 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Women-Khaki-Solid-Top-300x350.jpg" alt="Women-Khaki">
-                                                <img class="hover-image" src="~/assets/img/Women-Khaki-Solid-Top-2-300x350.jpg" alt="Women-Khaki">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Tops</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Khaki Solid Top</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>4.5 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$129.00 -</span>
-                                                    <span> $199.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>35 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-sizes">
-                                                    <span class="product-size">
-                                                        <span>L</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>M</span>
-                                                    </span>
-                                                    <span class="product-size active">
-                                                        <span>S</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Men-Black-Analogue-Watch-300x350.jpg" alt="Men-Black-Watch">
-                                                <img class="hide-img" data-id="2" src="~/assets/img/Men-Silver-Toned-Analogue-Watch-1-300x350.jpg" alt="Men-Silver-Watch">
-                                                <img class="hover-image hide-img" src="~/assets/img/Men-Black-Analogue-Watch-2-300x350.jpg" alt="Men-Black-Watch">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Analog</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Black Analogue Watch</a>
-                                                </h3>
-                                                <div class="product-start pink-star">
-                                                    <div class="rating-wrap pink-star">
-                                                        <span>1.5 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$1,099.00 -</span>
-                                                    <span> $1,299.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>15 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Black" class="black-color"></span>
-                                                    </span>
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Red" class="grey-silver-color"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Women-Blue-Solid-Denim-Pencil-Skirt-300x350.jpg" alt="Women-Blue-Skirt">
-                                                <img class="hover-image" src="~/assets/img/Women-Blue-Solid-Denim-Pencil-Skirt-2-300x350.jpg" alt="Women-Blue-Skirt">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Jeans</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Women Blue Solid Denim Pencil Skirt</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>3.3 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (3) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$49.00</span>
-                                                    <span class="product-discount"> $89.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>$45 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Unisex-Rose-Gold-Smart-Watch-1-300x350.jpg" alt="Rose-Gold-Smart-Watch">
-                                                <img class="hover-image hide-img" src="~/assets/img/Unisex-Rose-Gold-Smart-Watch-2-300x350.jpg" alt="Rose-Gold-Smart-Watch">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Smart Watches, Watches</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Unisex Rose Gold Smart Watch</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>4.5 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (2) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$449.00</span>
-                                                    <span class="product-discount"> $499.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>10 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img data-id="1" src="~/assets/img/Men-Aviator-Sunglasses-300x350.jpg" alt="Men-Sunglasses">
-                                                <img data-id="2" class="hide-img" src="~/assets/img/Unisex-Aviator-Sunglasses-1-300x350.jpg" alt="Aviator-Sunglasses">
-                                                <img class="hover-image hide-img" src="~/assets/img/Men-Aviator-Sunglasses-2-300x350.jpg" alt="Men-Sunglasses">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Socks, Sunglasses</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Aviator Sunglasses</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>4 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$50.00 -</span>
-                                                    <span> $60.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>17 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-colors">
-                                                    <span data-id="2" class="product-color">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Black" class="black-color"></span>
-                                                    </span>
-                                                    <span data-id="1" class="product-color active">
-                                                        <span data-toggle="tooltip" data-placement="top" title="Maroon" class="dark-red-color"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Light-Blue-Solid-Low-Rise-Skinny-Fit-Jeans-1-300x350.jpg" alt="Men-Light-Blue-Jeans">
-                                                <img class="hover-image" src="~/assets/img/Light-Blue-Solid-Low-Rise-Skinny-Fit-Jeans-2-300x350.jpg" alt="Men-Light-Blue-Jeans">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Jeans</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Light Blue Solid Low Rise Skinny Fit Jeans</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap yellow-star">
-                                                        <span>2 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$89.00 -</span>
-                                                    <span> $96.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>7 % Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-variations">
-                                                <div class="product-sizes">
-                                                    <span class="product-size active">
-                                                        <span>30</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>32</span>
-                                                    </span>
-                                                    <span class="product-size">
-                                                        <span>34</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-group">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <div class="product-featured">
-                                                <span>Featured</span>
-                                            </div>
-                                            <div class="product-button">
-                                                <a id="wish-list" href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </div>
-                                            <a href="#">
-                                                <img src="~/assets/img/Men-Coffee-Brown-Genuine-Leather-Wallet-2-300x350.jpg" alt="Men-Coffee-Brown-Wallet">
-                                                <img class="hover-image" src="~/assets/img/Men-Coffee-Brown-Genuine-Leather-Wallet-1-300x350.jpg" alt="Men-Coffee-Brown-Wallet">
-                                            </a>
-                                        </div>
-                                        <div class="product-text">
-                                            <div class="product-title">
-                                                <div class="product-category">
-                                                    <a href="#">Wallets</a>
-                                                </div>
-                                                <h3 class="product-content">
-                                                    <a href="#">Men Coffee Brown Genuine Leather Wallet</a>
-                                                </h3>
-                                                <div class="product-start">
-                                                    <div class="rating-wrap">
-                                                        <span>4 ★</span>
-                                                    </div>
-                                                    <div class="rating-counts">
-                                                        <a href="#"><span> (1) </span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-price">
-                                                <span class="price">
-                                                    <span>$40.00</span>
-                                                    <span class="product-discount"> $45.00</span>
-                                                </span>
-                                                <span class="on-sale">
-                                                    <span>11% Off</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <div class="cart-button">
-                                                    <a href="#">Select options</a>
-                                                </div>
-                                                <div class="compare-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
-                                                </div>
-                                                <div class="search-button">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </section>
@@ -2025,7 +551,15 @@
                                         <div class="item">
                                             <div class="category-product">
                                                 <a href="#">
-                                                    <img src="~/assets/img/@item.Photo" alt="Beauty & Care">
+                                                    @if (item.Name == "Electronics")
+                                                    {
+                                                        <img src="~/assets/img/@item.Photo" height="300" alt="">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/assets/img/@item.Photo" alt="">
+                                                    }
+
                                                     <h3>
                                                         @item.Name
                                                         <span>@item.ProductCount Products</span>

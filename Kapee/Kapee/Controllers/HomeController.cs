@@ -1,6 +1,7 @@
 ﻿using Kapee.Data;
 using Kapee.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,9 @@ namespace Kapee.Controllers
                 Testimonials = _context.Testimonials.ToList(),
                 FashionSliders = _context.FashionSliders.ToList(),
                 Newses = _context.Newses.ToList(),
-                Categories = _context.Categories.ToList()
+                Categories = _context.Categories.ToList(),
+                Products = _context.Products.Include(x=>x.ProductGalleries)
+                                            .Include(x=>x.ProductFeatureds).ToList()
             };
 
             return View(model);

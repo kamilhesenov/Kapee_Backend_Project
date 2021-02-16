@@ -1,0 +1,190 @@
+﻿@model FooterViewModel
+@{
+    ViewData["Title"] = "Default";
+}
+
+<footer>
+    <!-- Footer-main start-->
+    <section id="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="footer-kape">
+                        <p class="footer-logo">
+                            <a href="#">
+                                <img src="~/assets/img/@Model.FooterLogo.PhotoLogo" alt="">
+                            </a>
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                        <ul>
+                            <li>
+                                <i class="fa fa-home"></i>
+                                <span>@Model.Setting.Address</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <span>@Model.Setting.Phone</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope-o"></i>
+                                <span>
+                                    <a href="#">@Model.Setting.Email</a>
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o"></i>
+                                <span>Mon - Fri / 9:00 AM - 6:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-info-content">
+                        <h2>Information</h2>
+                        <div class="footer-info-text">
+                            <ul>
+                                <li>
+                                    <a href="#">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Store Location</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Shipping & Delivery</a>
+                                </li>
+                                <li>
+                                    <a href="#">Latest News</a>
+                                </li>
+                                <li>
+                                    <a href="#">Our Sitemap</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-service-content">
+                        <h2>Our Service</h2>
+                        <div class="footer-service-text">
+                            <ul>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms of Sale</a>
+                                </li>
+                                <li>
+                                    <a href="#">Customer Service</a>
+                                </li>
+                                <li>
+                                    <a href="#">Delivery Information</a>
+                                </li>
+                                <li>
+                                    <a href="#">Payments</a>
+                                </li>
+                                <li>
+                                    <a href="#">Saved Cards</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-3">
+                    <div class="footer-account-content">
+                        <h2>My Account</h2>
+                        <div class="footer-account-text">
+                            <ul>
+                                <li>
+                                    <a href="#">My Account</a>
+                                </li>
+                                <li>
+                                    <a href="#">My Shop</a>
+                                </li>
+                                <li>
+                                    <a href="#">My Cart</a>
+                                </li>
+                                <li>
+                                    <a href="#">Checkout</a>
+                                </li>
+                                <li>
+                                    <a href="#">My Wishlist</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tracking Order</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="footer-news">
+                        <h2>Newsletter</h2>
+                        <div class="footer-news-letter">
+                            <div class="footer-subscribe">Subscribe to our mailing list to get the new updates!</div>
+                            <form>
+                                <div class="footer-form">
+                                    <p>
+                                        <i class="far fa-envelope"></i>
+                                        <input type="email" placeholder="Your email address" required>
+                                    </p>
+                                    <p>
+                                        <input type="submit" value="Sign up">
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="footer-link">
+                        <div class="social-link">
+                            <a class="social-facebook" href="@Model.SocialLink.Facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a class="social-twitter" href="@Model.SocialLink.Twitter">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a class="social-linkedin" href="@Model.SocialLink.Linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a class="social-instagram" href="@Model.SocialLink.Instagram">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                            <a class="social-flickr" href="@Model.SocialLink.Flickr">
+                                <i class="fa fa-flickr"></i>
+                            </a>
+                            <a class="social-rss" href="@Model.SocialLink.Rss">
+                                <i class="fa fa-rss"></i>
+                            </a>
+                            <a class="social-youtube" href="@Model.SocialLink.Youtube">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer-copyright start-->
+    <section id="footer-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="copyright-text">
+                        Kapee © 2021 by
+                        <a href="#">PressLayouts</a>
+                        All Rights Reserved.
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="copyright-img">
+                        <img src="~/assets/img/@Model.FooterLogo.PhotoCopyright" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+
