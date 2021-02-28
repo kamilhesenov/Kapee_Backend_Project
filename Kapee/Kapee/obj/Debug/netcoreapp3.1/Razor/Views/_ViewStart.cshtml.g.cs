@@ -28,13 +28,20 @@ using Kapee.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\Views\_ViewImports.cshtml"
+using Kapee.Models.Product;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\Views\_ViewImports.cshtml"
 using Kapee.Models.ViewModel;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2cec8a496c97a5287995d6ee0f64a0320b592dbd", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"94aef39934adeb311d0c82f2d4539b225796fe17", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

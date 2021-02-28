@@ -1,6 +1,8 @@
 ﻿using Kapee.Models;
 using Kapee.Models.Header_Footer;
 using Kapee.Models.Home;
+using Kapee.Models.Category;
+using Kapee.Models.Product;
 using Microsoft.EntityFrameworkCore;
 
 namespace Kapee.Data
@@ -29,6 +31,10 @@ namespace Kapee.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductFeatured> ProductFeatureds { get; set; }
         public DbSet<ProductGallery> ProductGalleries { get; set; }
+        public DbSet<BigSizePhoto> BigSizePhotos { get; set; }
+        public DbSet<SmallSizePhoto> SmallSizePhotos { get; set; }
+        public DbSet<ProductPrize> ProductPrizes { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
 
     }
 }

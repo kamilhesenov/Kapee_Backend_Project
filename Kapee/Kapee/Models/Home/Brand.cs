@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -13,5 +13,6 @@ namespace Kapee.Models.Home
 
         [NotMapped]
         public IFormFile Upload { get; set; }
+        public List<Product.Product> Products { get; set; }
     }
 }

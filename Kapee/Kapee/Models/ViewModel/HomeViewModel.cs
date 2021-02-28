@@ -14,7 +14,7 @@ namespace Kapee.Models.ViewModel
         public TestimonialItem TestimonialItem { get; set; }
         public List<FashionSlider> FashionSliders { get; set; }
         public List<News> Newses { get; set; }
-        public List<Category> Categories { get; set; }
-        public List<Product> Products { get; set; }
+        public List<Category.Category> Categories { get; set; }
+        public List<Product.Product> Products { get; set; }
     }
 }

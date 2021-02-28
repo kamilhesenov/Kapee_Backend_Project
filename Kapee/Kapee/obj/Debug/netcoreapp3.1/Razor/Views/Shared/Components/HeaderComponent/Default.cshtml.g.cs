@@ -28,13 +28,20 @@ using Kapee.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\Views\_ViewImports.cshtml"
+using Kapee.Models.Product;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\Views\_ViewImports.cshtml"
 using Kapee.Models.ViewModel;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f07dfd1b67474ef49627ef74545275d73b0c4791", @"/Views/Shared/Components/HeaderComponent/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2cec8a496c97a5287995d6ee0f64a0320b592dbd", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"94aef39934adeb311d0c82f2d4539b225796fe17", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_HeaderComponent_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<HeaderViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString(""), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -165,7 +172,7 @@ using Kapee.Models.ViewModel;
                     <div class=""logo "">
                         <a href=""#"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f07dfd1b67474ef49627ef74545275d73b0c47918684", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f07dfd1b67474ef49627ef74545275d73b0c47918876", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -200,7 +207,7 @@ AddHtmlAttributeValue("", 4150, Model.HeaderLogo.MainPhoto, 4150, 27, false);
                     <div class=""logo-mobil"">
                         <a href=""#"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f07dfd1b67474ef49627ef74545275d73b0c479110746", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f07dfd1b67474ef49627ef74545275d73b0c479110938", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -224,13 +231,13 @@ AddHtmlAttributeValue("", 4646, Model.HeaderLogo.SecondPhoto, 4646, 29, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6 col-md-6 search-product-icon\">\r\n                    <div class=\"search\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f07dfd1b67474ef49627ef74545275d73b0c479112597", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f07dfd1b67474ef49627ef74545275d73b0c479112789", async() => {
                 WriteLiteral(@"
                             <input type=""search"" placeholder=""Search for products, categories, brands, sku..."">
                             <div class=""select-search"">
                                 <select class=""search-category"">
                                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f07dfd1b67474ef49627ef74545275d73b0c479113135", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f07dfd1b67474ef49627ef74545275d73b0c479113327", async() => {
                     WriteLiteral("All Categories");
                 }
                 );
@@ -259,7 +266,7 @@ AddHtmlAttributeValue("", 4646, Model.HeaderLogo.SecondPhoto, 4646, 29, false);
 #line hidden
 #nullable disable
                 WriteLiteral("                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f07dfd1b67474ef49627ef74545275d73b0c479115189", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f07dfd1b67474ef49627ef74545275d73b0c479115381", async() => {
 #nullable restore
 #line 117 "C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\Views\Shared\Components\HeaderComponent\Default.cshtml"
                                                             Write(item.Name);

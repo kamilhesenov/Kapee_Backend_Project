@@ -1,0 +1,1061 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <!-- Product single start -->
+    <section id="product-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product-slider">
+                        @if (Model.Product.IsFeatured == true)
+                        {
+                            <div class="product-featured">
+                                <span>Featured</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="product-featured d-none">
+                                <span>Featured</span>
+                            </div>
+                        }
+                        <div class="product-sync-init">
+                            <div class="single-product">
+                                <div class="product-thumb zoom">
+                                    @{int bigPhoto = 1;}
+                                    @foreach (var item in Model.Product.ProductGalleries)
+                                    {
+                                        @if (bigPhoto == 1)
+                                        {
+                                            <img data-id=@bigPhoto src="~/assets/img/@item.Photo" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img data-id=@bigPhoto class="hide-img" src="~/assets/img/@item.Photo" alt="">
+                                        }
+                                        bigPhoto++;
+                                    }
+
+                                </div>
+                            </div>
+                            @foreach (var item in Model.Product.BigSizePhotos)
+                            {
+                                <div class="single-product">
+                                    <div class="product-thumb">
+                                        <img src="~/assets/img/@item.Photo" alt="">
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                        <div class="product-sync-nav d-flex justify-content-center">
+                            <div class="single-product">
+                                <div class="product-thumb">
+                                    @{ var smalPhoto = 1;}
+                                    @foreach (var item in Model.Product.ProductGalleries)
+                                    {
+                                        @if (smalPhoto == 1)
+                                        {
+                                            <img data-id=@smalPhoto src="~/assets/img/@item.Photo" class="img-fill active" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img data-id=@smalPhoto src="~/assets/img/@item.Photo" class="img-fill hide-img" alt="">
+                                        }
+                                        smalPhoto++;
+                                    }
+
+                                </div>
+                            </div>
+                            @foreach (var item in Model.Product.SmallSizePhotos)
+                            {
+                                <div class="single-product">
+                                    <div class="product-thumb">
+                                        <img src="~/assets/img/@item.Photo" class="img-fill" alt="">
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product-text ml-5">
+                        <div class="product-title">
+                            <div class="product-category">
+                                @foreach (var item in Model.Product.SubCategories)
+                                {
+                                    <a href="#">@item.Name</a>
+                                }
+
+                            </div>
+                            <h1>@Model.Product.Name</h1>
+                            <div class="product-start">
+                                <div class="@Model.Product.StarColor">
+                                    <span>@Model.Product.StarCount ★</span>
+                                </div>
+                                <div class="rating-counts">
+                                    <a href="#"><span> (@Model.Product.RatingCount) </span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">
+                                <span>$@Model.Product.Price.ToString("#.00")</span>
+                            </span>
+                            <span class="on-sale">
+                                <span>@Model.Product.OnSale</span>
+                            </span>
+                        </div>
+                        <div class="product-brand">
+                            <a href="#">
+                                <img src="~/assets/img/@Model.Product.Brand.Photo" alt="">
+                            </a>
+                        </div>
+                        <div class="product-variations">
+                            <div class="product-colors">
+                                @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true))
+                                {
+                                    <h5 class="mr-5">Color</h5>
+                                }
+                                else
+                                {
+                                    <h5 class="mr-5 d-none">Color</h5>
+                                }
+                                @{ var colorCount = 1;}
+                                @foreach (var color in Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                {
+                                    @if (colorCount == 1)
+                                    {
+                                        <span data-id=@colorCount class="product-color active">
+                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span data-id=@colorCount class="product-color">
+                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                        </span>
+                                    }
+                                    colorCount++;
+                                }
+
+                            </div>
+
+                            <div class="product-sizes">
+                                @if (Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                                {
+                                    <h5>Size</h5>
+                                }
+                                else
+                                {
+                                    <h5 class="d-none">Size</h5>
+                                }
+                                @{ var sizeCount = 1;}
+                                @{ var active = "active";}
+                                @foreach (var item in Model.Product.ProductFeatureds.Where(x => x.IsSize == true))
+                                {
+                                    @foreach (var size in item.Value.Split(","))
+                                    {
+                                        @if (sizeCount == 1 && active == "active")
+                                        {
+                                            <span data-id=@sizeCount class="product-size active ml-3">
+                                                <span>@size</span>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span data-id=@sizeCount class="product-size ml-3">
+                                                <span>@size</span>
+                                            </span>
+                                        }
+                                        active = "deactive";
+                                        sizeCount++;
+                                    }
+                                }
+
+                            </div>
+
+                        </div>
+                        @if (Model.Product.IsPrize == true)
+                        {
+                            <div class="price-size">
+                                @{ var prizeSize = 1;}
+                                @foreach (var item in Model.Product.Prizes)
+                                {
+                                    @if (prizeSize == 1)
+                                    {
+                                        <div data-id=@prizeSize class="price">
+                                            <span> $@item.Prize.ToString("#.00")</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div data-id=@prizeSize class="price hide-size">
+                                            <span> $@item.Prize.ToString("#.00")</span>
+                                        </div>
+                                    }
+                                    prizeSize++;
+                                }
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="price-size d-none">
+                                @{ var prizeSize = 1;}
+                                @foreach (var item in Model.Product.Prizes)
+                                {
+                                    @if (prizeSize == 1)
+                                    {
+                                        <div data-id=@prizeSize class="price">
+                                            <span> $@item.Prize</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div data-id=@prizeSize class="price hide-size">
+                                            <span> $@item.Prize</span>
+                                        </div>
+                                    }
+                                    prizeSize++;
+                                }
+
+                            </div>
+                        }
+                        <div class="add-to-cart">
+                            <form>
+                                <input type="button" value="-" class="minus">
+                                <input type="text" value="1" class="input-text">
+                                <input type="button" value="+" class="plus">
+                                <button type="submit" class="single_add_to_cart_button">Add to cart</button>
+                                <button type="submit" class="single_buy_now_button">Buy Now</button>
+                            </form>
+                        </div>
+                        <div class="product-button">
+                            <a href="#">
+                                <i class="far fa-heart"></i>
+                                <span>Add to Wishlist</span>
+                            </a>
+                            <a href="#" class="random">
+                                <i class="fas fa-random"></i>
+                                <span>Compare</span>
+                            </a>
+                            <a href="#" class="size-guide">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Size Guide</span>
+                            </a>
+                        </div>
+                        <div class="product-meta">
+                            <span class="sku">
+                                SKU:
+                                <small>N/A</small>
+                            </span>
+                            <span class="category">
+                                Category:
+                                @foreach (var item in Model.Product.SubCategories)
+                                {
+                                    <a href="#">@item.Name</a>
+                                }
+                            </span>
+                            <span class="tag">
+                                Tags:
+                                <a href="#">@Model.Product.Category.Name</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product info start-->
+    <section id="product-info">
+        <div class="container">
+            <div id="accordion" class="accordition d-none">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Description
+                                <i class="fas fa-angle-down"></i>
+                            </a>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="text">
+                                        <h4>Brand</h4>
+                                        <p>@Model.Product.Detail</p>
+                                        <p>@Model.Product.Description</p>
+                                    </div>>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true) || Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                    {
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Additional information
+                                    <i class="fas fa-angle-down"></i>
+                                </a>
+                            </h5>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-header d-none" id="headingTwo">
+                            <h5 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Additional information
+                                    <i class="fas fa-angle-down"></i>
+                                </a>
+                            </h5>
+                        </div>
+                    }
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <table>
+                                <tbody>
+                                    @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true))
+                                    {
+                                        <tr>
+                                            <th class="header">Color</th>
+                                            <td>
+                                                @for (int i = 0; i < Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count; i++)
+                                                {
+                                                    if (Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i] != Model.Product.ProductFeatureds[Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count - 1])
+                                                    {
+                                                        <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key,</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key</p>
+                                                    }
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr class="d-none">
+                                            <th class="header">Color</th>
+                                            <td>
+                                                @for (int i = 0; i < Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count; i++)
+                                                {
+                                                    if (Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i] != Model.Product.ProductFeatureds[Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count - 1])
+                                                    {
+                                                        <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key,</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key</p>
+                                                    }
+
+                                                }
+
+                                            </td>
+                                        </tr>
+                                    }
+
+
+
+                                    @if (Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                                    {
+                                        <tr>
+                                            <th class="header">Size</th>
+                                            <td>
+                                                @foreach (var size in Model.Product.ProductFeatureds.Where(x => x.IsSize == true).ToList())
+                                                {
+                                                    <p class="d-inline">@size.Value</p>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    else
+                                    {
+                                        <tr class="d-none">
+                                            <th class="body">Size</th>
+                                            <td>
+                                                @foreach (var size in Model.Product.ProductFeatureds.Where(x => x.IsSize == true).ToList())
+                                                {
+                                                    <p class="d-inline">@size.Value</p>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <a class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Reviews (@Model.Product.RatingCount)
+                                <i class="fas fa-angle-down"></i>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="rating">
+                                        <div class="rating-star">
+                                            <div class="star">@Model.Product.StarCount ★</div>
+                                            <div class="rating-count">
+                                                <span>@Model.Product.RatingCount Ratings</span>
+                                            </div>
+                                        </div>
+                                        <div class="rating-histogram ml-5 mt-3">
+                                            @if (Model.Product.StarCount == 5)
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">5 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                                    </div>
+                                                    <div class="rating-count">@Model.Product.RatingCount</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">5 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar"></div>
+                                                    </div>
+                                                    <div class="rating-count">0</div>
+                                                </div>
+                                            }
+                                            @if (Model.Product.StarCount >= 4 && Model.Product.StarCount < 5)
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">4 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                                    </div>
+                                                    <div class="rating-count">@Model.Product.RatingCount</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">4 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar"></div>
+                                                    </div>
+                                                    <div class="rating-count">0</div>
+                                                </div>
+                                            }
+                                            @if (Model.Product.StarCount >= 3 && Model.Product.StarCount < 4)
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">3 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                                    </div>
+                                                    <div class="rating-count">@Model.Product.RatingCount</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">3 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar"></div>
+                                                    </div>
+                                                    <div class="rating-count">0</div>
+                                                </div>
+                                            }
+                                            @if (Model.Product.StarCount >= 2 && Model.Product.StarCount < 3)
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">2 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                                    </div>
+                                                    <div class="rating-count">@Model.Product.RatingCount</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">2 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar"></div>
+                                                    </div>
+                                                    <div class="rating-count">0</div>
+                                                </div>
+                                            }
+                                            @if (Model.Product.StarCount >= 1 && Model.Product.StarCount < 2)
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">1 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                                    </div>
+                                                    <div class="rating-count">@Model.Product.RatingCount</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="rating-bar">
+                                                    <div class="star">1 ★</div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar"></div>
+                                                    </div>
+                                                    <div class="rating-count">0</div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="review-form">
+                                        <h4>Add a review</h4>
+                                        <p>
+                                            You must be
+                                            <a href="#">logged in</a>
+                                            to post a review.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link desc active" id="home-tab" data-toggle="tab" href="#desc" role="tab" aria-selected="true">Description</a>
+                </li>
+                @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true) || Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                {
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link info" id="profile-tab" data-toggle="tab" href="#info" role="tab" aria-selected="false">Additional information</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item d-none" role="presentation">
+                        <a class="nav-link info" id="profile-tab" data-toggle="tab" href="#info" role="tab" aria-selected="false">Additional information</a>
+                    </li>
+                }
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link review" id="contact-tab" data-toggle="tab" href="#review" role="tab" aria-selected="false">Reviews (@Model.Product.RatingCount)</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="desc" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="text">
+                                <h4>Brand</h4>
+                                <p>@Model.Product.Detail</p>
+                                <p>@Model.Product.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="profile-tab">
+                    <table>
+                        <tbody>
+                            @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true))
+                            {
+                                <tr>
+                                    <th class="header">Color</th>
+                                    <td>
+                                        @for (int i = 0; i < Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count; i++)
+                                        {
+                                            if (Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i] != Model.Product.ProductFeatureds[Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count - 1])
+                                            {
+                                                <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key,</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key</p>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr class="d-none">
+                                    <th class="header">Color</th>
+                                    <td>
+                                        @for (int i = 0; i < Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count; i++)
+                                        {
+                                            if (Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i] != Model.Product.ProductFeatureds[Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count - 1])
+                                            {
+                                                <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key,</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key</p>
+                                            }
+
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+
+
+
+                            @if (Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                            {
+                                <tr>
+                                    <th class="header">Size</th>
+                                    <td>
+                                        @foreach (var size in Model.Product.ProductFeatureds.Where(x => x.IsSize == true).ToList())
+                                        {
+                                            <p class="d-inline">@size.Value</p>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+
+                            else
+                            {
+                                <tr class="d-none">
+                                    <th class="body">Size</th>
+                                    <td>
+                                        @foreach (var size in Model.Product.ProductFeatureds.Where(x => x.IsSize == true).ToList())
+                                        {
+                                            <p class="d-inline">@size.Value</p>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-6">
+                            <div class="rating">
+                                <div class="rating-star">
+                                    <div class="star">@Model.Product.StarCount ★</div>
+                                    <div class="rating-count">
+                                        <span>@Model.Product.RatingCount Ratings</span>
+                                    </div>
+                                </div>
+                                <div class="rating-histogram ml-5 mt-3">
+                                    @if (Model.Product.StarCount == 5)
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">5 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                            </div>
+                                            <div class="rating-count">@Model.Product.RatingCount</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">5 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <div class="rating-count">0</div>
+                                        </div>
+                                    }
+                                    @if (Model.Product.StarCount >= 4 && Model.Product.StarCount < 5)
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">4 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                            </div>
+                                            <div class="rating-count">@Model.Product.RatingCount</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">4 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <div class="rating-count">0</div>
+                                        </div>
+                                    }
+                                    @if (Model.Product.StarCount >= 3 && Model.Product.StarCount < 4)
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">3 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                            </div>
+                                            <div class="rating-count">@Model.Product.RatingCount</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">3 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <div class="rating-count">0</div>
+                                        </div>
+                                    }
+                                    @if (Model.Product.StarCount >= 2 && Model.Product.StarCount < 3)
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">2 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                            </div>
+                                            <div class="rating-count">@Model.Product.RatingCount</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">2 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <div class="rating-count">0</div>
+                                        </div>
+                                    }
+                                    @if (Model.Product.StarCount >= 1 && Model.Product.StarCount < 2)
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">1 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar @Model.Product.ProgressColor"></div>
+                                            </div>
+                                            <div class="rating-count">@Model.Product.RatingCount</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="rating-bar">
+                                            <div class="star">1 ★</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <div class="rating-count">0</div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6">
+                            <div class="review-form">
+                                <h4>Add a review</h4>
+                                <p>
+                                    You must be
+                                    <a href="#">logged in</a>
+                                    to post a review.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related product start -->
+    <section id="related-product">
+        <div class="container">
+            <h2>Related Products</h2>
+            <div class="row slider">
+                <div class="owl-carousel owl-them">
+                    @foreach (var item in Model.Products.Where(x => x.CategoryId == Model.Product.CategoryId))
+                    {
+                        <div class="item">
+                            <div class="product-group">
+                                <div class="product-item">
+                                    <div class="product-img">
+                                        @if (item.IsFeatured == true)
+                                        {
+                                            <div class="product-featured">
+                                                <span>Featured</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="product-featured d-none">
+                                                <span>Featured</span>
+                                            </div>
+                                        }
+                                        <div class="product-button">
+                                            <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        </div>
+                                        <a href="#">
+                                            @{ var imgCount = 1;}
+                                            @foreach (var img in item.ProductGalleries)
+                                            {
+                                                @if (imgCount == 1)
+                                                {
+                                                    <img data-id=@imgCount src="~/assets/img/@img.Photo" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img data-id=@imgCount class="hide-img" src="~/assets/img/@img.Photo" alt="">
+                                                }
+                                                imgCount++;
+                                            }
+
+                                            <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-text">
+                                        <div class="product-title">
+                                            <div class="product-category">
+                                                @foreach (var categoryName in item.SubCategories)
+                                                {
+                                                    <a href="#">@categoryName.Name</a>
+                                                }
+                                            </div>
+                                            <h3 class="product-content">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
+                                            </h3>
+                                            <div class="product-start">
+                                                <div class="@item.StarColor">
+                                                    <span>@item.StarCount ★</span>
+                                                </div>
+                                                <div class="rating-counts">
+                                                    <a href="#"><span> (@item.RatingCount) </span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-price">
+                                            <span class="price">
+                                                <span>$@item.Price.ToString("#.00")</span>
+                                            </span>
+                                            <span class="on-sale">
+                                                <span>@item.OnSale</span>
+                                            </span>
+                                        </div>
+                                        <div class="product-buttons">
+                                            <div class="cart-button">
+                                                <a href="#">Select options</a>
+                                            </div>
+                                            <div class="compare-button">
+                                                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
+                                            </div>
+                                            <div class="search-button">
+                                                <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-variations">
+                                            <div class="product-colors">
+                                                @{ int colorsCount = 1;}
+                                                @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                {
+                                                    @if (colorsCount == 1)
+                                                    {
+                                                        <span data-id=@colorsCount class="product-color active">
+                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span data-id=@colorsCount class="product-color">
+                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                        </span>
+                                                    }
+                                                    colorsCount++;
+                                                }
+                                            </div>
+                                            <div class="product-sizes">
+                                                @{ string actives = "active";}
+
+                                                @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                {
+                                                    @foreach (var size in sizes.Value.Split(","))
+                                                    {
+                                                        @if (actives == "active")
+                                                        {
+                                                            <span class="product-size active">
+                                                                <span>@size</span>
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="product-size">
+                                                                <span>@size</span>
+                                                            </span>
+                                                        }
+                                                        { actives = "deactive"; }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently view start -->
+    <section id="recently-view">
+        <div class="container">
+            <h2>Recently Viewed</h2>
+            <div class="row slider">
+                <div class="owl-carousel owl-them">
+                    @foreach (var item in Model.RecentlyViewedProducts)
+                    {
+                        <div class="item">
+                            <div class="product-group">
+                                <div class="product-item">
+                                    <div class="product-img">
+                                        @if (item.IsFeatured == true)
+                                        {
+                                            <div class="product-featured">
+                                                <span>Featured</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="product-featured d-none">
+                                                <span>Featured</span>
+                                            </div>
+                                        }
+                                        <div class="product-button">
+                                            <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        </div>
+                                        <a href="#">
+                                            @{ var productCount = 1;}
+                                            @foreach (var img in item.ProductGalleries)
+                                            {
+                                                @if (productCount == 1)
+                                                {
+                                                    <img data-id=@productCount src="~/assets/img/@img.Photo" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img data-id=@productCount class="hide-img" src="~/assets/img/@img.Photo" alt="">
+                                                }
+                                                productCount++;
+                                            }
+                                            
+                                            <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="Men-Hooded-Blue-Grey-T-Shirt">
+                                        </a>
+                                    </div>
+                                    <div class="product-text">
+                                        <div class="product-title">
+                                            <div class="product-category">
+                                                @foreach (var categoryName in item.SubCategories)
+                                                {
+                                                    <a href="#">@categoryName.Name</a>
+                                                }
+                                            </div>
+                                            <h3 class="product-content">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
+                                            </h3>
+                                            <div class="product-start">
+                                                <div class="@item.StarColor">
+                                                    <span>@item.StarCount ★</span>
+                                                </div>
+                                                <div class="rating-counts">
+                                                    <a href="#"><span> (@item.RatingCount) </span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-price">
+                                            <span class="price">
+                                                <span>$@item.Price.ToString("#.00")</span>
+                                            </span>
+                                            <span class="on-sale">
+                                                <span>@item.OnSale</span>
+                                            </span>
+                                        </div>
+                                        <div class="product-buttons">
+                                            <div class="cart-button">
+                                                <a href="#">Select options</a>
+                                            </div>
+                                            <div class="compare-button">
+                                                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
+                                            </div>
+                                            <div class="search-button">
+                                                <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-variations">
+                                            <div class="product-colors">
+                                                @{ int colorsCount = 1;}
+                                                @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                {
+                                                    @if (colorsCount == 1)
+                                                    {
+                                                        <span data-id=@colorsCount class="product-color active">
+                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span data-id=@colorsCount class="product-color">
+                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                        </span>
+                                                    }
+                                                    colorsCount++;
+                                                }
+                                            </div>
+                                            <div class="product-sizes">
+                                                @{ string actives = "active";}
+
+                                                @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                {
+                                                    @foreach (var size in sizes.Value.Split(","))
+                                                    {
+                                                        @if (actives == "active")
+                                                        {
+                                                            <span class="product-size active">
+                                                                <span>@size</span>
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="product-size">
+                                                                <span>@size</span>
+                                                            </span>
+                                                        }
+                                                        { actives = "deactive"; }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

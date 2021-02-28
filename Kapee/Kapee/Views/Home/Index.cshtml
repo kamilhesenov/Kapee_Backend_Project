@@ -117,11 +117,11 @@
                     <div class="tab-pane fade show active" id="best-seling" role="tabpanel" aria-labelledby="home-tab">
                         <div class="owl-carousel owl-them">
                             @{ var ysel = 0; var jsel = 2;}
-                            @for (var x = 0; x < Model.Products.Where(x => x.IsFeatured == false).Count(); x += 2)
+                            @for (var x = 0; x < Model.Products.Where(x => x.IsFeatured == false && x.IsSale == false).Count(); x += 2)
                             {
                                 <div class="item">
 
-                                    @foreach (var item in Model.Products.Where(x => x.IsFeatured == false).Skip(ysel).Take(jsel))
+                                    @foreach (var item in Model.Products.Where(x => x.IsFeatured == false && x.IsSale == false).Skip(ysel).Take(jsel))
                                     {
                                         <div class="product-group">
                                             <div class="product-item">
@@ -165,10 +165,13 @@
                                                 <div class="product-text">
                                                     <div class="product-title">
                                                         <div class="product-category">
-                                                            <a href="#">@item.Name</a>
+                                                            @foreach (var categoryName in item.SubCategories)
+                                                            {
+                                                                <a href="#">@categoryName.Name</a>
+                                                            }
                                                         </div>
                                                         <h3 class="product-content">
-                                                            <a href="#">@item.Description</a>
+                                                            <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
                                                         </h3>
                                                         <div class="product-start">
                                                             <div class="@item.StarColor">
@@ -302,10 +305,13 @@
                                                 <div class="product-text">
                                                     <div class="product-title">
                                                         <div class="product-category">
-                                                            <a href="#">@item.Name</a>
+                                                            @foreach (var categoryName in item.SubCategories)
+                                                            {
+                                                                <a href="#">@categoryName.Name</a>
+                                                            }
                                                         </div>
                                                         <h3 class="product-content">
-                                                            <a href="#">@item.Description</a>
+                                                            <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
                                                         </h3>
                                                         <div class="product-start">
                                                             <div class="@item.StarColor">
@@ -318,7 +324,7 @@
                                                     </div>
                                                     <div class="product-price">
                                                         <span class="price">
-                                                            <span>@item.Price</span>
+                                                            <span>@item.Price.ToString("#.00")</span>
                                                         </span>
                                                         <span class="on-sale">
                                                             <span>@item.OnSale</span>
@@ -438,10 +444,13 @@
                                                 <div class="product-text">
                                                     <div class="product-title">
                                                         <div class="product-category">
-                                                            <a href="#">@item.Name</a>
+                                                            @foreach (var categoryName in item.SubCategories)
+                                                            {
+                                                                <a href="#">@categoryName.Name</a>
+                                                            }
                                                         </div>
                                                         <h3 class="product-content">
-                                                            <a href="#">@item.Description</a>
+                                                            <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
                                                         </h3>
                                                         <div class="product-start">
                                                             <div class="@item.StarColor">

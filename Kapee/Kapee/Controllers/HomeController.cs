@@ -3,11 +3,8 @@ using Kapee.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Kapee.Controllers
 {
@@ -36,6 +33,8 @@ namespace Kapee.Controllers
                 Newses = _context.Newses.ToList(),
                 Categories = _context.Categories.ToList(),
                 Products = _context.Products.Include(x=>x.ProductGalleries)
+                                            .Include(x=>x.Category)
+                                            .ThenInclude(x=>x.SubCategories)
                                             .Include(x=>x.ProductFeatureds).ToList()
             };
 

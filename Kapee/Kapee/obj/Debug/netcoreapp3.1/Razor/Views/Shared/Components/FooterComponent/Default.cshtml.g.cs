@@ -28,13 +28,20 @@ using Kapee.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\Views\_ViewImports.cshtml"
+using Kapee.Models.Product;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\Views\_ViewImports.cshtml"
 using Kapee.Models.ViewModel;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8a24baa884ca375fb377e6ef9f2ed67ad8813084", @"/Views/Shared/Components/FooterComponent/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2cec8a496c97a5287995d6ee0f64a0320b592dbd", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"94aef39934adeb311d0c82f2d4539b225796fe17", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_FooterComponent_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<FooterViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString(""), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -83,7 +90,7 @@ using Kapee.Models.ViewModel;
                         <p class=""footer-logo"">
                             <a href=""#"">
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8a24baa884ca375fb377e6ef9f2ed67ad88130844669", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8a24baa884ca375fb377e6ef9f2ed67ad88130844861", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -238,7 +245,7 @@ AddHtmlAttributeValue("", 453, Model.FooterLogo.PhotoLogo, 453, 27, false);
                         <div class=""footer-news-letter"">
                             <div class=""footer-subscribe"">Subscribe to our mailing list to get the new updates!</div>
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8a24baa884ca375fb377e6ef9f2ed67ad881308412491", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8a24baa884ca375fb377e6ef9f2ed67ad881308412683", async() => {
                 WriteLiteral(@"
                                 <div class=""footer-form"">
                                     <p>
@@ -357,7 +364,7 @@ WriteAttributeValue("", 7572, Model.SocialLink.Youtube, 7572, 25, false);
                 <div class=""col-12 col-md-6"">
                     <div class=""copyright-img"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8a24baa884ca375fb377e6ef9f2ed67ad881308419150", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8a24baa884ca375fb377e6ef9f2ed67ad881308419342", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
