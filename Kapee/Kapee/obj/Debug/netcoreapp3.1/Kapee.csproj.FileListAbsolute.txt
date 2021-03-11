@@ -135,6 +135,8 @@ C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.TagHelpers.input.cache
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.TagHelpers.output.cache
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.RazorCoreGenerate.cache
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Category\Index.cshtml.g.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Category\PriceRange.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\FooterComponent\Default.cshtml.g.cs
@@ -150,3 +152,10 @@ C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.dll
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.pdb
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.genruntimeconfig.cache
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.Views.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ColorProducts.cshtml.g.cs

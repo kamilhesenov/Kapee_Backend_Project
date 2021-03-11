@@ -117,7 +117,7 @@
                         </div>
                         <div class="product-variations">
                             <div class="product-colors">
-                                @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true))
+                                @if (Model.Product.ProductColors.Count != 0)
                                 {
                                     <h5 class="mr-5">Color</h5>
                                 }
@@ -126,18 +126,18 @@
                                     <h5 class="mr-5 d-none">Color</h5>
                                 }
                                 @{ var colorCount = 1;}
-                                @foreach (var color in Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                @foreach (var color in Model.Product.ProductColors)
                                 {
                                     @if (colorCount == 1)
                                     {
                                         <span data-id=@colorCount class="product-color active">
-                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                            <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                         </span>
                                     }
                                     else
                                     {
                                         <span data-id=@colorCount class="product-color">
-                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                            <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                         </span>
                                     }
                                     colorCount++;
@@ -146,7 +146,7 @@
                             </div>
 
                             <div class="product-sizes">
-                                @if (Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                                @if (Model.Product.ProductSizes.Count != 0)
                                 {
                                     <h5>Size</h5>
                                 }
@@ -156,25 +156,22 @@
                                 }
                                 @{ var sizeCount = 1;}
                                 @{ var active = "active";}
-                                @foreach (var item in Model.Product.ProductFeatureds.Where(x => x.IsSize == true))
+                                @foreach (var item in Model.Product.ProductSizes)
                                 {
-                                    @foreach (var size in item.Value.Split(","))
+                                    @if (sizeCount == 1 && active == "active")
                                     {
-                                        @if (sizeCount == 1 && active == "active")
-                                        {
-                                            <span data-id=@sizeCount class="product-size active ml-3">
-                                                <span>@size</span>
-                                            </span>
-                                        }
-                                        else
-                                        {
-                                            <span data-id=@sizeCount class="product-size ml-3">
-                                                <span>@size</span>
-                                            </span>
-                                        }
-                                        active = "deactive";
-                                        sizeCount++;
+                                        <span data-id=@sizeCount class="product-size active ml-3">
+                                            <span>@item.Size.Value</span>
+                                        </span>
                                     }
+                                    else
+                                    {
+                                        <span data-id=@sizeCount class="product-size ml-3">
+                                            <span>@item.Size.Value</span>
+                                        </span>
+                                    }
+                                    active = "deactive";
+                                    sizeCount++;
                                 }
 
                             </div>
@@ -231,8 +228,8 @@
                                 <input type="button" value="-" class="minus">
                                 <input type="text" value="1" class="input-text">
                                 <input type="button" value="+" class="plus">
-                                <button type="submit" class="single_add_to_cart_button">Add to cart</button>
-                                <button type="submit" class="single_buy_now_button">Buy Now</button>
+                                <button type="button" class="single_add_to_cart_button">Add to cart</button>
+                                <button type="button" class="single_buy_now_button">Buy Now</button>
                             </form>
                         </div>
                         <div class="product-button">
@@ -301,7 +298,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true) || Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                    @if (Model.Product.ProductColors.Count != 0 || Model.Product.ProductSizes.Count != 0)
                     {
                         <div class="card-header" id="headingTwo">
                             <h5 class="mb-0">
@@ -327,20 +324,20 @@
                         <div class="card-body">
                             <table>
                                 <tbody>
-                                    @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true))
+                                    @if (Model.Product.ProductColors.Count != 0)
                                     {
                                         <tr>
                                             <th class="header">Color</th>
                                             <td>
-                                                @for (int i = 0; i < Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count; i++)
+                                                @for (int i = 0; i < Model.Product.ProductColors.ToList().Count; i++)
                                                 {
-                                                    if (Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i] != Model.Product.ProductFeatureds[Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count - 1])
+                                                    if (Model.Product.ProductColors.ToList()[i] != Model.Product.ProductColors[Model.Product.ProductColors.ToList().Count - 1])
                                                     {
-                                                        <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key,</p>
+                                                        <p class="d-inline">@Model.Product.ProductColors.ToList()[i].Color.Key,</p>
                                                     }
                                                     else
                                                     {
-                                                        <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key</p>
+                                                        <p class="d-inline">@Model.Product.ProductColors.ToList()[i].Color.Key</p>
                                                     }
                                                 }
                                             </td>
@@ -351,15 +348,15 @@
                                         <tr class="d-none">
                                             <th class="header">Color</th>
                                             <td>
-                                                @for (int i = 0; i < Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count; i++)
+                                                @for (int i = 0; i < Model.Product.ProductColors.ToList().Count; i++)
                                                 {
-                                                    if (Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i] != Model.Product.ProductFeatureds[Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count - 1])
+                                                    if (Model.Product.ProductColors.ToList()[i] != Model.Product.ProductColors[Model.Product.ProductColors.ToList().Count - 1])
                                                     {
-                                                        <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key,</p>
+                                                        <p class="d-inline">@Model.Product.ProductColors.ToList()[i].Color.Key,</p>
                                                     }
                                                     else
                                                     {
-                                                        <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key</p>
+                                                        <p class="d-inline">@Model.Product.ProductColors.ToList()[i].Color.Key</p>
                                                     }
 
                                                 }
@@ -370,27 +367,41 @@
 
 
 
-                                    @if (Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                                    @if (Model.Product.ProductSizes.Count != 0)
                                     {
                                         <tr>
                                             <th class="header">Size</th>
                                             <td>
-                                                @foreach (var size in Model.Product.ProductFeatureds.Where(x => x.IsSize == true).ToList())
+                                                @for (int i = 0; i < Model.Product.ProductSizes.ToList().Count; i++)
                                                 {
-                                                    <p class="d-inline">@size.Value</p>
-                                                }
+                                                    if (Model.Product.ProductSizes.ToList()[i] != Model.Product.ProductSizes[Model.Product.ProductSizes.ToList().Count - 1])
+                                                    {
+                                                        <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value,</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value</p>
+                                                    }
+                                                 }
                                             </td>
                                         </tr>
-                                    }
+                                     }
 
                                     else
                                     {
                                         <tr class="d-none">
                                             <th class="body">Size</th>
                                             <td>
-                                                @foreach (var size in Model.Product.ProductFeatureds.Where(x => x.IsSize == true).ToList())
+                                                @for (int i = 0; i < Model.Product.ProductSizes.ToList().Count; i++)
                                                 {
-                                                    <p class="d-inline">@size.Value</p>
+                                                    if (Model.Product.ProductSizes.ToList()[i] != Model.Product.ProductSizes[Model.Product.ProductSizes.ToList().Count - 1])
+                                                    {
+                                                        <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value,</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value</p>
+                                                    }
                                                 }
                                             </td>
                                         </tr>
@@ -545,7 +556,7 @@
                 <li class="nav-item" role="presentation">
                     <a class="nav-link desc active" id="home-tab" data-toggle="tab" href="#desc" role="tab" aria-selected="true">Description</a>
                 </li>
-                @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true) || Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                @if (Model.Product.ProductColors.Count !=0 || Model.Product.ProductSizes.Count !=0)
                 {
                     <li class="nav-item" role="presentation">
                         <a class="nav-link info" id="profile-tab" data-toggle="tab" href="#info" role="tab" aria-selected="false">Additional information</a>
@@ -576,20 +587,20 @@
                 <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="profile-tab">
                     <table>
                         <tbody>
-                            @if (Model.Product.ProductFeatureds.Any(x => x.IsCoolor == true))
+                            @if (Model.Product.ProductColors.Count != 0)
                             {
                                 <tr>
                                     <th class="header">Color</th>
                                     <td>
-                                        @for (int i = 0; i < Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count; i++)
+                                        @for (int i = 0; i < Model.Product.ProductColors.ToList().Count; i++)
                                         {
-                                            if (Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i] != Model.Product.ProductFeatureds[Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count - 1])
+                                            if (Model.Product.ProductColors.ToList()[i] != Model.Product.ProductColors[Model.Product.ProductColors.ToList().Count - 1])
                                             {
-                                                <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key,</p>
+                                                <p class="d-inline">@Model.Product.ProductColors.ToList()[i].Color.Key,</p>
                                             }
                                             else
                                             {
-                                                <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key</p>
+                                                <p class="d-inline">@Model.Product.ProductColors.ToList()[i].Color.Key</p>
                                             }
                                         }
                                     </td>
@@ -600,17 +611,16 @@
                                 <tr class="d-none">
                                     <th class="header">Color</th>
                                     <td>
-                                        @for (int i = 0; i < Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count; i++)
+                                        @for (int i = 0; i < Model.Product.ProductColors.ToList().Count; i++)
                                         {
-                                            if (Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i] != Model.Product.ProductFeatureds[Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList().Count - 1])
+                                            if (Model.Product.ProductColors.ToList()[i] != Model.Product.ProductColors[Model.Product.ProductColors.ToList().Count - 1])
                                             {
-                                                <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key,</p>
+                                                <p class="d-inline">@Model.Product.ProductColors.ToList()[i].Color.Key,</p>
                                             }
                                             else
                                             {
-                                                <p class="d-inline">@Model.Product.ProductFeatureds.Where(x => x.IsCoolor == true).ToList()[i].Key</p>
+                                                <p class="d-inline">@Model.Product.ProductColors.ToList()[i].Color.Key</p>
                                             }
-
                                         }
 
                                     </td>
@@ -619,27 +629,42 @@
 
 
 
-                            @if (Model.Product.ProductFeatureds.Any(x => x.IsSize == true))
+                            @if (Model.Product.ProductSizes.Count != 0)
                             {
                                 <tr>
                                     <th class="header">Size</th>
                                     <td>
-                                        @foreach (var size in Model.Product.ProductFeatureds.Where(x => x.IsSize == true).ToList())
+                                        @for (int i = 0; i < Model.Product.ProductSizes.ToList().Count; i++)
                                         {
-                                            <p class="d-inline">@size.Value</p>
+                                            if (Model.Product.ProductSizes.ToList()[i] != Model.Product.ProductSizes[Model.Product.ProductSizes.ToList().Count - 1])
+                                            {
+                                                <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value,</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value</p>
+                                            }
                                         }
+                                      
                                     </td>
                                 </tr>
-                            }
+                              }
 
                             else
                             {
                                 <tr class="d-none">
                                     <th class="body">Size</th>
                                     <td>
-                                        @foreach (var size in Model.Product.ProductFeatureds.Where(x => x.IsSize == true).ToList())
+                                        @for (int i = 0; i < Model.Product.ProductSizes.ToList().Count; i++)
                                         {
-                                            <p class="d-inline">@size.Value</p>
+                                            if (Model.Product.ProductSizes.ToList()[i] != Model.Product.ProductSizes[Model.Product.ProductSizes.ToList().Count - 1])
+                                            {
+                                                <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value,</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value</p>
+                                            }
                                         }
                                     </td>
                                 </tr>
@@ -658,7 +683,7 @@
                                     </div>
                                 </div>
                                 <div class="rating-histogram ml-5 mt-3">
-                                    @if (Model.Product.StarCount == 5)
+                                    @if (Model.Product.StarCount > 4 && Model.Product.StarCount <= 5)
                                     {
                                         <div class="rating-bar">
                                             <div class="star">5 ★</div>
@@ -678,7 +703,7 @@
                                             <div class="rating-count">0</div>
                                         </div>
                                     }
-                                    @if (Model.Product.StarCount >= 4 && Model.Product.StarCount < 5)
+                                    @if (Model.Product.StarCount > 3 && Model.Product.StarCount < 5)
                                     {
                                         <div class="rating-bar">
                                             <div class="star">4 ★</div>
@@ -698,7 +723,7 @@
                                             <div class="rating-count">0</div>
                                         </div>
                                     }
-                                    @if (Model.Product.StarCount >= 3 && Model.Product.StarCount < 4)
+                                    @if (Model.Product.StarCount > 2 && Model.Product.StarCount < 4)
                                     {
                                         <div class="rating-bar">
                                             <div class="star">3 ★</div>
@@ -718,7 +743,7 @@
                                             <div class="rating-count">0</div>
                                         </div>
                                     }
-                                    @if (Model.Product.StarCount >= 2 && Model.Product.StarCount < 3)
+                                    @if (Model.Product.StarCount > 1 && Model.Product.StarCount < 3)
                                     {
                                         <div class="rating-bar">
                                             <div class="star">2 ★</div>
@@ -866,18 +891,18 @@
                                         <div class="product-variations">
                                             <div class="product-colors">
                                                 @{ int colorsCount = 1;}
-                                                @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                @foreach (var color in item.ProductColors)
                                                 {
                                                     @if (colorsCount == 1)
                                                     {
                                                         <span data-id=@colorsCount class="product-color active">
-                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                         </span>
                                                     }
                                                     else
                                                     {
                                                         <span data-id=@colorsCount class="product-color">
-                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                         </span>
                                                     }
                                                     colorsCount++;
@@ -886,24 +911,21 @@
                                             <div class="product-sizes">
                                                 @{ string actives = "active";}
 
-                                                @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                @foreach (var sizes in item.ProductSizes)
                                                 {
-                                                    @foreach (var size in sizes.Value.Split(","))
+                                                    @if (actives == "active")
                                                     {
-                                                        @if (actives == "active")
-                                                        {
-                                                            <span class="product-size active">
-                                                                <span>@size</span>
-                                                            </span>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span class="product-size">
-                                                                <span>@size</span>
-                                                            </span>
-                                                        }
-                                                        { actives = "deactive"; }
+                                                        <span class="product-size active">
+                                                            <span>@sizes.Size.Value</span>
+                                                        </span>
                                                     }
+                                                    else
+                                                    {
+                                                        <span class="product-size">
+                                                            <span>@sizes.Size.Value</span>
+                                                        </span>
+                                                    }
+                                                    { actives = "deactive"; }
                                                 }
                                             </div>
                                         </div>
@@ -1007,18 +1029,18 @@
                                         <div class="product-variations">
                                             <div class="product-colors">
                                                 @{ int colorsCount = 1;}
-                                                @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                @foreach (var color in item.ProductColors)
                                                 {
                                                     @if (colorsCount == 1)
                                                     {
                                                         <span data-id=@colorsCount class="product-color active">
-                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                         </span>
                                                     }
                                                     else
                                                     {
                                                         <span data-id=@colorsCount class="product-color">
-                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                            <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                         </span>
                                                     }
                                                     colorsCount++;
@@ -1027,24 +1049,21 @@
                                             <div class="product-sizes">
                                                 @{ string actives = "active";}
 
-                                                @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                @foreach (var sizes in item.ProductSizes)
                                                 {
-                                                    @foreach (var size in sizes.Value.Split(","))
+                                                    @if (actives == "active")
                                                     {
-                                                        @if (actives == "active")
-                                                        {
-                                                            <span class="product-size active">
-                                                                <span>@size</span>
-                                                            </span>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span class="product-size">
-                                                                <span>@size</span>
-                                                            </span>
-                                                        }
-                                                        { actives = "deactive"; }
+                                                        <span class="product-size active">
+                                                            <span>@sizes.Size.Value</span>
+                                                        </span>
                                                     }
+                                                    else
+                                                    {
+                                                        <span class="product-size">
+                                                            <span>@sizes.Size.Value</span>
+                                                        </span>
+                                                    }
+                                                    { actives = "deactive"; }
                                                 }
                                             </div>
                                         </div>

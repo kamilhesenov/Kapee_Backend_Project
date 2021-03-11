@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Kapee.Data;
+using ReflectionIT.Mvc.Paging;
 
 namespace Kapee
 {
@@ -28,6 +29,9 @@ namespace Kapee
             string connect = Configuration.GetConnectionString("DefaultConnection");
             services.AddControllersWithViews();
             services.AddDbContext<AplicationDbContext>(options => options.UseSqlServer(connect));
+            services.AddPaging(options => {
+                options.ViewName = "Bootstrap4";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

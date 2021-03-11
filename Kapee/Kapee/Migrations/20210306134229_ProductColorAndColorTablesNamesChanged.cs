@@ -1,0 +1,53 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace Kapee.Migrations
+{
+    public partial class ProductColorAndColorTablesNamesChanged : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<string>(
+                name: "Value",
+                table: "Colors",
+                type: "nvarchar(250)",
+                maxLength: 250,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(200)",
+                oldMaxLength: 200);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Key",
+                table: "Colors",
+                type: "nvarchar(150)",
+                maxLength: 150,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(100)",
+                oldMaxLength: 100);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<string>(
+                name: "Value",
+                table: "Colors",
+                type: "nvarchar(200)",
+                maxLength: 200,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(250)",
+                oldMaxLength: 250);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Key",
+                table: "Colors",
+                type: "nvarchar(100)",
+                maxLength: 100,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(150)",
+                oldMaxLength: 150);
+        }
+    }
+}

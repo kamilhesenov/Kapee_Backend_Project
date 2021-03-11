@@ -35,6 +35,10 @@ namespace Kapee.Data
         public DbSet<SmallSizePhoto> SmallSizePhotos { get; set; }
         public DbSet<ProductPrize> ProductPrizes { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<ProductColor> ProductColors { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<ProductSize> ProductSizes { get; set; }
 
     }
 }

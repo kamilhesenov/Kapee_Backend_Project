@@ -1,0 +1,418 @@
+﻿@model CategoryViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <!-- Title page start -->
+    <section id="title-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="entry-header">
+                        <h1>@Model.Category.Name</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main page start -->
+    <section id="main-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4">
+                    <div class="product-categories">
+                        <h2>Product categories <i class="fas fa-angle-up"></i></h2>
+                        <ul class="categories-items">
+                            @foreach (var item in Model.Categories)
+                            {
+                                <li class="category-item">
+                                    <a asp-controller="Category" asp-action="Index" asp-route-id="@item.Id">@item.Name <i class="fas fa-angle-down"></i></a>
+                                    <span>(@item.ProductCount)</span>
+                                    <ul class="subcategories-items d-none">
+                                        @foreach (var subCategory in item.SubCategories)
+                                        {
+                                            <li class="subcategory-item">
+                                                <a href="#">@subCategory.Name</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="price-filter">
+                        <h2>Filter by Price <i class="fas fa-angle-up"></i></h2>
+                        <ul class="price-filter-list">
+                            <li class="price-filter-item">
+                                <a href="#">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <span>$0.00 -</span>
+                                        <span> $50.00</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="price-filter-item">
+                                <a href="#">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <span>$50.00 -</span>
+                                        <span> $100.00</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="price-filter-item">
+                                <a href="#">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <span>$100.00 -</span>
+                                        <span> $200.00</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="price-filter-item">
+                                <a href="#">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <span>$200.00 -</span>
+                                        <span> more</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="color-filter">
+                        <h2>Filter by Color <i class="fas fa-angle-up"></i></h2>
+                        <ul class="color-filter-list">
+                            @foreach (var item in Model.Colors)
+                            {
+                                <li class="color-filter-item">
+                                    <a href="#">
+                                        <div class="form-check">
+                                            <input class="color-item" data-id="@item.Id" type="checkbox" id="gridCheck1+@item.Id" value="@item.Value">
+                                            <span class="product-color">
+                                                <span data-toggle="tooltip" data-placement="top" title="@item.Key" class="@item.Value"></span>
+                                            </span>
+                                        </div>
+                                        <span>@item.Key</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                    <div class="size-filter">
+                        <h2>Filter by Size <i class="fas fa-angle-up"></i></h2>
+                        <ul class="size-filter-list">
+                            @foreach (var item in Model.Sizes)
+                            {
+                                <li class="size-filter-item">
+                                    <a href="#">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        </div>
+                                        <span>@item.Value</span>
+                                    </a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                    <div class="star-filter">
+                        <h2>Average Rating <i class="fas fa-angle-up"></i></h2>
+                        <ul class="star-filter-list">
+                            <li class="star-filter-item">
+                                <a href="#">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="5">
+                                    </div>
+                                    <span class="star-color">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="star-filter-item">
+                                <a href="#">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="4">
+                                    </div>
+                                    <span class="star-color">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="star-filter-item">
+                                <a href="#">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="3">
+                                    </div>
+                                    <span class="star-color">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="star-filter-item">
+                                <a href="#">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="2">
+                                    </div>
+                                    <span class="star-color">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="star-filter-item">
+                                <a href="#">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="1">
+                                    </div>
+                                    <span class="star-color">
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline-danger">Clear</button>
+                </div>
+                <div class="col-lg-9 col-md-8">
+                    <div class="row">
+                        <input type="hidden" id="hidden-category" value="@Model.Category.Id" />
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="product-header">
+                                <div class="product-show">
+                                    <span>Show:</span>
+                                    <select class="show-number">
+                                        <option>6</option>
+                                        <option>9</option>
+                                        <option selected>12</option>
+                                        <option>24</option>
+                                        <option>36</option>
+                                        <option>48</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="parent-product" class="col-lg-12 d-flex flex-wrap">
+                            @foreach (var item in Model.Products)
+                            {
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
+                                    <div class="item">
+                                        <div class="product-group">
+                                            <div class="product-item">
+                                                <div class="product-img">
+                                                    @if (item.IsFeatured == true)
+                                                    {
+                                                        <div class="product-featured">
+                                                            <span>Featured</span>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="product-featured d-none">
+                                                            <span>Featured</span>
+                                                        </div>
+                                                    }
+                                                    <div class="product-button">
+                                                        <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                            <i class="far fa-heart"></i>
+                                                        </a>
+                                                    </div>
+                                                    <a href="#">
+                                                        @{ var imgCount = 1;}
+                                                        @foreach (var img in item.ProductGalleries)
+                                                        {
+                                                            @if (imgCount == 1)
+                                                            {
+                                                                <img data-id=@imgCount src="~/assets/img/@img.Photo" alt="">
+                                                            }
+                                                            else
+                                                            {
+                                                                <img data-id=@imgCount class="hide-img" src="~/assets/img/@img.Photo" alt="">
+                                                            }
+                                                            imgCount++;
+                                                        }
+                                                        <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="Men-Hooded-Blue-Grey-T-Shirt">
+                                                    </a>
+                                                </div>
+                                                <div class="product-text">
+                                                    <div class="product-title">
+                                                        <div class="product-category">
+                                                            @foreach (var categoryName in item.SubCategories)
+                                                            {
+                                                                <a href="#">@categoryName.Name</a>
+                                                            }
+                                                        </div>
+                                                        <h3 class="product-content">
+                                                            <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
+                                                        </h3>
+                                                        <div class="product-start">
+                                                            <div class="@item.StarColor">
+                                                                <span>@item.StarCount ★</span>
+                                                            </div>
+                                                            <div class="rating-counts">
+                                                                <a href="#"><span> (@item.RatingCount) </span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <span class="price">
+                                                            <span>$@item.Price.ToString("#.00")</span>
+                                                        </span>
+                                                        <span class="on-sale">
+                                                            <span>@item.OnSale</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="product-buttons">
+                                                        <div class="cart-button">
+                                                            <a href="#">Select options</a>
+                                                        </div>
+                                                        <div class="compare-button">
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
+                                                        </div>
+                                                        <div class="search-button">
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-variations">
+                                                        <div class="product-colors">
+                                                            @{ int colorsCount = 1;}
+                                                            @foreach (var color in item.ProductColors)
+                                                            {
+                                                                @if (colorsCount == 1)
+                                                                {
+                                                                    <span data-id=@colorsCount class="product-color active">
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span data-id=@colorsCount class="product-color">
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
+                                                                    </span>
+                                                                }
+                                                                colorsCount++;
+                                                            }
+                                                        </div>
+                                                        <div class="product-sizes">
+                                                            @{ string actives = "active";}
+
+                                                            @foreach (var sizes in item.ProductSizes)
+                                                            {
+                                                                @if (actives == "active")
+                                                                {
+                                                                    <span class="product-size active">
+                                                                        <span>@sizes.Size.Value</span>
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="product-size">
+                                                                        <span>@sizes.Size.Value</span>
+                                                                    </span>
+                                                                }
+                                                                { actives = "deactive"; }
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="pagination-area">
+                                <ul>
+                                    <li class="active">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fas fa-angle-double-right"></i></a>
+                                    </li>
+                                    @*@await this.Component.InvokeAsync("Pager", new { PagingList = this.Model.PagingList })*@
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            let colorsInput = document.querySelectorAll('.color-item');
+            
+            colorsInput.forEach(item => {
+                item.addEventListener("change", function () {
+                    let colorsId = [];
+                    
+                    
+                    for (let item of colorsInput) {
+                        if (item.checked) {
+                            colorsId.push(item.getAttribute("data-id"));
+                            
+                        }
+                    }
+                    if (colorsId.length == 0) {
+                        window.location.reload();
+                    }
+                    let formData = new FormData();
+
+
+                    for (let colorId of colorsId) {
+                        formData.append("ColorsId", colorId);
+                    }
+                    formData.append("categoryId",$("#hidden-category").val());
+
+                    axios.post('/Category/CategoryColor', formData)
+                        .then(function (response) {
+                            console.log(response.data);
+                            $("#parent-product").html(response.data);
+                        })
+                        .catch(function (error) {
+                            if (error.response) {
+                                let errorObj = error.response.data;
+                                console.log(errorObj)
+                                for (let errors in errorObj) {
+                                    let error = errorObj[errors];
+                                    $.notify(error, "error");
+                                }
+                            }
+                        });
+                })
+            })
+        })
+    </script>
+}

@@ -27,14 +27,14 @@ namespace Kapee.Controllers
             var product = _context.Products.FirstOrDefault(x => x.Id == id);
 
             List<CookieProductViewModel> products;
-            string existBasket = Request.Cookies["recentlyViewed"];
-            if (existBasket == null)
+            string cookieName = Request.Cookies["product"];
+            if (cookieName == null)
             {
                 products = new List<CookieProductViewModel>();
             }
             else
             {
-                products = JsonConvert.DeserializeObject<List<CookieProductViewModel>>(existBasket);
+                products = JsonConvert.DeserializeObject<List<CookieProductViewModel>>(cookieName);
             }
             var existProduct = products.FirstOrDefault(x => x.Id == product.Id);
             if (existProduct == null)
@@ -48,19 +48,28 @@ namespace Kapee.Controllers
             }
             
             string recentlyViewed = JsonConvert.SerializeObject(products);
-            Response.Cookies.Append("recentlyViewed", recentlyViewed, new CookieOptions { MaxAge = TimeSpan.FromDays(14) });
+            Response.Cookies.Append("product", recentlyViewed, new CookieOptions { MaxAge = TimeSpan.FromDays(14) });
 
-            var cookieProducts = JsonConvert.DeserializeObject<List<CookieProductViewModel>>(Request.Cookies["recentlyViewed"]);
+            var cookieProducts = Request.Cookies.ContainsKey("product") ?  
+                JsonConvert.DeserializeObject<List<CookieProductViewModel>>(Request.Cookies["product"]) : 
+                new List<CookieProductViewModel>();
+
             var newProducts = new List<Product>();
-            foreach (var cookieProduct in cookieProducts)
+            if(cookieProducts.Count > 0)
             {
-                var newProduct = _context.Products
-                                           .Include(x => x.Category)
-                                           .Include(x => x.SubCategories)
-                                           .Include(x => x.ProductFeatureds)
-                                           .Include(x => x.ProductGalleries)
-                                           .FirstOrDefault(x => x.Id == cookieProduct.Id);
-                newProducts.Add(newProduct);
+                foreach (var cookieProduct in cookieProducts)
+                {
+                    var newProduct = _context.Products
+                                               .Include(x => x.Category)
+                                               .Include(x => x.SubCategories)
+                                               .Include(x => x.ProductGalleries)
+                                               .Include(x => x.ProductColors)
+                                               .ThenInclude(x => x.Color)
+                                               .Include(x => x.ProductSizes)
+                                               .ThenInclude(x => x.Size)
+                                               .FirstOrDefault(x => x.Id == cookieProduct.Id);
+                    newProducts.Add(newProduct);
+                }
             }
 
             ProductViewModel model = new ProductViewModel
@@ -68,17 +77,23 @@ namespace Kapee.Controllers
                 Product = _context.Products.Include(x => x.Brand)
                                            .Include(x => x.Category)
                                            .Include(x => x.SubCategories)
-                                           .Include(x => x.ProductFeatureds)
                                            .Include(x => x.ProductGalleries)
                                            .Include(x => x.BigSizePhotos)
                                            .Include(x => x.SmallSizePhotos)
                                            .Include(x => x.Prizes)
+                                           .Include(x=>x.ProductColors)
+                                           .ThenInclude(x=>x.Color)
+                                           .Include(x=>x.ProductSizes)
+                                           .ThenInclude(x=>x.Size)
                                            .FirstOrDefault(x => x.Id == id),
 
                 Products = _context.Products.Include(x=>x.ProductGalleries)
                                             .Include(x=>x.Category)
                                             .ThenInclude(x=>x.SubCategories)
-                                            .Include(x=>x.ProductFeatureds).ToList(),
+                                            .Include(x => x.ProductColors)
+                                            .ThenInclude(x => x.Color)
+                                            .Include(x => x.ProductSizes)
+                                            .ThenInclude(x => x.Size).ToList(),
 
                 RecentlyViewedProducts = newProducts
 

@@ -420,12 +420,11 @@ $(document).ready(function () {
 
        //Product small photo active class border   
        $("#product-single .product-slider .product-sync-nav img").click(function(){
-            console.log($(this));
            $(".product-thumb .active").removeClass("active");
            $(this).addClass("active");
         })
 
-       // product color change
+        // product color change
        $(".product-color").click(function(){
            $(this).addClass("active");
            $(this).siblings().removeClass("active");
@@ -528,6 +527,80 @@ $(document).ready(function () {
             $(this).addClass("active");
             $(this).siblings().removeClass("active");
          })
+
+        //  category-detail
+        $("#main-page .product-categories .categories-items .category-item a i").click(function(e){
+            e.preventDefault();
+            if($(this).hasClass("fa-angle-down")){
+                $(this).removeClass("fa-angle-down").addClass("fa-angle-up");
+                $(this).parent().next().next().removeClass("d-none");
+               }
+             else{
+                $(this).removeClass("fa-angle-up").addClass("fa-angle-down");
+                $(this).parent().next().next().addClass("d-none");
+             
+            }
+        })
+        $("#main-page .color-filter .color-filter-list .color-filter-item a .product-color span").hover(function(){
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        })
+        $("#main-page .product-categories h2").click(function(){
+            console.log();
+            if($("#main-page .product-categories h2 i").hasClass("fa-angle-up")){
+                $("#main-page .product-categories h2 i").removeClass("fa-angle-up").addClass("fa-angle-down");
+                $(this).next().addClass("d-none");
+            }
+            else{
+                $("#main-page .product-categories h2 i").removeClass("fa-angle-down").addClass("fa-angle-up");
+                $(this).next().removeClass("d-none");
+            }
+        })
+        $("#main-page .price-filter h2").click(function(){
+            console.log();
+            if($("#main-page .price-filter h2 i").hasClass("fa-angle-up")){
+                $("#main-page .price-filter h2 i").removeClass("fa-angle-up").addClass("fa-angle-down");
+                $(this).next().addClass("d-none");
+            }
+            else{
+                $("#main-page .price-filter h2 i").removeClass("fa-angle-down").addClass("fa-angle-up");
+                $(this).next().removeClass("d-none");
+            }
+        })
+        $("#main-page .color-filter h2").click(function(){
+            console.log();
+            if($("#main-page .color-filter h2 i").hasClass("fa-angle-up")){
+                $("#main-page .color-filter h2 i").removeClass("fa-angle-up").addClass("fa-angle-down");
+                $(this).next().addClass("d-none");
+            }
+            else{
+                $("#main-page .color-filter h2 i").removeClass("fa-angle-down").addClass("fa-angle-up");
+                $(this).next().removeClass("d-none");
+            }
+        })
+        $("#main-page .size-filter h2").click(function(){
+            console.log();
+            if($("#main-page .size-filter h2 i").hasClass("fa-angle-up")){
+                $("#main-page .size-filter h2 i").removeClass("fa-angle-up").addClass("fa-angle-down");
+                $(this).next().addClass("d-none");
+            }
+            else{
+                $("#main-page .size-filter h2 i").removeClass("fa-angle-down").addClass("fa-angle-up");
+                $(this).next().removeClass("d-none");
+            }
+        })
+        $("#main-page .star-filter h2").click(function(){
+            console.log();
+            if($("#main-page .star-filter h2 i").hasClass("fa-angle-up")){
+                $("#main-page .star-filter h2 i").removeClass("fa-angle-up").addClass("fa-angle-down");
+                $(this).next().addClass("d-none");
+            }
+            else{
+                $("#main-page .star-filter h2 i").removeClass("fa-angle-down").addClass("fa-angle-up");
+                $(this).next().removeClass("d-none");
+            }
+        })
  
 })
 

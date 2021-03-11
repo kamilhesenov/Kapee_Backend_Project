@@ -204,18 +204,18 @@
                                                     <div class="product-variations">
                                                         <div class="product-colors">
                                                             @{ int csel = 1;}
-                                                            @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                            @foreach (var color in item.ProductColors)
                                                             {
                                                                 @if (csel == 1)
                                                                 {
                                                                     <span data-id=@csel class="product-color active">
-                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                                     </span>
                                                                 }
                                                                 else
                                                                 {
                                                                     <span data-id=@csel class="product-color">
-                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                                     </span>
                                                                 }
                                                                 csel++;
@@ -224,24 +224,21 @@
                                                         <div class="product-sizes">
                                                             @{ string active = "active";}
 
-                                                            @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                            @foreach (var sizes in item.ProductSizes)
                                                             {
-                                                                @foreach (var size in sizes.Value.Split(","))
+                                                                @if (active == "active")
                                                                 {
-                                                                    @if (active == "active")
-                                                                    {
-                                                                        <span class="product-size active">
-                                                                            <span>@size</span>
-                                                                        </span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="product-size">
-                                                                            <span>@size</span>
-                                                                        </span>
-                                                                    }
-                                                                    { active = "deactive"; }
+                                                                    <span class="product-size active">
+                                                                        <span>@sizes.Size.Value</span>
+                                                                    </span>
                                                                 }
+                                                                else
+                                                                {
+                                                                    <span class="product-size">
+                                                                        <span>@sizes.Size.Value</span>
+                                                                    </span>
+                                                                }
+                                                                { active = "deactive"; }
                                                             }
                                                         </div>
                                                     </div>
@@ -344,18 +341,18 @@
                                                     <div class="product-variations">
                                                         <div class="product-colors">
                                                             @{ var cfed = 1;}
-                                                            @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                            @foreach (var color in item.ProductColors)
                                                             {
                                                                 if (cfed == 1)
                                                                 {
                                                                     <span data-id=@cfed class="product-color active">
-                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                                     </span>
                                                                 }
                                                                 else
                                                                 {
                                                                     <span data-id=@cfed class="product-color">
-                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                                     </span>
                                                                 }
                                                                 cfed++;
@@ -363,24 +360,21 @@
                                                         </div>
                                                         <div class="product-sizes">
                                                             @{ var active = "active";}
-                                                            @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                            @foreach (var sizes in item.ProductSizes)
                                                             {
-                                                                @foreach (var size in sizes.Value.Split(","))
+                                                                @if (active == "active")
                                                                 {
-                                                                    @if (active == "active")
-                                                                    {
-                                                                        <span class="product-size active">
-                                                                            <span>@size</span>
-                                                                        </span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="product-size">
-                                                                            <span>@size</span>
-                                                                        </span>
-                                                                    }
-                                                                    { active = "deactive"; }
+                                                                    <span class="product-size active">
+                                                                        <span>@sizes.Size.Value</span>
+                                                                    </span>
                                                                 }
+                                                                else
+                                                                {
+                                                                    <span class="product-size">
+                                                                        <span>@sizes.Size.Value</span>
+                                                                    </span>
+                                                                }
+                                                                { active = "deactive"; }
                                                             }
                                                         </div>
                                                     </div>
@@ -483,18 +477,18 @@
                                                     <div class="product-variations">
                                                         <div class="product-colors">
                                                             @{ int consel = 1;}
-                                                            @foreach (var color in item.ProductFeatureds.Where(x => x.IsCoolor == true))
+                                                            @foreach (var color in item.ProductColors)
                                                             {
                                                                 @if (consel == 1)
                                                                 {
                                                                     <span data-id=@consel class="product-color active">
-                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                                     </span>
                                                                 }
                                                                 else
                                                                 {
                                                                     <span data-id=@consel class="product-color">
-                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Key" class="@color.Value"></span>
+                                                                        <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
                                                                     </span>
                                                                 }
                                                                 consel++;
@@ -503,24 +497,21 @@
                                                         <div class="product-sizes">
                                                             @{ string active = "active";}
 
-                                                            @foreach (var sizes in item.ProductFeatureds.Where(x => x.IsCoolor == false))
+                                                            @foreach (var sizes in item.ProductSizes)
                                                             {
-                                                                @foreach (var size in sizes.Value.Split(","))
+                                                                @if (active == "active")
                                                                 {
-                                                                    @if (active == "active")
-                                                                    {
-                                                                        <span class="product-size active">
-                                                                            <span>@size</span>
-                                                                        </span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="product-size">
-                                                                            <span>@size</span>
-                                                                        </span>
-                                                                    }
-                                                                    { active = "deactive"; }
+                                                                    <span class="product-size active">
+                                                                        <span>@sizes.Size.Value</span>
+                                                                    </span>
                                                                 }
+                                                                else
+                                                                {
+                                                                    <span class="product-size">
+                                                                        <span>@sizes.Size.Value</span>
+                                                                    </span>
+                                                                }
+                                                                { active = "deactive"; }
                                                             }
                                                         </div>
                                                     </div>
@@ -559,7 +550,7 @@
                                     {
                                         <div class="item">
                                             <div class="category-product">
-                                                <a href="#">
+                                                <a asp-controller="Category" asp-action="Index" asp-route-id="@item.Id">
                                                     @if (item.Name == "Electronics")
                                                     {
                                                         <img src="~/assets/img/@item.Photo" height="300" alt="">

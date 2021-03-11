@@ -70,5 +70,7 @@ namespace Kapee.Models.Product
         public List<SmallSizePhoto> SmallSizePhotos { get; set; }
         public List<ProductPrize> Prizes { get; set; }
         public List<SubCategory> SubCategories { get; set; }
+        public List<ProductColor> ProductColors { get; set; }
+        public List<ProductSize> ProductSizes { get; set; }
     }
 }

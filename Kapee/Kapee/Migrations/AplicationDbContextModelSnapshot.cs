@@ -425,6 +425,28 @@ namespace Kapee.Migrations
                     b.ToTable("BigSizePhotos");
                 });
 
+            modelBuilder.Entity("Kapee.Models.Product.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
             modelBuilder.Entity("Kapee.Models.Product.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -491,6 +513,28 @@ namespace Kapee.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Kapee.Models.Product.ProductColor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductColors");
                 });
 
             modelBuilder.Entity("Kapee.Models.Product.ProductFeatured", b =>
@@ -568,6 +612,50 @@ namespace Kapee.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductPrizes");
+                });
+
+            modelBuilder.Entity("Kapee.Models.Product.ProductSize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductSizes");
+                });
+
+            modelBuilder.Entity("Kapee.Models.Product.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("Kapee.Models.Product.SmallSizePhoto", b =>
@@ -690,6 +778,25 @@ namespace Kapee.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Kapee.Models.Product.ProductColor", b =>
+                {
+                    b.HasOne("Kapee.Models.Product.Color", "Color")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Kapee.Models.Product.Product", "Product")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Kapee.Models.Product.ProductFeatured", b =>
                 {
                     b.HasOne("Kapee.Models.Product.Product", "Product")
@@ -723,6 +830,25 @@ namespace Kapee.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Kapee.Models.Product.ProductSize", b =>
+                {
+                    b.HasOne("Kapee.Models.Product.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Kapee.Models.Product.Size", "Size")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
             modelBuilder.Entity("Kapee.Models.Product.SmallSizePhoto", b =>
                 {
                     b.HasOne("Kapee.Models.Product.Product", "Product")
@@ -746,19 +872,33 @@ namespace Kapee.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("Kapee.Models.Product.Color", b =>
+                {
+                    b.Navigation("ProductColors");
+                });
+
             modelBuilder.Entity("Kapee.Models.Product.Product", b =>
                 {
                     b.Navigation("BigSizePhotos");
 
                     b.Navigation("Prizes");
 
+                    b.Navigation("ProductColors");
+
                     b.Navigation("ProductFeatureds");
 
                     b.Navigation("ProductGalleries");
 
+                    b.Navigation("ProductSizes");
+
                     b.Navigation("SmallSizePhotos");
 
                     b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("Kapee.Models.Product.Size", b =>
+                {
+                    b.Navigation("ProductSizes");
                 });
 #pragma warning restore 612, 618
         }

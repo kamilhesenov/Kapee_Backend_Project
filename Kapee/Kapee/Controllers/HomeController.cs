@@ -35,7 +35,10 @@ namespace Kapee.Controllers
                 Products = _context.Products.Include(x=>x.ProductGalleries)
                                             .Include(x=>x.Category)
                                             .ThenInclude(x=>x.SubCategories)
-                                            .Include(x=>x.ProductFeatureds).ToList()
+                                            .Include(x=>x.ProductColors)
+                                            .ThenInclude(x=>x.Color)
+                                            .Include(x=>x.ProductSizes)
+                                            .ThenInclude(x=>x.Size).ToList()
             };
 
             return View(model);

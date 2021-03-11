@@ -1,0 +1,130 @@
+﻿@model List<Product>
+
+@foreach (var item in Model)
+{
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
+        <div class="item">
+            <div class="product-group">
+                <div class="product-item">
+                    <div class="product-img">
+                        @if (item.IsFeatured == true)
+                        {
+                            <div class="product-featured">
+                                <span>Featured</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="product-featured d-none">
+                                <span>Featured</span>
+                            </div>
+                        }
+                        <div class="product-button">
+                            <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                <i class="far fa-heart"></i>
+                            </a>
+                        </div>
+                        <a href="#">
+                            @{ var imgCount = 1;}
+                            @foreach (var img in item.ProductGalleries)
+                            {
+                                @if (imgCount == 1)
+                                {
+                                    <img data-id=@imgCount src="~/assets/img/@img.Photo" alt="">
+                                }
+                                else
+                                {
+                                    <img data-id=@imgCount class="hide-img" src="~/assets/img/@img.Photo" alt="">
+                                }
+                                imgCount++;
+                            }
+                            <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="Men-Hooded-Blue-Grey-T-Shirt">
+                        </a>
+                    </div>
+                    <div class="product-text">
+                        <div class="product-title">
+                            <div class="product-category">
+                                @foreach (var categoryName in item.SubCategories)
+                                {
+                                    <a href="#">@categoryName.Name</a>
+                                }
+                            </div>
+                            <h3 class="product-content">
+                                <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
+                            </h3>
+                            <div class="product-start">
+                                <div class="@item.StarColor">
+                                    <span>@item.StarCount ★</span>
+                                </div>
+                                <div class="rating-counts">
+                                    <a href="#"><span> (@item.RatingCount) </span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">
+                                <span>$@item.Price.ToString("#.00")</span>
+                            </span>
+                            <span class="on-sale">
+                                <span>@item.OnSale</span>
+                            </span>
+                        </div>
+                        <div class="product-buttons">
+                            <div class="cart-button">
+                                <a href="#">Select options</a>
+                            </div>
+                            <div class="compare-button">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
+                            </div>
+                            <div class="search-button">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-variations">
+                            <div class="product-colors">
+                                @{ int colorsCount = 1;}
+                                @foreach (var color in item.ProductColors)
+                                {
+                                    @if (colorsCount == 1)
+                                    {
+                                        <span data-id=@colorsCount class="product-color active">
+                                            <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span data-id=@colorsCount class="product-color">
+                                            <span data-toggle="tooltip" data-placement="top" title="@color.Color.Key" class="@color.Color.Value"></span>
+                                        </span>
+                                    }
+                                    colorsCount++;
+                                }
+                            </div>
+                            <div class="product-sizes">
+                                @{ string actives = "active";}
+
+                                @foreach (var sizes in item.ProductSizes)
+                                {
+                                    @if (actives == "active")
+                                    {
+                                        <span class="product-size active">
+                                            <span>@sizes.Size.Value</span>
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="product-size">
+                                            <span>@sizes.Size.Value</span>
+                                        </span>
+                                    }
+                                    { actives = "deactive"; }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
