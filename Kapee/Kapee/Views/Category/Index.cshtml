@@ -48,7 +48,7 @@
                             <li class="price-filter-item">
                                 <a href="#">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <input class="price-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0 - 50">
                                         <span>$0.00 -</span>
                                         <span> $50.00</span>
                                     </div>
@@ -57,7 +57,7 @@
                             <li class="price-filter-item">
                                 <a href="#">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <input class="price-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="50 - 100">
                                         <span>$50.00 -</span>
                                         <span> $100.00</span>
                                     </div>
@@ -66,7 +66,7 @@
                             <li class="price-filter-item">
                                 <a href="#">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <input class="price-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="100 - 200">
                                         <span>$100.00 -</span>
                                         <span> $200.00</span>
                                     </div>
@@ -75,7 +75,7 @@
                             <li class="price-filter-item">
                                 <a href="#">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <input class="price-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="200 - 1000000">
                                         <span>$200.00 -</span>
                                         <span> more</span>
                                     </div>
@@ -91,7 +91,7 @@
                                 <li class="color-filter-item">
                                     <a href="#">
                                         <div class="form-check">
-                                            <input class="color-item" data-id="@item.Id" type="checkbox" id="gridCheck1+@item.Id" value="@item.Value">
+                                            <input class="color-item" data-id="@item.Id" type="checkbox" id="gridCheck1">
                                             <span class="product-color">
                                                 <span data-toggle="tooltip" data-placement="top" title="@item.Key" class="@item.Value"></span>
                                             </span>
@@ -111,7 +111,7 @@
                                 <li class="size-filter-item">
                                     <a href="#">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                            <input class="size-item" data-id="@item.Id" type="checkbox" id="gridCheck1">
                                         </div>
                                         <span>@item.Value</span>
                                     </a>
@@ -126,7 +126,7 @@
                             <li class="star-filter-item">
                                 <a href="#">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="5">
+                                        <input class="star-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="5">
                                     </div>
                                     <span class="star-color">
                                         <i class="fas fa-star"></i>
@@ -140,7 +140,7 @@
                             <li class="star-filter-item">
                                 <a href="#">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="4">
+                                        <input class="star-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="4">
                                     </div>
                                     <span class="star-color">
                                         <i class="fas fa-star"></i>
@@ -154,7 +154,7 @@
                             <li class="star-filter-item">
                                 <a href="#">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="3">
+                                        <input class="star-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="3">
                                     </div>
                                     <span class="star-color">
                                         <i class="fas fa-star"></i>
@@ -168,7 +168,7 @@
                             <li class="star-filter-item">
                                 <a href="#">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="2">
+                                        <input class="star-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
                                     </div>
                                     <span class="star-color">
                                         <i class="fas fa-star"></i>
@@ -182,7 +182,7 @@
                             <li class="star-filter-item">
                                 <a href="#">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1" value="1">
+                                        <input class="star-item" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1">
                                     </div>
                                     <span class="star-color">
                                         <i class="fas fa-star"></i>
@@ -195,7 +195,7 @@
                             </li>
                         </ul>
                     </div>
-                    <button class="btn btn-outline-danger">Clear</button>
+                
                 </div>
                 <div class="col-lg-9 col-md-8">
                     <div class="row">
@@ -415,4 +415,111 @@
             })
         })
     </script>
+
+   <script>
+       $(document).ready(function () {
+           let sizeInput = document.querySelectorAll(".size-item");
+
+           sizeInput.forEach(item => {
+               item.addEventListener("change", function () {
+                   let sizesId = [];
+
+                   for (let item of sizeInput){
+                       if (item.checked) {
+                           sizesId.push(item.getAttribute("data-id"));
+                       }
+                   }
+
+                   if (sizesId.length == 0) {
+                       window.location.reload();
+                   }
+
+                   let formData = new FormData();
+
+                   for (let sizeId of sizesId) {
+                       formData.append("SizesId", sizeId);
+                   }
+                   formData.append("categoryId", $("#hidden-category").val());
+                   axios.post('/Category/CategorySize', formData)
+                       .then(function (response) {
+                           console.log(response.data);
+                           $("#parent-product").html(response.data);
+                       })
+                       .catch(function (error) {
+                           if (error.response) {
+                               let errorObj = error.response.data;
+                               console.log(errorObj)
+                               for (let errors in errorObj) {
+                                   let error = errorObj[errors];
+                                   $.notify(error, "error");
+                               }
+                           }
+                       });
+               })
+           })
+       })
+   </script>
+
+  <script>
+      $(document).ready(function () {
+          let prizeInput = document.querySelectorAll(".price-item");
+          prizeInput.forEach(item => {
+              item.addEventListener("change", function () {
+                  console.log($(this).val());
+                  let formData = new FormData();
+                  let pricesId = $(this).val().split("-");
+                  for (let priceId of pricesId) {
+                      formData.append("Prices", parseInt(priceId));
+                  }
+                  formData.append("categoryId", $("#hidden-category").val());
+
+                  
+                  axios.post('/Category/CategoryPrice', formData)
+                      .then(function (response) {
+                          console.log(response.data);
+                          $("#parent-product").html(response.data);
+                      })
+                      .catch(function (error) {
+                          if (error.response) {
+                              let errorObj = error.response.data;
+                              console.log(errorObj)
+                              for (let errors in errorObj) {
+                                  let error = errorObj[errors];
+                                  $.notify(error, "error");
+                              }
+                          }
+                      });
+              })
+          })
+      })
+  </script>
+
+  <script>
+      $(document).ready(function () {
+          let starInput = document.querySelectorAll(".star-item");
+          starInput.forEach(item => {
+              item.addEventListener("change", function () {
+                  let formData = new FormData();
+                  formData.append("Star", parseInt($(this).val()));
+                  formData.append("categoryId", $("#hidden-category").val());
+
+                  axios.post('/Category/CategoryStar', formData)
+                      .then(function (response) {
+                          console.log(response.data);
+                          $("#parent-product").html(response.data);
+                      })
+                      .catch(function (error) {
+                          if (error.response) {
+                              let errorObj = error.response.data;
+                              console.log(errorObj)
+                              for (let errors in errorObj) {
+                                  let error = errorObj[errors];
+                                  $.notify(error, "error");
+                              }
+                          }
+                      });
+              })
+          })
+      })
+  </script>
 }
