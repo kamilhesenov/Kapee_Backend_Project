@@ -10,15 +10,15 @@
             <div class="slider">
                 <div class="owl-carousel owl-them">
                     @foreach (var item in Model.FashionSliders)
-	                {
-                    <div class="item bg-img" style="background-image: url(assets/img/@item.Photo)">
-                        <div class="title @item.TextStyleLeft @item.TextStyleRight">
-                            <h1>@item.Title</h1>
-                            <p><span>@item.Content</span> @item.Description</p>
-                            <a href="#">Shop Now</a>
+                    {
+                        <div class="item bg-img" style="background-image: url(assets/img/@item.Photo)">
+                            <div class="title @item.TextStyleLeft @item.TextStyleRight">
+                                <h1>@item.Title</h1>
+                                <p><span>@item.Content</span> @item.Description</p>
+                                <a href="#">Shop Now</a>
+                            </div>
                         </div>
-                    </div>
-	                }
+                    }
                 </div>
             </div>
         </div>
@@ -76,23 +76,23 @@
             <div class="slider">
                 <div class="owl-carousel owl-them">
                     @foreach (var item in Model.CategoryCallections)
-	                 {
-                    <div class="item">
-                        <div class="collection-items">
-                            <div class="collection-item">
-                                <div class="collection-img">
-                                    <img src="~/assets/img/@item.Photo" alt="">
-                                </div>
-                                <div class="collection-text">
-                                    <span>@item.Title</span>
-                                    <h3>@item.Content</h3>
-                                    <a href="#">SHOP NOW</a>
+                    {
+                        <div class="item">
+                            <div class="collection-items">
+                                <div class="collection-item">
+                                    <div class="collection-img">
+                                        <img src="~/assets/img/@item.Photo" alt="">
+                                    </div>
+                                    <div class="collection-text">
+                                        <span>@item.Title</span>
+                                        <h3>@item.Content</h3>
+                                        <a href="#">SHOP NOW</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-	                 }
-                    
+                    }
+
                 </div>
             </div>
         </div>
@@ -140,11 +140,11 @@
                                                     }
 
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                        <a href="#" class="add-to-wishlist" data-id="@item.Id" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                                                             <i class="far fa-heart"></i>
                                                         </a>
                                                     </div>
-                                                    <a href="#">
+                                                    <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
                                                         @{ var zsel = 1;}
                                                         @foreach (var img in item.ProductGalleries)
                                                         {
@@ -165,10 +165,7 @@
                                                 <div class="product-text">
                                                     <div class="product-title">
                                                         <div class="product-category">
-                                                            @foreach (var categoryName in item.SubCategories)
-                                                            {
-                                                                <a href="#">@categoryName.Name</a>
-                                                            }
+                                                            <a asp-controller="Category" asp-action="SubCategoryDetail" asp-route-id="@item.SubCategory.Id">@item.SubCategory.Name</a>
                                                         </div>
                                                         <h3 class="product-content">
                                                             <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
@@ -277,11 +274,11 @@
                                                         </div>
                                                     }
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                        <a href="#" class="add-to-wishlist" data-id="@item.Id" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                                                             <i class="far fa-heart"></i>
                                                         </a>
                                                     </div>
-                                                    <a href="#">
+                                                    <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
                                                         @{ var zfet = 1;}
                                                         @foreach (var img in item.ProductGalleries)
                                                         {
@@ -302,10 +299,7 @@
                                                 <div class="product-text">
                                                     <div class="product-title">
                                                         <div class="product-category">
-                                                            @foreach (var categoryName in item.SubCategories)
-                                                            {
-                                                                <a href="#">@categoryName.Name</a>
-                                                            }
+                                                            <a asp-controller="Category" asp-action="SubCategoryDetail" asp-route-id="@item.SubCategory.Id">@item.SubCategory.Name</a>
                                                         </div>
                                                         <h3 class="product-content">
                                                             <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
@@ -413,11 +407,11 @@
                                                     }
 
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                                        <a href="#" class="add-to-wishlist" data-id="@item.Id" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                                                             <i class="far fa-heart"></i>
                                                         </a>
                                                     </div>
-                                                    <a href="#">
+                                                    <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
                                                         @{ var zonsel = 1;}
                                                         @foreach (var img in item.ProductGalleries)
                                                         {
@@ -438,10 +432,7 @@
                                                 <div class="product-text">
                                                     <div class="product-title">
                                                         <div class="product-category">
-                                                            @foreach (var categoryName in item.SubCategories)
-                                                            {
-                                                                <a href="#">@categoryName.Name</a>
-                                                            }
+                                                            <a asp-controller="Category" asp-action="SubCategoryDetail" asp-route-id="@item.SubCategory.Id">@item.SubCategory.Name</a>
                                                         </div>
                                                         <h3 class="product-content">
                                                             <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
@@ -526,7 +517,7 @@
                             }
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </section>
@@ -594,34 +585,34 @@
                             <div class="customer-slider">
                                 <div class="owl-carousel owl-them">
                                     @foreach (var item in Model.Testimonials)
-	                                 {
-                                    <div class="item">
-                                        <div class="testimonial">
-                                            <div class="testimonial-content">
-                                                <div class="testimonial-detail">
-                                                    <i class="fas fa-quote-left"></i>
-                                                    @item.Content
-                                                    <i class="fas fa-quote-right"></i>
-                                                </div>
-                                                <div class="testimonial-img">
-                                                    <img src="~/assets/img/@item.Photo" alt="Founder">
-                                                </div>
-                                                <div class="testimonial-description">
-                                                    <div class="testimonial-name">@item.FullName</div>
-                                                    <div class="testimonial-profession">@item.Position</div>
-                                                    <div class="testimonial-star">
-                                                        @for (int i = 0; i < item.Star; i++)
-                                                        {
-                                                            <i class="fas fa-star"></i>
-                                                        }
+                                    {
+                                        <div class="item">
+                                            <div class="testimonial">
+                                                <div class="testimonial-content">
+                                                    <div class="testimonial-detail">
+                                                        <i class="fas fa-quote-left"></i>
+                                                        @item.Content
+                                                        <i class="fas fa-quote-right"></i>
+                                                    </div>
+                                                    <div class="testimonial-img">
+                                                        <img src="~/assets/img/@item.Photo" alt="Founder">
+                                                    </div>
+                                                    <div class="testimonial-description">
+                                                        <div class="testimonial-name">@item.FullName</div>
+                                                        <div class="testimonial-profession">@item.Position</div>
+                                                        <div class="testimonial-star">
+                                                            @for (int i = 0; i < item.Star; i++)
+                                                            {
+                                                                <i class="fas fa-star"></i>
+                                                            }
 
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-	                                 }
-                                    
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -636,23 +627,23 @@
         <div class="container">
             <div class="row">
                 @foreach (var item in Model.Infos)
-	             {
-                  <div class="col-lg-3 col-md-6 mb-3">
-                    <div class="info-content">
-                        <div class="info-icon">
-                            <i class="fas @item.Icon"></i>
-                        </div>
-                        <div class="info-text">
-                            <div class="info-title">
-                                <h5>@item.Title</h5>
+                {
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="info-content">
+                            <div class="info-icon">
+                                <i class="fas @item.Icon"></i>
                             </div>
-                            <div class="inf-description">
-                                <p>@item.Content</p>
+                            <div class="info-text">
+                                <div class="info-title">
+                                    <h5>@item.Title</h5>
+                                </div>
+                                <div class="inf-description">
+                                    <p>@item.Content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                  </div>
-	             }
+                }
             </div>
         </div>
     </section>
@@ -668,49 +659,49 @@
                     <div class="news-content">
                         <div class="owl-carousel owl-them">
                             @foreach (var item in Model.Newses)
-	                         {
-                            <div class="item">
-                                <div class="news-img">
-                                    <a href="#">
-                                        <img src="~/assets/img/@item.Photo" alt="">
-                                    </a>
-                                </div>
-                                <div class="new-text">
-                                    <div class="news-header">
-                                        <div class="news-category">
-                                            <span>
-                                                @foreach (var elem in item.Title)
-                                                {
-                                                <a href="#">@elem</a>
-                                                }
-                                            </span>
+                            {
+                                <div class="item">
+                                    <div class="news-img">
+                                        <a href="#">
+                                            <img src="~/assets/img/@item.Photo" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="new-text">
+                                        <div class="news-header">
+                                            <div class="news-category">
+                                                <span>
+                                                    @foreach (var elem in item.Title)
+                                                    {
+                                                        <a href="#">@elem</a>
+                                                    }
+                                                </span>
+                                            </div>
+                                            <h2>
+                                                <a href="#">@item.Content</a>
+                                            </h2>
+                                            <div class="news-meta">
+                                                <span class="news-author">
+                                                    <i class="far fa-user"></i> By
+                                                    <a href="#">@item.AddedBy</a>
+                                                </span>
+                                                <span class="new-date">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                    <a href="#">@item.Date.ToString("dd.MM.yyyy")</a>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <h2>
-                                            <a href="#">@item.Content</a>
-                                        </h2>
-                                        <div class="news-meta">
-                                            <span class="news-author">
-                                                <i class="far fa-user"></i> By
-                                                <a href="#">@item.AddedBy</a>
-                                            </span>
-                                            <span class="new-date">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                <a href="#">@item.Date.ToString("dd.MM.yyyy")</a>
-                                            </span>
+                                        <div class="news-body">
+                                            <p>@item.Description</p>
+                                        </div>
+                                        <div class="news-footer">
+                                            <p>
+                                                <a href="#">Continue Reading </a>
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="news-body">
-                                        <p>@item.Description</p>
-                                    </div>
-                                    <div class="news-footer">
-                                        <p>
-                                            <a href="#">Continue Reading </a>
-                                        </p>
-                                    </div>
                                 </div>
-                            </div>
-	                         }
-                            
+                            }
+
                         </div>
                     </div>
                 </div>
@@ -742,4 +733,48 @@
         </div>
     </section>
 </main>
+
+
+@section Scripts{
+    
+    <script>
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-left",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+        }
+
+        let AllAddSpan = document.querySelectorAll(".add-to-wishlist");
+        AllAddSpan.forEach(item => {
+            item.addEventListener("click", function () {
+                event.preventDefault();
+                let id = $(this).attr("data-id");
+                toastr.success(`the product added to your wishlist`);
+                $.ajax({
+                    url: "/WishList/AddToWish?Id=" + id,
+                    type: "Get",
+                    success: function (res) {
+                        console.log(res.wishlistProductCount);
+                        let totalCount = document.getElementById('totalCount');
+                        totalCount.innerHTML = res.wishlistProductCount;
+
+                    }
+                })
+            })
+        })
+    </script>
+
+}
 

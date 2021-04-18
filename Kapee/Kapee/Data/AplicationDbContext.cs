@@ -4,10 +4,11 @@ using Kapee.Models.Home;
 using Kapee.Models.Category;
 using Kapee.Models.Product;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Kapee.Data
 {
-    public class AplicationDbContext : DbContext
+    public class AplicationDbContext : IdentityDbContext<AppUser>
     {
         public AplicationDbContext(DbContextOptions<AplicationDbContext>options):base(options)
         {

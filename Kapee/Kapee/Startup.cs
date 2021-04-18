@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Kapee.Data;
 using ReflectionIT.Mvc.Paging;
+using Microsoft.AspNetCore.Identity;
+using Kapee.Models;
 
 namespace Kapee
 {
@@ -32,6 +34,19 @@ namespace Kapee
             services.AddPaging(options => {
                 options.ViewName = "Bootstrap4";
             });
+            services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
+            {
+
+                identityOptions.Password.RequireDigit = true;
+                identityOptions.Password.RequireLowercase = false;
+                identityOptions.Password.RequireNonAlphanumeric = false;
+                identityOptions.Password.RequireUppercase = false;
+                identityOptions.User.RequireUniqueEmail = true;
+                identityOptions.Lockout.MaxFailedAccessAttempts = 5;
+                identityOptions.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                identityOptions.Lockout.AllowedForNewUsers = true;
+            }).AddEntityFrameworkStores<AplicationDbContext>().AddDefaultTokenProviders();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,9 +66,9 @@ namespace Kapee
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseDefaultFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

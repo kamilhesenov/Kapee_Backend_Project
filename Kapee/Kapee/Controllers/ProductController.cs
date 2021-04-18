@@ -61,7 +61,7 @@ namespace Kapee.Controllers
                 {
                     var newProduct = _context.Products
                                                .Include(x => x.Category)
-                                               .Include(x => x.SubCategories)
+                                               .Include(x => x.SubCategory)
                                                .Include(x => x.ProductGalleries)
                                                .Include(x => x.ProductColors)
                                                .ThenInclude(x => x.Color)
@@ -76,7 +76,7 @@ namespace Kapee.Controllers
             {
                 Product = _context.Products.Include(x => x.Brand)
                                            .Include(x => x.Category)
-                                           .Include(x => x.SubCategories)
+                                           .Include(x => x.SubCategory)
                                            .Include(x => x.ProductGalleries)
                                            .Include(x => x.BigSizePhotos)
                                            .Include(x => x.SmallSizePhotos)
@@ -89,7 +89,7 @@ namespace Kapee.Controllers
 
                 Products = _context.Products.Include(x=>x.ProductGalleries)
                                             .Include(x=>x.Category)
-                                            .ThenInclude(x=>x.SubCategories)
+                                            .Include(x=>x.SubCategory)
                                             .Include(x => x.ProductColors)
                                             .ThenInclude(x => x.Color)
                                             .Include(x => x.ProductSizes)

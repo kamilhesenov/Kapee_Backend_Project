@@ -7,5 +7,6 @@ namespace Kapee.Models.ViewModel
     {
         public HeaderLogo HeaderLogo { get; set; }
         public List<Category.Category> Categories { get; set; }
+        public List<Product.Product> Products { get; set; }
     }
 }

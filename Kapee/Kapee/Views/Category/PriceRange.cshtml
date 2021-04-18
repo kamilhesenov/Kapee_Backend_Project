@@ -388,10 +388,10 @@
                                             <div class="product-text">
                                                 <div class="product-title">
                                                     <div class="product-category">
-                                                        @foreach (var categoryName in item.SubCategories)
+                                                        @*@foreach (var categoryName in item.SubCategories)
                                                         {
                                                             <a href="#">@categoryName.Name</a>
-                                                        }
+                                                        }*@
                                                     </div>
                                                     <h3 class="product-content">
                                                         <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>

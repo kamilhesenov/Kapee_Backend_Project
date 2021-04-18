@@ -86,11 +86,7 @@
                     <div class="product-text ml-5">
                         <div class="product-title">
                             <div class="product-category">
-                                @foreach (var item in Model.Product.SubCategories)
-                                {
-                                    <a href="#">@item.Name</a>
-                                }
-
+                                <a asp-controller="Category" asp-action="SubCategoryDetail" asp-route-id="@Model.Product.SubCategory.Id">@Model.Product.SubCategory.Name</a>
                             </div>
                             <h1>@Model.Product.Name</h1>
                             <div class="product-start">
@@ -233,7 +229,7 @@
                             </form>
                         </div>
                         <div class="product-button">
-                            <a href="#">
+                            <a href="#" class="add-to-wishlist" data-id="@Model.Product.Id">
                                 <i class="far fa-heart"></i>
                                 <span>Add to Wishlist</span>
                             </a>
@@ -253,14 +249,11 @@
                             </span>
                             <span class="category">
                                 Category:
-                                @foreach (var item in Model.Product.SubCategories)
-                                {
-                                    <a href="#">@item.Name</a>
-                                }
+                                <a asp-controller="Category" asp-action="Index" asp-route-id="@Model.Product.Category.Id">@Model.Product.Category.Name</a>
                             </span>
                             <span class="tag">
-                                Tags:
-                                <a href="#">@Model.Product.Category.Name</a>
+                                SubCategory:
+                                <a asp-controller="Category" asp-action="SubCategoryDetail" asp-route-id="@Model.Product.SubCategory.Id">@Model.Product.SubCategory.Name</a>
                             </span>
                         </div>
                     </div>
@@ -382,10 +375,10 @@
                                                     {
                                                         <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value</p>
                                                     }
-                                                 }
+                                                }
                                             </td>
                                         </tr>
-                                     }
+                                    }
 
                                     else
                                     {
@@ -432,7 +425,7 @@
                                             </div>
                                         </div>
                                         <div class="rating-histogram ml-5 mt-3">
-                                            @if (Model.Product.StarCount == 5)
+                                            @if (Model.Product.StarCount > 4 && Model.Product.StarCount <= 5)
                                             {
                                                 <div class="rating-bar">
                                                     <div class="star">5 ★</div>
@@ -452,7 +445,7 @@
                                                     <div class="rating-count">0</div>
                                                 </div>
                                             }
-                                            @if (Model.Product.StarCount >= 4 && Model.Product.StarCount < 5)
+                                            @if (Model.Product.StarCount > 3 && Model.Product.StarCount < 5)
                                             {
                                                 <div class="rating-bar">
                                                     <div class="star">4 ★</div>
@@ -472,7 +465,7 @@
                                                     <div class="rating-count">0</div>
                                                 </div>
                                             }
-                                            @if (Model.Product.StarCount >= 3 && Model.Product.StarCount < 4)
+                                            @if (Model.Product.StarCount > 2 && Model.Product.StarCount < 4)
                                             {
                                                 <div class="rating-bar">
                                                     <div class="star">3 ★</div>
@@ -492,7 +485,7 @@
                                                     <div class="rating-count">0</div>
                                                 </div>
                                             }
-                                            @if (Model.Product.StarCount >= 2 && Model.Product.StarCount < 3)
+                                            @if (Model.Product.StarCount > 1 && Model.Product.StarCount < 3)
                                             {
                                                 <div class="rating-bar">
                                                     <div class="star">2 ★</div>
@@ -556,7 +549,7 @@
                 <li class="nav-item" role="presentation">
                     <a class="nav-link desc active" id="home-tab" data-toggle="tab" href="#desc" role="tab" aria-selected="true">Description</a>
                 </li>
-                @if (Model.Product.ProductColors.Count !=0 || Model.Product.ProductSizes.Count !=0)
+                @if (Model.Product.ProductColors.Count != 0 || Model.Product.ProductSizes.Count != 0)
                 {
                     <li class="nav-item" role="presentation">
                         <a class="nav-link info" id="profile-tab" data-toggle="tab" href="#info" role="tab" aria-selected="false">Additional information</a>
@@ -645,10 +638,10 @@
                                                 <p class="d-inline">@Model.Product.ProductSizes.ToList()[i].Size.Value</p>
                                             }
                                         }
-                                      
+
                                     </td>
                                 </tr>
-                              }
+                            }
 
                             else
                             {
@@ -827,11 +820,11 @@
                                             </div>
                                         }
                                         <div class="product-button">
-                                            <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                            <a href="#" class="add-to-wishlist" data-id="@item.Id"  data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                                                 <i class="far fa-heart"></i>
                                             </a>
                                         </div>
-                                        <a href="#">
+                                        <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
                                             @{ var imgCount = 1;}
                                             @foreach (var img in item.ProductGalleries)
                                             {
@@ -852,10 +845,7 @@
                                     <div class="product-text">
                                         <div class="product-title">
                                             <div class="product-category">
-                                                @foreach (var categoryName in item.SubCategories)
-                                                {
-                                                    <a href="#">@categoryName.Name</a>
-                                                }
+                                                <a asp-controller="Category" asp-action="SubCategoryDetail" asp-route-id="@item.SubCategory.Id">@item.SubCategory.Name</a>
                                             </div>
                                             <h3 class="product-content">
                                                 <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
@@ -965,11 +955,11 @@
                                             </div>
                                         }
                                         <div class="product-button">
-                                            <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                            <a href="#" class="add-to-wishlist" data-id="@item.Id" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
                                                 <i class="far fa-heart"></i>
                                             </a>
                                         </div>
-                                        <a href="#">
+                                        <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
                                             @{ var productCount = 1;}
                                             @foreach (var img in item.ProductGalleries)
                                             {
@@ -983,17 +973,14 @@
                                                 }
                                                 productCount++;
                                             }
-                                            
+
                                             <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="Men-Hooded-Blue-Grey-T-Shirt">
                                         </a>
                                     </div>
                                     <div class="product-text">
                                         <div class="product-title">
                                             <div class="product-category">
-                                                @foreach (var categoryName in item.SubCategories)
-                                                {
-                                                    <a href="#">@categoryName.Name</a>
-                                                }
+                                                <a asp-controller="Category" asp-action="SubCategoryDetail" asp-route-id="@item.SubCategory.Id">@item.SubCategory.Name</a>
                                             </div>
                                             <h3 class="product-content">
                                                 <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
@@ -1077,4 +1064,46 @@
         </div>
     </section>
 </main>
+
+
+@section Scripts{
+    <script>
+
+      toastr.options = {
+          "closeButton": false,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": false,
+          "positionClass": "toast-top-left",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+      }
+
+      let AllAddSpan = document.querySelectorAll(".add-to-wishlist");
+      AllAddSpan.forEach(item => {
+          item.addEventListener("click", function () {
+              event.preventDefault();
+              let id = $(this).attr("data-id");
+              toastr.success(`the product added to your wishlist`);
+              $.ajax({
+                  url: "/WishList/AddToWish?Id=" + id,
+                  type: "Get",
+                  success: function (res) {
+                      console.log(res.wishlistProductCount);
+                      let totalCount = document.getElementById('totalCount');
+                      totalCount.innerHTML = res.wishlistProductCount;
+
+                  }
+              })
+          })
+      })
+    </script>
+}
 

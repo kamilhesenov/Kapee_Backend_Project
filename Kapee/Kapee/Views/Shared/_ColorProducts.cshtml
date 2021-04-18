@@ -24,7 +24,7 @@
                                 <i class="far fa-heart"></i>
                             </a>
                         </div>
-                        <a href="#">
+                        <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
                             @{ var imgCount = 1;}
                             @foreach (var img in item.ProductGalleries)
                             {
@@ -44,10 +44,7 @@
                     <div class="product-text">
                         <div class="product-title">
                             <div class="product-category">
-                                @foreach (var categoryName in item.SubCategories)
-                                {
-                                    <a href="#">@categoryName.Name</a>
-                                }
+                                <a asp-controller="Category" asp-action="SubCategoryDetail" asp-route-id="@item.SubCategory.Id">@item.SubCategory.Name</a>
                             </div>
                             <h3 class="product-content">
                                 <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>

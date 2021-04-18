@@ -9,8 +9,8 @@ namespace Kapee.Models.ViewModel
         public Category.Category Category { get; set; }
         public List<Product.Product> Products { get; set; }
         public List<Category.Category> Categories { get; set; }
-        public PagingList<Product.Product> PagingList { get; set; }
         public List<Product.Color> Colors { get; set; }
         public List<Product.Size> Sizes { get; set; }
+        public Category.SubCategory SubCategory { get; set; }
     }
 }

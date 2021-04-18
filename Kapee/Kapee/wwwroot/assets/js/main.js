@@ -1,6 +1,17 @@
 $(document).ready(function () {
 
 
+    // register customer vender
+    $("#register .main-content .register-right .form-check .vender").click(function () {
+        $("#register .main-content .register-right .vender-form").removeClass("d-none");
+        $("#register .main-content .register-right .user-form").addClass("d-none");
+    })
+
+    $("#register .main-content .register-right .form-check .customer").click(function () {
+        $("#register .main-content .register-right .vender-form").addClass("d-none");
+        $("#register .main-content .register-right .user-form").removeClass("d-none");
+    })
+
     // Fashion corusel start
     if ($("#fashion").length) {
         $('#fashion .slider .owl-carousel').owlCarousel({
@@ -390,32 +401,36 @@ $(document).ready(function () {
         })
 
         //  Product Detail start
-       $(".product-sync-init").slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: false,
-            draggable: false,
-            arrows: false,
-            dots: false,
-            fade: true,
-            asNavFor: ".product-sync-nav",
-        });
+        if ($(".product-sync-init").length) {
+            $(".product-sync-init").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: false,
+                draggable: false,
+                arrows: false,
+                dots: false,
+                fade: true,
+                asNavFor: ".product-sync-nav",
+            });
 
-       $(".product-sync-nav").slick({
-            dots: true,
-            arrows: true,
-            infinite: false,
-            prevArrow: '<button class="next slick-prev"><i class="fas fa-angle-left"></i></button>',
-            nextArrow: '<button class="prev slick-next"><i class="fas fa-angle-right"></i></button>',
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            asNavFor: ".product-sync-init",
-            focusOnSelect: true,
-            draggable: false,
-        });
+            $(".product-sync-nav").slick({
+                dots: true,
+                arrows: true,
+                infinite: false,
+                prevArrow: '<button class="next slick-prev"><i class="fas fa-angle-left"></i></button>',
+                nextArrow: '<button class="prev slick-next"><i class="fas fa-angle-right"></i></button>',
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                asNavFor: ".product-sync-init",
+                focusOnSelect: true,
+                draggable: false,
+            });
+        }
 
-       //Product photo zoom   
-       $("#product-single .product-slider .product-sync-init .single-product .product-thumb").zoom();
+        //Product photo zoom   
+        if ($("#product-single .product-slider .product-sync-init .single-product .product-thumb").length) {
+            $("#product-single .product-slider .product-sync-init .single-product .product-thumb").zoom();
+        }
   
 
        //Product small photo active class border   

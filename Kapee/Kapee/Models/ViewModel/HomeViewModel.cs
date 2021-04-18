@@ -16,5 +16,6 @@ namespace Kapee.Models.ViewModel
         public List<News> Newses { get; set; }
         public List<Category.Category> Categories { get; set; }
         public List<Product.Product> Products { get; set; }
+        public int? Id { get; internal set; }
     }
 }

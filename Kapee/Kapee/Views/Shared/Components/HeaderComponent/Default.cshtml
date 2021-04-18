@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="logo ">
-                        <a href="#">
+                        <a asp-controller="Home" asp-action="Index">
                             <img src="~/assets/img/@Model.HeaderLogo.MainPhoto" alt="">
                         </a>
                     </div>
@@ -100,7 +100,7 @@
                         </a>
                     </div>
                     <div class="logo-mobil">
-                        <a href="#">
+                        <a asp-controller="Home" asp-action="Index">
                             <img src="~/assets/img/@Model.HeaderLogo.SecondPhoto" alt="">
                         </a>
                     </div>
@@ -116,44 +116,6 @@
                                     {
                                         <option value="@item.Id">@item.Name</option>
                                     }
-                                    @*<option>Analog</option>
-        <option>Anklets</option>
-        <option>Beauty Accessory</option>
-        <option>Belts</option>
-        <option>Bracelets</option>
-        <option>Casual Shoes</option>
-        <option>Digital</option>
-        <option>Dresses</option>
-        <option>Earrings</option>
-        <option>Electronics</option>
-        <option>Formal Shoes</option>
-        <option>Handbags</option>
-        <option>Hats & Caps</option>
-        <option>Jackets & Coats</option>
-        <option>Jeans</option>
-        <option value="women-jeans">Jeans</option>
-        <option>Laptop Bag</option>
-        <option>Leather</option>
-        <option>Lingerie & Nightwear</option>
-        <option>Luggage & Travel</option>
-        <option>Makeup Kit</option>
-        <option>Necklaces</option>
-        <option>Pearl Jewelry</option>
-        <option>Sandals & Floaters</option>
-        <option>Shirts</option>
-        <option>Shorts & Skirts</option>
-        <option>Smart Analog</option>
-        <option>Smart Watches</option>
-        <option>Sneakers</option>
-        <option>Socks</option>
-        <option>Sunglasses</option>
-        <option>T-Shirts</option>
-        <option>Tops</option>
-        <option>Trolley Bag</option>
-        <option>Trousers & Capris</option>
-        <option>Wallets</option>
-        <option value="men-vallet">Wallets</option>
-        <option>Watches</option>*@
                                 </select>
                             </div>
                             <button type="submit" class="search-select">Search</button>
@@ -168,18 +130,30 @@
                 </div>
                 <div class="header-account-heart-cart">
                     <div class="header-account">
-                        <a href="#">
-                            <i class="fas fa-user-tie"></i>
-                            <div class="my-account">
-                                <small>Hello,</small>
-                                <span>Sign In</span>
-                            </div>
+                        <a asp-controller="account" asp-action="login">
+                           
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <i class="fas fa-user-tie"></i>
+                                <div class="my-account">
+                                    <small>Hello, @ViewBag.Username</small>
+                                    <a asp-controller="account" asp-action="logout">Logout</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <i class="fas fa-user-tie"></i>
+                                <div class="my-account">
+                                    <small>Hello,</small>
+                                    <span>Sign In</span>
+                                </div>
+                            }
                         </a>
                     </div>
                     <div class="header-heart">
-                        <a href="#">
+                        <a asp-controller="wishlist" asp-action="Index">
                             <i class="far fa-heart"></i>
-                            <span>0</span>
+                            <span id="totalCount">@ViewBag.WishlistCount</span>
                         </a>
                     </div>
                     <div class="header-cart">

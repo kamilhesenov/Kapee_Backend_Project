@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Kapee.Models.Product;
 
 
 namespace Kapee.Models.Category
@@ -7,11 +9,10 @@ namespace Kapee.Models.Category
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }
-        public int? ProductId { get; set; }
-
+        
         [MaxLength(100)]
         public string Name { get; set; }
         public Category Category { get; set; }
-        public Product.Product Product { get; set; }
+        public List<Product.Product> Products { get; set; }
     }
 }

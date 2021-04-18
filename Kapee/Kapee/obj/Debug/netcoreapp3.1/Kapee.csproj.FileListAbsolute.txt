@@ -160,3 +160,13 @@ C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ColorProducts.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SizeProduct.cshtml.g.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Category\SubCategoryDetail.cshtml.g.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Account\VendorCreate.cshtml.g.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\WishList\Index.cshtml.g.cs

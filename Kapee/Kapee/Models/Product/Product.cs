@@ -15,7 +15,9 @@ namespace Kapee.Models.Product
 
         public int? BrandId { get; set; }
 
-       [Required, MaxLength(200)]
+        public int? SubCategoryId { get; set; }
+
+        [Required, MaxLength(200)]
         public string Name { get; set; }
 
         public float? StarCount { get; set; }
@@ -69,8 +71,9 @@ namespace Kapee.Models.Product
         public List<BigSizePhoto> BigSizePhotos { get; set; }
         public List<SmallSizePhoto> SmallSizePhotos { get; set; }
         public List<ProductPrize> Prizes { get; set; }
-        public List<SubCategory> SubCategories { get; set; }
+        
         public List<ProductColor> ProductColors { get; set; }
         public List<ProductSize> ProductSizes { get; set; }
+        public SubCategory SubCategory { get; set; }
     }
 }

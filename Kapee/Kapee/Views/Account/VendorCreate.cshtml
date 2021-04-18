@@ -1,0 +1,76 @@
+﻿@model VenderCreateViewModel;
+@{
+    ViewData["Title"] = "VendorCreate";
+}
+
+<main>
+    <!-- Register start -->
+    <section id="register">
+        <div class="title-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Create Vendor</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="register-signup">
+                            <div class="customer-register">
+                                <div class="register-left">
+                                    <h2>Signup</h2>
+                                    <p>Welcome to registration form </p>
+                                </div>
+                                <div class="register-right">
+                                    <form method="post">
+                                        <div class="user-form">
+                                            <div class="form-group">
+                                                <label for="username">FirstName</label>
+                                                <input asp-for="@Model.Name" type="text" class="form-control" id="username">
+                                                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">LastName</label>
+                                                <input asp-for="@Model.Surname" type="text" class="form-control" id="email">
+                                                <span asp-validation-for="@Model.Surname" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Phone</label>
+                                                <input asp-for="@Model.Phone" type="text" class="form-control" id="password">
+                                                <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Shop Name</label>
+                                                <input asp-for="@Model.ShopName" type="text" class="form-control" id="password">
+                                                <span asp-validation-for="@Model.ShopName" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Shop Url</label>
+                                                <input asp-for="@Model.ShopLogoUrl" type="text" class="form-control" id="password">
+                                                <span asp-validation-for="@Model.ShopLogoUrl" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <button type="submit">Complete Registration</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+}
+
+

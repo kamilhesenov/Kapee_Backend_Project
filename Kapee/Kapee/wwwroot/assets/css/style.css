@@ -5061,6 +5061,38 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     opacity: 0 !important;
     visibility: hidden !important;
   }
+  #login .title-page {
+    padding-top: 35px !important;
+    padding-bottom: 35px !important;
+  }
+  #login .title-page h1 {
+    font-size: 42px !important;
+  }
+  #login .main-content .login-signin .customer-login .login-right form .form-group a {
+    margin-left: 27% !important;
+  }
+  #register .title-page {
+    padding-top: 35px !important;
+    padding-bottom: 35px !important;
+  }
+  #register .title-page h1 {
+    font-size: 42px !important;
+  }
+  #wihslist .title-page h1 {
+    font-size: 42px !important;
+  }
+  #wihslist .main-content form .wishlist-table {
+    display: none !important;
+  }
+  #wihslist .main-content form .wishlist-table tbody tr .product-add-to-cart {
+    text-align: left !important;
+  }
+  #wihslist .main-content form .wishlist-table tbody tr .product-add-to-cart a {
+    width: 142px !important;
+  }
+  #wihslist .main-content form ul {
+    display: block !important;
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -5333,6 +5365,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
   #main-page .item .product-group .product-item .product-text .product-price .price span {
     font-size: 13px !important;
+  }
+  #login .main-content .login-signin .customer-login {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important;
+  }
+  #login .main-content .login-signin .customer-login .login-right form .form-group a {
+    margin-left: 8% !important;
+  }
+  #register .main-content .register-signup .customer-register {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important;
+  }
+  #wihslist .title-page h1 {
+    font-size: 36px !important;
+  }
+  #wihslist .main-content form .wishlist-table {
+    display: none !important;
+  }
+  #wihslist .main-content form ul {
+    display: block !important;
   }
 }
 
@@ -12139,5 +12191,639 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #main-page .pagination-area ul .active a {
   background-color: #2370F4;
   color: #fff;
+}
+
+#login .title-page {
+  padding: 10px 0;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+#login .title-page h1 {
+  font-size: 60px;
+  line-height: 1.2;
+  color: #333;
+  text-transform: inherit;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#login .main-content {
+  padding-bottom: 38px;
+  padding-top: 38px;
+}
+
+#login .main-content .login-signin {
+  background-color: #fff;
+  max-width: 695px;
+  margin: 0 auto;
+  margin-top: 1em;
+  -webkit-box-shadow: 0 0 1px;
+          box-shadow: 0 0 1px;
+}
+
+#login .main-content .login-signin .customer-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#login .main-content .login-signin .customer-login .login-left {
+  background-color: #2370F4;
+  color: #fff;
+  -webkit-box-flex: 40%;
+      -ms-flex: 40%;
+          flex: 40%;
+  font-size: 18px;
+  padding: 40px 35px;
+  border: 1px solid #2370F4;
+}
+
+#login .main-content .login-signin .customer-login .login-left h2 {
+  color: #fff;
+  font-size: 26px;
+  margin-bottom: 10px;
+  text-transform: inherit;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#login .main-content .login-signin .customer-login .login-left p {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  margin: 0 0 1.5em;
+  padding: 0;
+}
+
+#login .main-content .login-signin .customer-login .login-right {
+  -webkit-box-flex: 60%;
+      -ms-flex: 60%;
+          flex: 60%;
+  padding: 40px 35px;
+}
+
+#login .main-content .login-signin .customer-login .login-right form {
+  text-align: left;
+}
+
+#login .main-content .login-signin .customer-login .login-right form .form-group {
+  display: inherit;
+  padding: 0;
+  margin: 0 0 1em;
+}
+
+#login .main-content .login-signin .customer-login .login-right form .form-group input {
+  line-height: 2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  outline: 0;
+  border: 1px solid #e9e9e9;
+  color: #777;
+  display: block;
+  padding: 6px 12px;
+  height: 42px;
+  overflow: visible;
+  font-size: 100%;
+}
+
+#login .main-content .login-signin .customer-login .login-right form .form-group label {
+  color: #2370F4;
+  font-weight: 600;
+  line-height: 2;
+  margin: 0;
+}
+
+#login .main-content .login-signin .customer-login .login-right form .form-group input[type="checkbox"] {
+  border: 1px solid #e9e9e9;
+  border-radius: 4px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  outline: 0;
+  clear: none;
+  margin-right: 6px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 0;
+  padding: 0;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#login .main-content .login-signin .customer-login .login-right form .form-group a {
+  text-decoration: none;
+  margin-left: 28%;
+  color: #2370F4;
+  font-weight: 600;
+}
+
+#login .main-content .login-signin .customer-login .login-right form button {
+  background-color: #2370F4;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 2px 0;
+          box-shadow: 0 1px 2px 0;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  overflow: visible;
+  outline: none;
+}
+
+#login .main-content .login-signin .customer-login .login-right form .create-account {
+  padding-top: 20px;
+}
+
+#login .main-content .login-signin .customer-login .login-right form .create-account a {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #2370F4;
+  -webkit-box-shadow: 0 0 3px #cccccc;
+          box-shadow: 0 0 3px #cccccc;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+
+#login .main-content .login-signin .customer-login .login-right form .create-account a:hover {
+  background-color: #2370F4;
+  color: #fff;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+
+#register .title-page {
+  padding: 10px 0;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+#register .title-page h1 {
+  font-size: 60px;
+  line-height: 1.2;
+  color: #333;
+  text-transform: inherit;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#register .main-content {
+  padding-bottom: 38px;
+  padding-top: 38px;
+}
+
+#register .main-content .register-signup {
+  background-color: #fff;
+  max-width: 695px;
+  margin: 0 auto;
+  margin-top: 1em;
+  -webkit-box-shadow: 0 0 1px;
+          box-shadow: 0 0 1px;
+}
+
+#register .main-content .register-signup .customer-register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#register .main-content .register-signup .customer-register .register-left {
+  background-color: #2370F4;
+  color: #fff;
+  -webkit-box-flex: 40%;
+      -ms-flex: 40%;
+          flex: 40%;
+  font-size: 18px;
+  padding: 40px 35px;
+  border: 1px solid #2370F4;
+}
+
+#register .main-content .register-signup .customer-register .register-left h2 {
+  color: #fff;
+  font-size: 26px;
+  margin-bottom: 10px;
+  text-transform: inherit;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#register .main-content .register-signup .customer-register .register-left p {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  margin: 0 0 1.5em;
+  padding: 0;
+}
+
+#register .main-content .register-signup .customer-register .register-right {
+  -webkit-box-flex: 60%;
+      -ms-flex: 60%;
+          flex: 60%;
+  padding: 40px 35px;
+}
+
+#register .main-content .register-signup .customer-register .register-right form {
+  text-align: left;
+}
+
+#register .main-content .register-signup .customer-register .register-right form .form-group {
+  display: inherit;
+  padding: 0;
+  margin: 0 0 1em;
+}
+
+#register .main-content .register-signup .customer-register .register-right form .form-group input {
+  line-height: 2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  outline: 0;
+  border: 1px solid #e9e9e9;
+  color: #777;
+  display: block;
+  padding: 6px 12px;
+  height: 42px;
+  overflow: visible;
+  font-size: 100%;
+}
+
+#register .main-content .register-signup .customer-register .register-right form .vender-form label {
+  line-height: 2;
+  color: #333333;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+#register .main-content .register-signup .customer-register .register-right form .vender-form label .required {
+  color: red;
+  font-weight: 700;
+  border: 0 !important;
+  text-decoration: none;
+  visibility: visible;
+}
+
+#register .main-content .register-signup .customer-register .register-right form .vender-form input {
+  line-height: 2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  outline: 0;
+  border: 1px solid #e9e9e9;
+  color: #777;
+  display: block;
+  padding: 6px 12px;
+  height: 42px;
+  overflow: visible;
+  font-size: 100%;
+}
+
+#register .main-content .register-signup .customer-register .register-right form label {
+  color: #333333;
+  display: block;
+  font-weight: 600;
+}
+
+#register .main-content .register-signup .customer-register .register-right form button {
+  background-color: #2370F4;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 2px 0;
+          box-shadow: 0 1px 2px 0;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  overflow: visible;
+  outline: none;
+  margin-top: 20px;
+}
+
+#wihslist .title-page {
+  padding: 10px 0;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+#wihslist .title-page h1 {
+  font-size: 60px;
+  line-height: 1.2;
+  color: #333;
+  text-transform: inherit;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#wihslist .main-content {
+  padding-bottom: 38px;
+  padding-top: 38px;
+}
+
+#wihslist .main-content form .wishlist-table {
+  font-size: 100%;
+  margin: 0 -1px 24px 0;
+  text-align: left;
+  width: 100%;
+  border-collapse: separate;
+}
+
+#wihslist .main-content form .wishlist-table thead tr th {
+  padding: 9px 12px;
+  color: #333;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-remove {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #e9e9e9;
+  padding: 8px 12px;
+  vertical-align: middle;
+  text-align: inherit;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-remove a {
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  border-radius: 100%;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-remove a i {
+  color: red;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-thumbnail {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #e9e9e9;
+  padding: 8px 12px;
+  vertical-align: middle;
+  text-align: inherit;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-thumbnail a img {
+  max-width: 80px;
+  width: inherit;
+  height: auto;
+  border-style: none;
+  vertical-align: middle;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-name {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #e9e9e9;
+  padding: 8px 12px;
+  vertical-align: middle;
+  text-align: inherit;
+  font-weight: 600;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-name a {
+  color: #333;
+  text-decoration: none;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-name a:hover {
+  color: #2370F4;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-price {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #e9e9e9;
+  padding: 8px 12px;
+  vertical-align: middle;
+  text-align: inherit;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-price span {
+  color: #2370F4;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-add-to-cart {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #e9e9e9;
+  padding: 8px 12px;
+  vertical-align: middle;
+  text-align: right;
+}
+
+#wihslist .main-content form .wishlist-table tbody tr .product-add-to-cart a {
+  background-color: #2370F4;
+  color: #ffff;
+  border-radius: 0;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration: none;
+  margin: 0;
+  padding: 10px 14px;
+  -webkit-box-shadow: 0 0 10px #cccccc;
+          box-shadow: 0 0 10px #cccccc;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#wihslist .main-content form ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#wihslist .main-content form ul li {
+  position: relative;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e9e9e9;
+  display: block;
+  padding-bottom: 40px;
+  padding-left: 120px;
+}
+
+#wihslist .main-content form ul li .item-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#wihslist .main-content form ul li .item-wrapper .product-thumbnail {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  position: absolute;
+  left: 0;
+}
+
+#wihslist .main-content form ul li .item-wrapper .product-thumbnail a {
+  text-decoration: none;
+}
+
+#wihslist .main-content form ul li .item-wrapper .product-thumbnail a img {
+  max-width: 98px;
+  height: auto;
+  border-style: none;
+  vertical-align: middle;
+}
+
+#wihslist .main-content form ul li .item-wrapper .item-details {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+}
+
+#wihslist .main-content form ul li .item-wrapper .item-details .product-name h3 {
+  font-size: 14px;
+  margin-bottom: 0.7em;
+  margin-right: 2em;
+  text-transform: inherit;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#wihslist .main-content form ul li .item-wrapper .item-details .product-name h3 a {
+  color: #333;
+  text-decoration: none;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+
+#wihslist .main-content form ul li .item-wrapper .item-details .product-name h3 a:hover {
+  color: #2370F4;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+
+#wihslist .main-content form ul li .item-wrapper .item-details .item-details-table {
+  margin-bottom: 0;
+  border-collapse: collapse;
+  margin: 0 0 1.5em;
+  width: 100%;
+}
+
+#wihslist .main-content form ul li .item-wrapper .item-details .item-details-table tbody tr {
+  border: 0;
+}
+
+#wihslist .main-content form ul li .item-wrapper .item-details .item-details-table tbody tr .label {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 0;
+  border: 0;
+  text-align: inherit;
+}
+
+#wihslist .main-content form ul li .item-wrapper .item-details .item-details-table tbody tr .value {
+  text-align: right;
+  font-weight: 600;
+  padding: 2px 0;
+  border: 0;
+}
+
+#wihslist .main-content form ul li .additional-info-wrapper .product-add-to-cart {
+  margin-top: .7em;
+}
+
+#wihslist .main-content form ul li .additional-info-wrapper .product-add-to-cart a {
+  background-color: #2370F4;
+  color: #ffff;
+  font-size: 12px;
+  padding: 8px 14px;
+  float: none;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  -webkit-box-shadow: 0 0 10px #cccccc;
+          box-shadow: 0 0 10px #cccccc;
+}
+
+#wihslist .main-content form ul li .additional-info-wrapper .product-remove {
+  position: absolute;
+  top: -3px;
+  right: 0;
+}
+
+#wihslist .main-content form ul li .additional-info-wrapper .product-remove a {
+  text-decoration: none;
+  color: #333;
+}
+
+#wihslist .main-content form ul li .additional-info-wrapper .product-remove a i {
+  font-size: 17px;
+  text-align: center;
+  vertical-align: middle;
 }
 /*# sourceMappingURL=style.css.map */
