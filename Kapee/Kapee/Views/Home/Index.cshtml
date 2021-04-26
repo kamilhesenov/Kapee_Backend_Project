@@ -189,7 +189,7 @@
                                                     </div>
                                                     <div class="product-buttons">
                                                         <div class="cart-button">
-                                                            <a href="#">Select options</a>
+                                                            <a href="#" class="add-to-cartlist" data-id="@item.Id">Add to cart</a>
                                                         </div>
                                                         <div class="compare-button">
                                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
@@ -323,7 +323,7 @@
                                                     </div>
                                                     <div class="product-buttons">
                                                         <div class="cart-button">
-                                                            <a href="#">Select options</a>
+                                                            <a href="#" class="add-to-cartlist" data-id="@item.Id">Add to cart</a>
                                                         </div>
                                                         <div class="compare-button">
                                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
@@ -456,7 +456,7 @@
                                                     </div>
                                                     <div class="product-buttons">
                                                         <div class="cart-button">
-                                                            <a href="#">Select options</a>
+                                                            <a href="#" class="add-to-cartlist" data-id="@item.Id">Add to cart</a>
                                                         </div>
                                                         <div class="compare-button">
                                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fas fa-random"></i></a>
@@ -775,6 +775,45 @@
             })
         })
     </script>
+
+   <script>
+
+       toastr.options = {
+           "closeButton": false,
+           "debug": false,
+           "newestOnTop": false,
+           "progressBar": false,
+           "positionClass": "toast-top-left",
+           "preventDuplicates": false,
+           "onclick": null,
+           "showDuration": "300",
+           "hideDuration": "1000",
+           "timeOut": "5000",
+           "extendedTimeOut": "1000",
+           "showEasing": "swing",
+           "hideEasing": "linear",
+           "showMethod": "fadeIn",
+       }
+
+       let AddSpan = document.querySelectorAll(".add-to-cartlist");
+       AddSpan.forEach(item => {
+           item.addEventListener("click", function () {
+               event.preventDefault();
+               let id = $(this).attr("data-id");
+               toastr.success(`the product added to your cartlist`);
+               $.ajax({
+                   url: "/Basket/AddToCart?Id=" + id,
+                   type: "Get",
+                   success: function (res) {
+                       let totalCountPrice = document.getElementById('totalCountPrice');
+                       totalCountPrice.innerHTML = res.cartlistProductCount;
+                       
+
+                   }
+               })
+           })
+       })
+   </script>
 
 }
 

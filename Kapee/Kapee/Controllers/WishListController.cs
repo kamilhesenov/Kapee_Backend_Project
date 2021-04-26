@@ -111,11 +111,11 @@ namespace Kapee.Controllers
 
             foreach (var wishlistProduct in wishlistProducts)
             {
-                Product dbProduct = _context.Products.FirstOrDefault(x => x.Id == wishlistProduct.Id);
+                Product dbProduct = _context.Products.Include(x => x.ProductGalleries).FirstOrDefault(x => x.Id == wishlistProduct.Id);
                 if (dbProduct != null)
                 {
                     wishlistProduct.Price = dbProduct.Price;
-                    wishlistProduct.Photo = dbProduct.HoverPhoto;
+                    wishlistProduct.Photo = dbProduct.ProductGalleries.FirstOrDefault(x => x.ProductId == dbProduct.Id).Photo;
                     wishlistProduct.Name = dbProduct.Name;
                 }
                 

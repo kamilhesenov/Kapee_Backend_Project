@@ -9,6 +9,5 @@ namespace Kapee.Models.ViewModel
         public string Name { get; set; }
         public string Photo { get; set; }
         public decimal Price { get; set; }
-        public List<Product.Product> Products { get; set; }
     }
 }

@@ -17,6 +17,8 @@ namespace Kapee.Models.Product
 
         public int? SubCategoryId { get; set; }
 
+        public int Count { get; set; }
+
         [Required, MaxLength(200)]
         public string Name { get; set; }
 

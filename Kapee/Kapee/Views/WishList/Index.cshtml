@@ -34,9 +34,6 @@
                                         <th>
                                             <span>Unit price</span>
                                         </th>
-                                        <th>
-                                            <span></span>
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,6 +53,9 @@
                                         </td>
                                         <td class="product-price">
                                             <span>$@item.Price.ToString("#.00")</span>
+                                        </td>
+                                        <td class="add-to-cart">
+                                            <a href="#" class="add-to-cartlist remove-item" data-id="@item.Id"><i class="fas fa-shopping-basket"></i></a>
                                         </td>
                                         <td class="product-add-to-cart">
                                             <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">Select options</a>
@@ -95,6 +95,9 @@
                                         <div class="additional-info-wrapper">
                                             <div class="product-add-to-cart">
                                                 <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">Select options</a>
+                                            </div>
+                                            <div class="add-to-cart">
+                                                <a href="#" class="add-to-cartlist delete-item" data-id="@item.Id"><i class="fas fa-shopping-cart"></i></a>
                                             </div>
                                             <div class="product-remove">
                                                 <a class="deleteProduct" data-id="@item.Id" href="#"><i class="fas fa-times"></i></a>
@@ -184,6 +187,89 @@
             console.log(item);
             let id = $(this).attr("data-id");
             toastr.error(`the product has removed from your wishlist`);
+            $.ajax({
+                url: "/WishList/RemoveItem?Id=" + id,
+                type: "Get",
+                success: function (res) {
+                    console.log(res);
+
+                    let totalCountNav = document.getElementById('totalCount');
+                    totalCountNav.innerHTML = res.wishlistProductCount;
+                    item.parentElement.parentElement.parentElement.remove();
+
+                }
+            })
+        })
+    })
+</script>
+
+<script>
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-left",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+    }
+
+    let AddSpan = document.querySelectorAll(".add-to-cartlist");
+    AddSpan.forEach(item => {
+        item.addEventListener("click", function () {
+            event.preventDefault();
+            let id = $(this).attr("data-id");
+            toastr.success(`the product added to your cartlist`);
+            $.ajax({
+                url: "/Basket/AddToCart?Id=" + id,
+                type: "Get",
+                success: function (res) {
+                    let totalCountPrice = document.getElementById('totalCountPrice');
+                    totalCountPrice.innerHTML = res.cartlistProductCount;
+
+
+                }
+            })
+        })
+    })
+</script>
+
+<script>
+    let removeItem = document.querySelectorAll(".remove-item");
+    removeItem.forEach(item => {
+        item.addEventListener("click", function () {
+            event.preventDefault();
+            let id = $(this).attr("data-id");
+            $.ajax({
+                url: "/WishList/RemoveItem?Id=" + id,
+                type: "Get",
+                success: function (res) {
+                    console.log(res);
+
+                    let totalCountNav = document.getElementById('totalCount');
+                    totalCountNav.innerHTML = res.wishlistProductCount;
+                    item.parentElement.parentElement.remove();
+
+                }
+            })
+        })
+    })
+</script>
+
+<script>
+    let deleteItem = document.querySelectorAll(".delete-item");
+    deleteItem.forEach(item => {
+        item.addEventListener("click", function () {
+            event.preventDefault();
+            let id = $(this).attr("data-id");
             $.ajax({
                 url: "/WishList/RemoveItem?Id=" + id,
                 type: "Get",

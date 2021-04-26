@@ -136,7 +136,6 @@ C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.TagHelpers.output.cache
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Kapee.RazorCoreGenerate.cache
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Category\Index.cshtml.g.cs
-C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Category\PriceRange.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\FooterComponent\Default.cshtml.g.cs
@@ -170,3 +169,4 @@ C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\WishList\Index.cshtml.g.cs
+C:\Users\Kamil\Desktop\Kapee_Backend_Project\Kapee\Kapee\obj\Debug\netcoreapp3.1\Razor\Views\Basket\Index.cshtml.g.cs

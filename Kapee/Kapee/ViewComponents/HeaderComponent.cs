@@ -23,7 +23,8 @@ namespace Kapee.ViewComponents
 
         public async Task<ViewViewComponentResult> InvokeAsync()
         {
-            ViewBag.BasketCount = 0;
+            ViewBag.WishlistCount = 0;
+            ViewBag.CartlistCount = 0;
 
             var vendor = _context.Venders.FirstOrDefault();
             ViewBag.Username = "";
@@ -38,6 +39,13 @@ namespace Kapee.ViewComponents
                 List<WishListWiewModel> products = JsonConvert.DeserializeObject<List<WishListWiewModel>>(Request.Cookies["wishlist"]);
 
                 ViewBag.WishlistCount = products.Count();
+            }
+
+            if (Request.Cookies["cartlist"] != null)
+            {
+                List<BasketViewModel> cartproducts = JsonConvert.DeserializeObject<List<BasketViewModel>>(Request.Cookies["cartlist"]);
+
+                ViewBag.CartlistCount = cartproducts.Count();
             }
 
             HeaderViewModel model = new HeaderViewModel()

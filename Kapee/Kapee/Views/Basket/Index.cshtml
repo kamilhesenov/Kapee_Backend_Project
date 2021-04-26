@@ -1,0 +1,488 @@
+﻿@model IEnumerable<BasketViewModel>
+@{
+    ViewData["Title"] = "Index";
+    decimal Total = 0;
+    decimal Totals = 0;
+}
+
+<!-- Cartlist start -->
+<main>
+    <section id="cartlist">
+        <div class="title-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>My Cartlist</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="cartlist-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th><span>Product name</span></th>
+                                    <th><span>Unit price</span></th>
+                                    <th><span>In Stock</span></th>
+                                    <th><span>Basket Quantity</span></th>
+                                    <th><span>Subtotal</span></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    decimal total = item.BasketCount * item.Price;
+                                    Total += total;
+
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#">
+                                                <img src="~/assets/img/@item.Photo" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="product-name">
+                                            <a href="#">@item.Name</a>
+                                        </td>
+                                        <td class="product-price">
+                                            <span>$@item.Price.ToString("#.00")</span>
+                                        </td>
+                                        <td class="total-quantity">
+                                            <span>@item.DbCount</span>
+                                        </td>
+                                        <td class="basket-quantity">
+                                            <span>@item.BasketCount</span>
+                                        </td>
+                                        <td class="subtotal">
+                                            <span>$@total.ToString("#.00")</span>
+                                        </td>
+                                        <td class="minus-product">
+                                            @if (item.BasketCount > 1)
+                                            {
+                                                <a href="#" class="minus" data-id="@item.Id">
+                                                    <i class="fas fa-minus"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="minus d-none" data-id="@item.Id">
+                                                    <i class="fas fa-minus"></i>
+                                                </a>
+                                            }
+                                        </td>
+                                        <td class="plus-product">
+                                            @if (item.BasketCount < item.DbCount)
+                                            {
+                                                <a href="#" class="plus" data-id="@item.Id">
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="plus d-none" data-id="@item.Id">
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
+                                            }
+                                        </td>
+                                        <td class="product-remove">
+                                            <a href="#" class="removeProduct" data-id="@item.Id"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <ul class="list-item d-none">
+                            @foreach (var item in Model)
+                            {
+                                decimal total = item.BasketCount * item.Price;
+                                Totals += total;
+
+                                <li>
+                                    <div class="item-wrapper">
+                                        <div class="product-thumbnail">
+                                            <a href="#">
+                                                <img src="~/assets/img/@item.Photo" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="item-details">
+                                            <div class="product-name">
+                                                <a href="#">@item.Name</a>
+                                            </div>
+                                            <table class="item-details-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="label-price">Price:</td>
+                                                        <td class="value-price">
+                                                            <span>$@item.Price.ToString("#.00")</span>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="label-total-quantity">In Stock:</td>
+                                                        <td class="value-total-quantity">
+                                                            <span>@item.DbCount</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="label-basket-quantity">Basket Quantity:</td>
+                                                        <td class="value-basket-quantity">
+                                                            <span>@item.BasketCount</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="label-subtotal">Subtotal:</td>
+                                                        <td class="value-subtotal">
+                                                            <span>$@total.ToString("#.00")</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="additional-info-wrapper">
+                                        <div class="product-remove">
+                                            <a href="#" class="remove-Product" data-id="@item.Id"><i class="fas fa-times"></i></a>
+                                        </div>
+                                        <div class="minus-product">
+                                            @if (item.BasketCount > 1)
+                                            {
+                                                <a href="#" class="minusproduct" data-id="@item.Id">
+                                                    <i class="fas fa-minus"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="minusproduct d-none" data-id="@item.Id">
+                                                    <i class="fas fa-minus"></i>
+                                                </a>
+                                            }
+                                        </div>
+                                        <div class="plus-product">
+                                            @if (item.BasketCount < item.DbCount)
+                                            {
+                                                <a href="#" class="plusproduct" data-id="@item.Id">
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="plusproduct" data-id="@item.Id">
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col sm-6">
+                        <div class="cart-collaterals">
+                            <div class="cart-totals">
+                                <h2>Cart totals</h2>
+                                <table class="table">
+                                    <tbody>
+                                        <tr class="order-total">
+                                            <th>Total :</th>
+                                            <td>
+                                                <strong class="basket-Total-Price" id="basketTotalPrice">$@Total.ToString("#.00")</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="checkout">
+                                    <a href="#" class="checkout-buton">Proceed to checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- Cartlist end -->
+
+@section Scripts{
+
+
+
+<script>
+        $(document).ready(function () {
+            if ($(".cartlist-table tbody tr").length == 0) {
+                $(".cart-collaterals").addClass("d-none");
+            }
+            else {
+                $(".cart-collaterals").removeClass("d-none");
+            }
+
+            if ($(".list-item li").length == 0) {
+                $(".cart-collaterals").addClass("d-none");
+            }
+            else {
+                $(".cart-collaterals").removeClass("d-none");
+            }
+        })
+    </script>
+
+<script>
+        let plusProduct = document.querySelectorAll('.plus');
+        plusProduct.forEach(item => {
+            item.addEventListener("click", function (event) {
+                event.preventDefault();
+                var plusBtn = this;
+                let formdata = new FormData();
+                let id = plusBtn.getAttribute("data-id");
+                formdata.append("id", id);
+                console.log(plusBtn.parentElement.previousElementSibling.
+                    previousElementSibling.previousElementSibling)
+                axios.post('/basket/ProductCountPlus', formdata)
+                    .then(function (response) {
+                        let basketTotalPrice = document.getElementById('basketTotalPrice');
+
+
+                        plusBtn.parentElement.previousElementSibling.previousElementSibling.textContent = "$" + response.data.productTotalPrice;
+                        basketTotalPrice.innerHTML = "$" + response.data.basketTotalPrice;
+
+                        plusBtn.parentElement.previousElementSibling.
+                            previousElementSibling.previousElementSibling.textContent = response.data.productBasketCount;
+
+                        if (response.data.productBasketCount > 1) {
+                            plusBtn.parentElement.previousElementSibling
+                                .firstElementChild.classList.remove('d-none');
+                        }
+
+                        if (response.data.productBasketCount == response.data.basketProductDbCount) {
+                            plusBtn.classList.add('d-none');
+                        }
+
+                    })
+            })
+        })
+    </script>
+
+<script>
+      let minusProduct = document.querySelectorAll('.minus');
+      minusProduct.forEach(item => {
+          item.addEventListener("click", function (e) {
+              e.preventDefault();
+              var minusBtn = this;
+              let formdata = new FormData();
+              let id = minusBtn.getAttribute("data-id");
+              formdata.append("id", id);
+              axios.post('/basket/ProductCountMinus', formdata)
+                  .then(function (response) {
+                      let basketTotalPrice = document.getElementById('basketTotalPrice');
+
+
+                      minusBtn.parentElement.previousElementSibling.textContent = "$" + response.data.productTotalPrice;
+                      basketTotalPrice.innerHTML = "$" + response.data.basketTotalPrice;
+
+                      minusBtn.parentElement.previousElementSibling.
+                          previousElementSibling.textContent = response.data.productBasketCount;
+
+                      if (response.data.productBasketCount == 1) {
+                          minusBtn.classList.add('d-none');
+                      }
+                      else {
+                          minusBtn.parentElement.nextElementSibling.
+                              firstElementChild.classList.remove('d-none');
+                      }
+                  })
+          })
+      })
+  </script>
+
+<script>
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-left",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+
+    let allRemove = document.querySelectorAll(".removeProduct");
+    allRemove.forEach(item => {
+        item.addEventListener("click", function () {
+            event.preventDefault();
+            let id = $(this).attr("data-id");
+            toastr.error(`the product has removed from your cartlist`);
+            $.ajax({
+                url: "/Basket/RemoveItem?Id=" + id,
+                type: "Get",
+                success: function (res) {
+                    console.log(res);
+                    let basketTotalPrice = document.getElementById('basketTotalPrice');
+                    let totalCountPrice = document.getElementById('totalCountPrice');
+
+                    basketTotalPrice.innerHTML = "$" + res.basketTotalPrice;
+                    totalCountPrice.innerHTML = res.cartlistProductCount;
+                    item.parentElement.parentElement.remove();
+                    $(document).ready(function () {
+                        if ($(".cartlist-table tbody tr").length == 0) {
+                            $(".cart-collaterals").addClass("d-none");
+                        }
+                        else {
+                            $(".cart-collaterals").removeClass("d-none");
+                        }
+                    })
+                }
+            })
+        })
+    })
+</script>
+
+<script>
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-left",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+
+    let removeItem = document.querySelectorAll(".remove-Product");
+    removeItem.forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            let id = $(this).attr("data-id");
+            toastr.error(`the product has removed from your cartlist`);
+            $.ajax({
+                url: "/Basket/RemoveItem?Id=" + id,
+                type: "Get",
+                success: function (res) {
+                    console.log(res);
+                    let basketTotalPrice = document.getElementById('basketTotalPrice');
+                    let totalCountPrices = document.getElementById('totalCountPrice');
+
+                    basketTotalPrice.innerHTML = "$" + res.basketTotalPrice;
+                    totalCountPrices.innerHTML = res.cartlistProductCount;
+                    item.parentElement.parentElement.parentElement.remove();
+                    $(document).ready(function () {
+                        if ($(".list-item li").length == 0) {
+                            $(".cart-collaterals").addClass("d-none");
+                        }
+                        else {
+                            $(".cart-collaterals").removeClass("d-none");
+                        }
+                    })
+                }
+            })
+        })
+    })
+</script>
+
+<script>
+    let plusproduct = document.querySelectorAll('.plusproduct');
+    plusproduct.forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            var plusButon = this;
+            let formdata = new FormData();
+            let id = plusButon.getAttribute("data-id");
+            formdata.append("id", id);
+
+            axios.post('/basket/ProductCountPlus', formdata)
+            .then(function (response) {
+                        let basketTotalPrice = document.getElementById('basketTotalPrice');
+
+
+                plusButon.parentElement.parentElement.previousElementSibling
+                    .firstElementChild.nextElementSibling.firstElementChild
+                    .nextElementSibling.firstElementChild.firstElementChild.nextElementSibling
+                    .nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.textContent = "$" + response.data.productTotalPrice;
+                        basketTotalPrice.innerHTML = "$" + response.data.basketTotalPrice;
+
+                plusButon.parentElement.parentElement.previousElementSibling
+                    .firstElementChild.nextElementSibling.firstElementChild
+                    .nextElementSibling.firstElementChild.firstElementChild.nextElementSibling
+                    .nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.textContent = response.data.productBasketCount;
+
+                console.log(response.data.productBasketCount)
+
+                        if (response.data.productBasketCount > 1) {
+                            plusButon.parentElement.previousElementSibling
+                                .firstElementChild.classList.remove('d-none');
+                        }
+
+                        if (response.data.productBasketCount == response.data.basketProductDbCount) {
+                            plusButon.classList.add('d-none');
+                        }
+
+                    })
+        })
+    })
+</script>
+
+<script>
+    let minusproduct = document.querySelectorAll('.minusproduct');
+    minusproduct.forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            var minusButon = this;
+            let formdata = new FormData();
+            let id = minusButon.getAttribute("data-id");
+            formdata.append("id", id);
+            console.log(minusButon.parentElement.parentElement.previousElementSibling
+                .firstElementChild.nextElementSibling.firstElementChild
+                .nextElementSibling.firstElementChild.firstElementChild.nextElementSibling
+                .nextElementSibling.firstElementChild.nextElementSibling);
+            axios.post('/basket/ProductCountMinus', formdata)
+                .then(function (response) {
+                    let basketTotalPrice = document.getElementById('basketTotalPrice');
+
+
+                    minusButon.parentElement.parentElement.previousElementSibling
+                        .firstElementChild.nextElementSibling.firstElementChild
+                        .nextElementSibling.firstElementChild.firstElementChild.nextElementSibling
+                        .nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.textContent = "$" + response.data.productTotalPrice;
+                    basketTotalPrice.innerHTML = "$" + response.data.basketTotalPrice;
+
+                    minusButon.parentElement.parentElement.previousElementSibling
+                        .firstElementChild.nextElementSibling.firstElementChild
+                        .nextElementSibling.firstElementChild.firstElementChild.nextElementSibling
+                        .nextElementSibling.firstElementChild.nextElementSibling.textContent = response.data.productBasketCount;
+
+                    if (response.data.productBasketCount == 1) {
+                        minusButon.classList.add('d-none');
+                    }
+                    else {
+                        minusButon.parentElement.nextElementSibling.
+                            firstElementChild.classList.remove('d-none');
+                    }
+
+                })
+        })
+    })
+</script>
+
+}
