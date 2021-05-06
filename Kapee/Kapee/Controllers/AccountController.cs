@@ -4,8 +4,6 @@ using Kapee.Models.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -69,6 +67,7 @@ namespace Kapee.Controllers
             {
                 UserName = registerVM.UserName,
                 Email = registerVM.Email,
+                PhoneNumber = registerVM.Phone
             };
 
             
@@ -144,7 +143,6 @@ namespace Kapee.Controllers
             {
                 Name = vender.Name,
                 Surname = vender.Surname,
-                Phone = vender.Phone,
                 ShopName = vender.ShopName,
                 ShopLogoUrl = vender.ShopLogoUrl,
                 AppUserId = user.Id

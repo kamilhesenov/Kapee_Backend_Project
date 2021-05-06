@@ -20,6 +20,9 @@ namespace Kapee.Models.ViewModel
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        
+        [Required(ErrorMessage = "Please enter your Phone!"), MaxLength(20)]
+        public string Phone { get; set; }
+
+
     }
 }

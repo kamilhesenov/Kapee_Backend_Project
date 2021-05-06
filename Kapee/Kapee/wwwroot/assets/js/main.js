@@ -238,12 +238,16 @@ $(document).ready(function () {
         $(".header-account-heart-cart").addClass("show");
         if(window.innerWidth > 991.98){
             $("#header-serch .search").addClass("d-none");
+            $("#header-serch .header-heart a span").addClass("user-wishlist-response");
+            //$("#header-serch .header-heart a span").addClass("wishlist-response");
         }
         
       }
       else{
         $(".header-account-heart-cart").removeClass("show");
-        $("#header-serch .search").removeClass("d-none");
+          $("#header-serch .search").removeClass("d-none");
+          $("#header-serch .header-heart a span").removeClass("user-wishlist-response");
+          //$("#header-serch .header-heart a span").removeClass("wishlist-response");
       }
      });
      }

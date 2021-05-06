@@ -144,7 +144,7 @@
                                                             <i class="far fa-heart"></i>
                                                         </a>
                                                     </div>
-                                                    <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
+                                                    <a class="select-image" asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
                                                         @{ var zsel = 1;}
                                                         @foreach (var img in item.ProductGalleries)
                                                         {
@@ -755,21 +755,31 @@
             "hideEasing": "linear",
             "showMethod": "fadeIn",
         }
-
+        let selectedPhoto;
         let AllAddSpan = document.querySelectorAll(".add-to-wishlist");
         AllAddSpan.forEach(item => {
-            item.addEventListener("click", function () {
-                event.preventDefault();
+            item.addEventListener("click", function (e) {
+                e.preventDefault();
+                
+                let images = this.parentNode.nextElementSibling.children;
+                
+                for (let sekil of images) {
+                    
+                    if (sekil.classList.contains('hide-img') === false) {
+                        
+                        selectedPhoto = sekil.getAttribute("src");
+                    }
+                }
+                
                 let id = $(this).attr("data-id");
+                
                 toastr.success(`the product added to your wishlist`);
                 $.ajax({
-                    url: "/WishList/AddToWish?Id=" + id,
+                    url: "/WishList/AddToWish?Id=" + id + "&selectedPhoto=" + selectedPhoto,
                     type: "Get",
                     success: function (res) {
-                        console.log(res.wishlistProductCount);
                         let totalCount = document.getElementById('totalCount');
                         totalCount.innerHTML = res.wishlistProductCount;
-
                     }
                 })
             })
@@ -794,15 +804,27 @@
            "hideEasing": "linear",
            "showMethod": "fadeIn",
        }
-
+       let selectedPhotos;
        let AddSpan = document.querySelectorAll(".add-to-cartlist");
        AddSpan.forEach(item => {
-           item.addEventListener("click", function () {
-               event.preventDefault();
+           item.addEventListener("click", function (e) {
+               e.preventDefault();
+               let images = this.parentNode.parentNode.parentNode.previousElementSibling
+                   .firstChild.nextElementSibling.nextElementSibling.nextElementSibling
+                   .children;
+
+               for (let sekil of images) {
+
+                   if (sekil.classList.contains('hide-img') === false) {
+
+                       selectedPhotos = sekil.getAttribute("src");
+                   }
+               }
+
                let id = $(this).attr("data-id");
                toastr.success(`the product added to your cartlist`);
                $.ajax({
-                   url: "/Basket/AddToCart?Id=" + id,
+                   url: "/Basket/AddToCart?Id=" + id + "&selectedPhotos=" + selectedPhotos,
                    type: "Get",
                    success: function (res) {
                        let totalCountPrice = document.getElementById('totalCountPrice');

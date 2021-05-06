@@ -12,9 +12,6 @@ namespace Kapee.Models.ViewModel
         [Required(ErrorMessage = "Please enter your Surname!"), MaxLength(100)]
         public string Surname { get; set; }
 
-        [Required(ErrorMessage = "Please enter your Phone!"), MaxLength(100)]
-        public string Phone { get; set; }
-
         [Required(ErrorMessage = "Please enter Shop Name!"), MaxLength(100)]
         public string ShopName { get; set; }
 

@@ -34,7 +34,6 @@ namespace Kapee.Controllers
                     if (product != null)
                     {
                         basketProduct.Price = product.Price;
-                        basketProduct.Photo = product.ProductGalleries.FirstOrDefault(x => x.ProductId == product.Id).Photo;
                         basketProduct.Name = product.Name;
                     }
                     
@@ -46,11 +45,11 @@ namespace Kapee.Controllers
         }
 
 
-        public async Task<IActionResult> AddToWish(int? id)
+        public async Task<IActionResult> AddToWish(int? id, string selectedPhoto)
         {
             if (id == null) return NotFound();
             
-            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            Product product = await _context.Products.Include(x=>x.ProductGalleries).FirstOrDefaultAsync(x => x.Id == id );
             if (product == null) return NotFound();
 
             List<WishListWiewModel> wishlistProducts;
@@ -69,21 +68,19 @@ namespace Kapee.Controllers
             {
                 WishListWiewModel newproduct = new WishListWiewModel
                 {
-                    Id = product.Id
-                    
+                    Id = product.Id,
+                    Photo = product.ProductGalleries.FirstOrDefault(x => selectedPhoto.Contains(x.Photo)).Photo
                 };
                 wishlistProducts.Add(newproduct);
             }
 
             foreach (var wishlistProduct in wishlistProducts)
             {
-                Product dbProduct = _context.Products.Include(x=>x.ProductGalleries).FirstOrDefault(x => x.Id == wishlistProduct.Id);
+                Product dbProduct = _context.Products.FirstOrDefault(x => x.Id == wishlistProduct.Id);
                 if (dbProduct != null)
                 {
                     wishlistProduct.Price = dbProduct.Price;
-                    wishlistProduct.Photo = dbProduct.ProductGalleries.FirstOrDefault(x=>x.ProductId == dbProduct.Id).Photo;
                     wishlistProduct.Name = dbProduct.Name;
-                    
                 }
                 
             }

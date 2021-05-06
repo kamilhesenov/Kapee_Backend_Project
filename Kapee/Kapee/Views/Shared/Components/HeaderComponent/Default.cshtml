@@ -107,8 +107,8 @@
                 </div>
                 <div class="col-lg-6 col-md-6 search-product-icon">
                     <div class="search">
-                        <form>
-                            <input type="search" placeholder="Search for products, categories, brands, sku...">
+                        <form method="post">
+                            <input type="text" id="search" name="search" class="name" placeholder="Search for products, categories, brands, sku..." id="name" name="name">
                             <div class="select-search">
                                 <select class="search-category">
                                     <option selected disabled>All Categories</option>
@@ -118,7 +118,7 @@
                                     }
                                 </select>
                             </div>
-                            <button type="submit" class="search-select">Search</button>
+                            <button asp-controller="Search" asp-action="Search" type="submit" class="search-select">Search</button>
                             <i class="fas fa-search"></i>
                         </form>
                         <div class="add-product">
@@ -152,8 +152,16 @@
                     </div>
                     <div class="header-heart">
                         <a asp-controller="wishlist" asp-action="Index">
-                            <i class="far fa-heart"></i>
-                            <span id="totalCount">@ViewBag.WishlistCount</span>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <i class="far fa-heart"></i>
+                                <span class="user-wishlist" id="totalCount">@ViewBag.WishlistCount</span>
+                            }
+                            else
+                            {
+                                <i class="far fa-heart"></i>
+                                <span id="totalCount">@ViewBag.WishlistCount</span>
+                            }
                         </a>
                     </div>
                     <div class="header-cart">
@@ -552,4 +560,7 @@
         </div>
     </section>
 </header>
+
+
+
 

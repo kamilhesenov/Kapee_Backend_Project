@@ -34,6 +34,11 @@
                                                 <span asp-validation-for="@Model.UserName" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
+                                                <label for="password">Phone</label>
+                                                <input asp-for="@Model.Phone" type="tel" class="form-control" id="password">
+                                                <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="email">Email Address</label>
                                                 <input asp-for="@Model.Email" class="form-control" id="email">
                                                 <span asp-validation-for="@Model.Email" class="text-danger"></span>
@@ -67,7 +72,19 @@
 
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="phoneno-all-numeric-validation.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            $('[type=tel]').on('change', function (e) {
+                $(e.target).val($(e.target).val().replace(/[^\d\.]/g, ''));
+            })
+            $('[type=tel]').on('keypress', function (e) {
+                keys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+'];
+                return keys.indexOf(event.key) > -1;
+            })
+        })
+    </script>
 }
 
 

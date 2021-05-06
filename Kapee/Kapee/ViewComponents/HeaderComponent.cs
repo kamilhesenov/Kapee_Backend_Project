@@ -4,6 +4,7 @@ using Kapee.Models.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,8 @@ namespace Kapee.ViewComponents
                 HeaderLogo = _context.HeaderLogos.FirstOrDefault(),
                 Categories = _context.Categories.ToList()
             };
+
+            
 
             return View(model);
         }

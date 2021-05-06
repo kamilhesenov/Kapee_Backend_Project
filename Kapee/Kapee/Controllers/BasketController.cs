@@ -36,7 +36,6 @@ namespace Kapee.Controllers
                     if (product != null)
                     {
                         basketProduct.Price = product.Price;
-                        basketProduct.Photo = product.ProductGalleries.FirstOrDefault(x => x.ProductId == product.Id).Photo;
                         basketProduct.Name = product.Name;
                         basketProduct.DbCount = product.Count;
                     }
@@ -50,12 +49,12 @@ namespace Kapee.Controllers
             return View(basketProducts);
         }
 
-        public async Task<IActionResult> AddToCart(int? id)
+        public async Task<IActionResult> AddToCart(int? id, string selectedPhotos)
         {
             decimal basketTotalPrice = 0;
             if (id == null) return NotFound();
 
-            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            Product product = await _context.Products.Include(x=>x.ProductGalleries).FirstOrDefaultAsync(x => x.Id == id);
             if (product == null) return NotFound();
 
             List<BasketViewModel> cartlistProducts;
@@ -76,8 +75,9 @@ namespace Kapee.Controllers
                 {
                     Id = product.Id,
                     BasketCount = 1,
+                    Photo = product.ProductGalleries.FirstOrDefault(x => selectedPhotos.Contains(x.Photo)).Photo
 
-                };
+            };
                 cartlistProducts.Add(newproduct);
             }
             else
@@ -87,11 +87,10 @@ namespace Kapee.Controllers
 
             foreach (var cartlistProduct in cartlistProducts)
             {
-                Product dbProduct = _context.Products.Include(x => x.ProductGalleries).FirstOrDefault(x => x.Id == cartlistProduct.Id);
+                Product dbProduct = _context.Products.FirstOrDefault(x => x.Id == cartlistProduct.Id);
                 if (dbProduct != null)
                 {
                     cartlistProduct.Price = dbProduct.Price;
-                    cartlistProduct.Photo = dbProduct.ProductGalleries.FirstOrDefault(x => x.ProductId == dbProduct.Id).Photo;
                     cartlistProduct.Name = dbProduct.Name;
                     cartlistProduct.DbCount = dbProduct.Count;
 

@@ -77,5 +77,6 @@ namespace Kapee.Models.Product
         public List<ProductColor> ProductColors { get; set; }
         public List<ProductSize> ProductSizes { get; set; }
         public SubCategory SubCategory { get; set; }
+        public List<ProductCheckout> ProductCheckouts { get; set; }
     }
 }

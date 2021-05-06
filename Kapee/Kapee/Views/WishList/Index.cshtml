@@ -221,15 +221,23 @@
         "hideEasing": "linear",
         "showMethod": "fadeIn",
     }
-
+    let selectedPhotos;
     let AddSpan = document.querySelectorAll(".add-to-cartlist");
     AddSpan.forEach(item => {
-        item.addEventListener("click", function () {
-            event.preventDefault();
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            console.log(this.parentNode.previousElementSibling.previousElementSibling
+                .previousElementSibling.firstElementChild.firstElementChild)
+            let image = this.parentNode.previousElementSibling.previousElementSibling
+                .previousElementSibling.firstElementChild.firstElementChild;
+            if (image.classList.contains('hide-img') === false) {
+
+                selectedPhotos = image.getAttribute("src");
+            }
             let id = $(this).attr("data-id");
             toastr.success(`the product added to your cartlist`);
             $.ajax({
-                url: "/Basket/AddToCart?Id=" + id,
+                url: "/Basket/AddToCart?Id=" + id + "&selectedPhotos=" + selectedPhotos,
                 type: "Get",
                 success: function (res) {
                     let totalCountPrice = document.getElementById('totalCountPrice');
@@ -285,4 +293,6 @@
         })
     })
 </script>
+
+
 }
