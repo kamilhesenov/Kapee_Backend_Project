@@ -42,6 +42,7 @@ namespace Kapee.Data
         public DbSet<ProductSize> ProductSizes { get; set; }
         public DbSet<Checkout> Checkouts { get; set; }
         public DbSet<ProductCheckout> ProductCheckouts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
     }
 }

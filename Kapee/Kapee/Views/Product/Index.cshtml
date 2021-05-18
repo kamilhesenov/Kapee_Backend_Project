@@ -229,7 +229,7 @@
                             </form>
                         </div>
                         <div class="product-button">
-                            <a href="#" class="add-to-wishlist" data-id="@Model.Product.Id">
+                            <a href="#" class="add-to-wishlist-item" data-id="@Model.Product.Id">
                                 <i class="far fa-heart"></i>
                                 <span>Add to Wishlist</span>
                             </a>
@@ -1162,5 +1162,43 @@
             })
         })
     </script>
+
+    @*<script>
+        let selectedPhotoes;
+        let addwish = document.querySelector(".add-to-wishlist-item");
+        addwish.addEventListener("click", function (e) {
+            e.preventDefault();
+            
+
+            let imgs = this.parentNode.parentNode.parentNode.previousElementSibling
+                .firstElementChild.firstElementChild.nextElementSibling
+                .firstElementChild.firstElementChild.firstElementChild
+                .firstElementChild.firstElementChild;
+            console.log(imgs.getAttribute("src"));
+
+            for (let img of imgs) {
+
+                if (img.classList.contains('hide-img') === false) {
+                    
+                    selectedPhotoes = image.getAttribute("src");
+                }
+            }
+
+            let id = $(this).attr("data-id");
+
+            $.ajax({
+                url: "/WishList/AddToWish?Id=" + id + "&selectedPhotoes=" + selectedPhotoes,
+                type: "Get",
+                success: function (res) {
+                    console.log(res.wishlistProductCount);
+                    let totalCount = document.getElementById('totalCount');
+                    totalCount.innerHTML = res.wishlistProductCount;
+
+                }
+            })
+
+            console.log(selectedPhotoes);
+        })
+    </script>*@
 }
 
