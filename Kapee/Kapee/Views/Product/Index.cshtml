@@ -1163,42 +1163,47 @@
         })
     </script>
 
-    @*<script>
+    <script>
         let selectedPhotoes;
-        let addwish = document.querySelector(".add-to-wishlist-item");
+        let addwish = document.querySelectorAll(".add-to-wishlist-item");
         addwish.addEventListener("click", function (e) {
             e.preventDefault();
+
             
 
             let imgs = this.parentNode.parentNode.parentNode.previousElementSibling
                 .firstElementChild.firstElementChild.nextElementSibling
                 .firstElementChild.firstElementChild.firstElementChild
                 .firstElementChild.firstElementChild;
-            console.log(imgs.getAttribute("src"));
+
+            //console.log(imgs);
+
+            
 
             for (let img of imgs) {
-
+                //console.log(img);
                 if (img.classList.contains('hide-img') === false) {
                     
-                    selectedPhotoes = image.getAttribute("src");
+                    selectedPhotoes = img.getAttribute("src");
+                    console.log(selectedPhotoes);
                 }
             }
 
             let id = $(this).attr("data-id");
 
             $.ajax({
-                url: "/WishList/AddToWish?Id=" + id + "&selectedPhotoes=" + selectedPhotoes,
+                url: "/Product/AddToWish?Id=" + id + "&selectedPhotoes=" + selectedPhotoes,
                 type: "Get",
                 success: function (res) {
-                    console.log(res.wishlistProductCount);
+                    //console.log(res.wishlistProductCount);
                     let totalCount = document.getElementById('totalCount');
                     totalCount.innerHTML = res.wishlistProductCount;
 
                 }
             })
 
-            console.log(selectedPhotoes);
+            //console.log(selectedPhotoes);
         })
-    </script>*@
+    </script>
 }
 

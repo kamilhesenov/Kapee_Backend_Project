@@ -13,6 +13,7 @@ using Kapee.Data;
 using ReflectionIT.Mvc.Paging;
 using Microsoft.AspNetCore.Identity;
 using Kapee.Models;
+using Kapee.Filter;
 
 namespace Kapee
 {
@@ -34,6 +35,7 @@ namespace Kapee
             services.AddPaging(options => {
                 options.ViewName = "Bootstrap4";
             });
+            services.AddSingleton<IFileManager, FileManager>();
             services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
             {
 
@@ -71,6 +73,11 @@ namespace Kapee
             app.UseDefaultFiles();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

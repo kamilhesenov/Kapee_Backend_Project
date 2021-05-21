@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading.Tasks;
 
 namespace Kapee.Controllers
 {
@@ -102,6 +102,55 @@ namespace Kapee.Controllers
             
 
             return View(model);
+        }
+
+        public async Task<IActionResult> AddToWish(int? id, string selectedPhotoes)
+        {
+            if (id == null) return NotFound();
+
+            Product product = await _context.Products.Include(x => x.ProductGalleries).FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null) return NotFound();
+
+            List<WishListWiewModel> wishlistProducts;
+            if (Request.Cookies["wishlist"] == null)
+            {
+                wishlistProducts = new List<WishListWiewModel>();
+            }
+            else
+            {
+                wishlistProducts = JsonConvert.DeserializeObject<List<WishListWiewModel>>(Request.Cookies["wishlist"]);
+            }
+
+            WishListWiewModel existProduct = wishlistProducts.FirstOrDefault(x => x.Id == id);
+            if (existProduct == null)
+            {
+                WishListWiewModel newproduct = new WishListWiewModel
+                {
+                    Id = product.Id,
+                    Photo = product.ProductGalleries.FirstOrDefault(x => selectedPhotoes.Contains(x.Photo)).Photo
+                };
+                wishlistProducts.Add(newproduct);
+            }
+
+            foreach (var wishlistProduct in wishlistProducts)
+            {
+                Product dbProduct = _context.Products.FirstOrDefault(x => x.Id == wishlistProduct.Id);
+                if (dbProduct != null)
+                {
+                    wishlistProduct.Price = dbProduct.Price;
+                    wishlistProduct.Name = dbProduct.Name;
+                }
+            }
+
+            string wishlist = JsonConvert.SerializeObject(wishlistProducts);
+            Response.Cookies.Append("wishlist", wishlist, new CookieOptions { MaxAge = TimeSpan.FromDays(14) });
+
+            var anonymObject = new
+            {
+                WishlistProductCount = wishlistProducts.Count()
+            };
+
+            return Ok(anonymObject);
         }
 
 

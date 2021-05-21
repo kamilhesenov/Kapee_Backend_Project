@@ -1,0 +1,66 @@
+﻿@model Kapee.Models.Home.FashionSlider
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/UserPanel/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center"><h1>Details</h1></div>
+
+<div>
+    <hr />
+    <dl class="row ml-5">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/uploads/@Model.Photo" width="200" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TextStyleLeft)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TextStyleLeft)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TextStyleRight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TextStyleRight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+</div>
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model.Id"><i class="fas fa-edit"></i></a>
+    <a class="btn btn-outline-secondary ml-3" asp-action="Index">Return to Back</a>
+</div>
+

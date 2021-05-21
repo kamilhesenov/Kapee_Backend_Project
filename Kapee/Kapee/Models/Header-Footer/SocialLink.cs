@@ -20,12 +20,6 @@ namespace Kapee.Models.Header_Footer
         public string Instagram { get; set; }
 
         [Required, MaxLength(300)]
-        public string Flickr { get; set; }
-
-        [Required, MaxLength(300)]
-        public string Rss { get; set; }
-
-        [Required, MaxLength(300)]
         public string Youtube { get; set; }
     }
 }
