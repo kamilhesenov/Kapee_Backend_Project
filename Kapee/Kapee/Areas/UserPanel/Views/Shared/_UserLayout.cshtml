@@ -47,7 +47,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -73,26 +73,49 @@
                         <a class="collapse-item" asp-controller="HomeTestimonial" asp-action="Index">Testimonial</a>
                         <a class="collapse-item" asp-controller="HomeTestimonialItem" asp-action="Index">Testimonial Item</a>
                         <a class="collapse-item" asp-controller="HomeInfo" asp-action="Index">Info</a>
-                        <a class="collapse-item" asp-controller="HomeHealth" asp-action="Index">Home Health</a>
+                        <a class="collapse-item" asp-controller="HomeNews" asp-action="Index">News</a>
                         <a class="collapse-item" asp-controller="HomeBrand" asp-action="Index">Brand</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item aboutAdmin">
-                <a class="nav-link collapsed aboutpage d-flex justify-content-between align-items-center" href="#" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed categorypage d-flex justify-content-between align-items-center" href="#" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <smal>
                         <i class="fas fa-fw fa-folder"></i>
-                        <span>About</span>
+                        <span>Category</span>
                     </smal>
-                    <span class="about-icon">
+                    <span class="category-icon">
                         <i class="fas fa-angle-right "></i>
                     </span>
                 </a>
-                <div id="collapsePages" class="collapse aboutpageitem" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse categorypageitem" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" asp-controller="Labaratory" asp-action="Index">Labaratory</a>
-                        <a class="collapse-item" asp-controller="AboutChooseUs" asp-action="Index">About Choose Us</a>
-                        <a class="collapse-item" asp-controller="AboutChooseUsItem" asp-action="Index">About Choose Us Item</a>
+                        <a class="collapse-item" asp-controller="Categories" asp-action="Index">Category</a>
+                        <a class="collapse-item" asp-controller="SubCategories" asp-action="Index">SubCategory</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item homeAdmin">
+                <a class="nav-link collapsed productpage d-flex justify-content-between align-items-center" href="#" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <smal>
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Product</span>
+                    </smal>
+                    <span class="product-icon">
+                        <i class="fas fa-angle-right "></i>
+                    </span>
+                </a>
+                <div id="collapsePages" class="collapse productpageitem" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="Fashion" asp-action="Index">Fashion Slider</a>
+                        <a class="collapse-item" asp-controller="ProductGalleries" asp-action="Index">Product Gallery</a>
+                        <a class="collapse-item" asp-controller="BigSizePhotoes" asp-action="Index">BigSize Photo</a>
+                        <a class="collapse-item" asp-controller="SmallSizePhoto" asp-action="Index">SmallSize Photo</a>
+                        <a class="collapse-item" asp-controller="ProductPrize" asp-action="Index">Product Prize</a>
+                        <a class="collapse-item" asp-controller="HomeInfo" asp-action="Index">Info</a>
+                        <a class="collapse-item" asp-controller="HomeNews" asp-action="Index">News</a>
+                        <a class="collapse-item" asp-controller="HomeBrand" asp-action="Index">Brand</a>
                     </div>
                 </div>
             </li>
@@ -101,19 +124,19 @@
 
             <!-- Nav Item - Charts -->
             @*<li class="nav-item">
-                <a class="nav-link" asp-controller="SocialLink" asp-action="Index">
-                    <i class="far fa-thumbs-up"></i>
-                    <span>Social Link</span>
-                </a>
-            </li>*@
+            <a class="nav-link" asp-controller="SocialLink" asp-action="Index">
+                <i class="far fa-thumbs-up"></i>
+                <span>Social Link</span>
+            </a>
+        </li>*@
 
             <!-- Nav Item - Tables -->
             @*<li class="nav-item">
-                <a class="nav-link" asp-controller="Setting" asp-action="Index">
-                    <i class="far fa-address-card"></i>
-                    <span>Setting</span>
-                </a>
-            </li>*@
+            <a class="nav-link" asp-controller="Setting" asp-action="Index">
+                <i class="far fa-address-card"></i>
+                <span>Setting</span>
+            </a>
+        </li>*@
 
             <li class="nav-item">
                 <a class="nav-link" asp-controller="AppointmentPhoto" asp-action="Index">
@@ -394,14 +417,25 @@
                     $(".home-icon i").removeClass("fa-angle-down").addClass("fa-angle-right");
                 }
             })
-            $(".aboutpage").click(function (e) {
+            $(".categorypage").click(function (e) {
                 e.preventDefault();
-                $(".aboutpageitem").toggle();
-                if ($(".about-icon i").hasClass("fa-angle-right")) {
-                    $(".about-icon i").removeClass("fa-angle-right").addClass("fa-angle-down");
+                $(".categorypageitem").toggle();
+                if ($(".category-icon i").hasClass("fa-angle-right")) {
+                    $(".category-icon i").removeClass("fa-angle-right").addClass("fa-angle-down");
                 }
                 else {
-                    $(".about-icon i").removeClass("fa-angle-down").addClass("fa-angle-right");
+                    $(".category-icon i").removeClass("fa-angle-down").addClass("fa-angle-right");
+                }
+            })
+
+            $(".productpage").click(function (e) {
+                e.preventDefault();
+                $(".productpageitem").toggle();
+                if ($(".product-icon i").hasClass("fa-angle-right")) {
+                    $(".product-icon i").removeClass("fa-angle-right").addClass("fa-angle-down");
+                }
+                else {
+                    $(".product-icon i").removeClass("fa-angle-down").addClass("fa-angle-right");
                 }
             })
 

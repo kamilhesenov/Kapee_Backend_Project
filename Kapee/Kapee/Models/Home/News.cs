@@ -19,6 +19,7 @@ namespace Kapee.Models.Home
         public string AddedBy { get; set; }
 
         [Required, Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Date { get; set; }
 
         [Required, MaxLength(500)]

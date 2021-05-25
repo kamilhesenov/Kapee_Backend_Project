@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kapee.Models.Product
 {
@@ -10,6 +11,9 @@ namespace Kapee.Models.Product
         [Required]
         public int ProductId { get; set; }
         public string Photo { get; set; }
+
+        [NotMapped]
+        public IFormFile Upload { get; set; }
         public Product Product { get; set; }
     }
 }

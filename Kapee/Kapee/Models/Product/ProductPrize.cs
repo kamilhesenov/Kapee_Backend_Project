@@ -12,6 +12,7 @@ namespace Kapee.Models.Product
         public int ProductId { get; set; }
 
         [Required, Column(TypeName = "money")]
+        [DisplayFormat(DataFormatString = "${0:#.00}")]
         public decimal Prize { get; set; }
         public Product Product { get; set; }
     }

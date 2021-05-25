@@ -11,13 +11,13 @@
                 <div class="owl-carousel owl-them">
                     @foreach (var item in Model.FashionSliders)
                     {
-                        <div class="item bg-img" style="background-image: url(assets/img/@item.Photo)">
-                            <div class="title @item.TextStyleLeft @item.TextStyleRight">
-                                <h1>@item.Title</h1>
-                                <p><span>@item.Content</span> @item.Description</p>
-                                <a href="#">Shop Now</a>
-                            </div>
+                    <div class="item bg-img" style="background-image: url(/uploads/@item.Photo)">
+                        <div class="title @item.TextStyleLeft @item.TextStyleRight">
+                            <h1>@item.Title</h1>
+                            <p><span>@item.Content</span> @item.Description</p>
+                            <a href="#">Shop Now</a>
                         </div>
+                    </div>
                     }
                 </div>
             </div>
@@ -36,7 +36,7 @@
                                 <div class="item">
                                     <a href="#">
                                         <div class="category-slider-img">
-                                            <img src="~/assets/img/@item.Photo" alt="">
+                                            <img src="~/uploads/@item.Photo">
                                         </div>
                                         <div class="category-slider-text">
                                             <p>@item.Name</p>
@@ -55,7 +55,7 @@
                                 <div class="item">
                                     <a href="#">
                                         <div class="category-slider-img">
-                                            <img src="~/assets/img/@item.Photo" alt="">
+                                            <img src="~/uploads/@item.Photo">
                                         </div>
                                         <div class="category-slider-text">
                                             <p>@item.Name</p>
@@ -81,7 +81,7 @@
                             <div class="collection-items">
                                 <div class="collection-item">
                                     <div class="collection-img">
-                                        <img src="~/assets/img/@item.Photo" alt="">
+                                        <img src="~/uploads/@item.Photo" alt="">
                                     </div>
                                     <div class="collection-text">
                                         <span>@item.Title</span>
@@ -150,16 +150,16 @@
                                                         {
                                                             @if (zsel == 1)
                                                             {
-                                                                <img data-id=@zsel src="~/assets/img/@img.Photo" alt="">
+                                                                <img data-id=@zsel src="~/uploads/@img.Photo" alt="">
                                                             }
                                                             else
                                                             {
-                                                                <img class="hide-img" data-id=@zsel src="~/assets/img/@img.Photo" alt="">
+                                                                <img class="hide-img" data-id=@zsel src="~/uploads/@img.Photo" alt="">
                                                             }
 
                                                             zsel++;
                                                         }
-                                                        <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="">
+                                                        <img class="hover-image hide-img" src="~/uploads/@item.HoverPhoto" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="product-text">
@@ -284,16 +284,16 @@
                                                         {
                                                             @if (zfet == 1)
                                                             {
-                                                                <img data-id=@zfet src="~/assets/img/@img.Photo" alt="">
+                                                                <img data-id=@zfet src="~/uploads/@img.Photo" alt="">
                                                             }
                                                             else
                                                             {
-                                                                <img class="hide-img" data-id=@zfet src="~/assets/img/@img.Photo" alt="">
+                                                                <img class="hide-img" data-id=@zfet src="~/uploads/@img.Photo" alt="">
                                                             }
                                                             zfet++;
                                                         }
 
-                                                        <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="">
+                                                        <img class="hover-image hide-img" src="~/uploads/@item.HoverPhoto" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="product-text">
@@ -417,16 +417,16 @@
                                                         {
                                                             @if (zonsel == 1)
                                                             {
-                                                                <img data-id=@zonsel src="~/assets/img/@img.Photo" alt="">
+                                                                <img data-id=@zonsel src="~/uploads/@img.Photo" alt="">
                                                             }
                                                             else
                                                             {
-                                                                <img class="hide-img" data-id=@zonsel src="~/assets/img/@img.Photo" alt="">
+                                                                <img class="hide-img" data-id=@zonsel src="~/uploads/@img.Photo" alt="">
                                                             }
 
                                                             zonsel++;
                                                         }
-                                                        <img class="hover-image hide-img" src="~/assets/img/@item.HoverPhoto" alt="">
+                                                        <img class="hover-image hide-img" src="~/uploads/@item.HoverPhoto" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="product-text">
@@ -544,11 +544,11 @@
                                                 <a asp-controller="Category" asp-action="Index" asp-route-id="@item.Id">
                                                     @if (item.Name == "Electronics")
                                                     {
-                                                        <img src="~/assets/img/@item.Photo" height="300" alt="">
+                                                        <img src="~/uploads/@item.Photo" height="300" alt="">
                                                     }
                                                     else
                                                     {
-                                                        <img src="~/assets/img/@item.Photo" alt="">
+                                                        <img src="~/uploads/@item.Photo" alt="">
                                                     }
 
                                                     <h3>
@@ -570,7 +570,7 @@
     </section>
 
     <!-- Customer start -->
-    <section id="customer" style="background-image: url(assets/img/@Model.TestimonialItem.Photo)">
+    <section id="customer" style="background-image: url(/uploads/@Model.TestimonialItem.Photo )">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
@@ -595,7 +595,7 @@
                                                         <i class="fas fa-quote-right"></i>
                                                     </div>
                                                     <div class="testimonial-img">
-                                                        <img src="~/assets/img/@item.Photo" alt="Founder">
+                                                        <img src="~/uploads/@item.Photo" alt="Founder">
                                                     </div>
                                                     <div class="testimonial-description">
                                                         <div class="testimonial-name">@item.FullName</div>
@@ -663,7 +663,7 @@
                                 <div class="item">
                                     <div class="news-img">
                                         <a href="#">
-                                            <img src="~/assets/img/@item.Photo" alt="">
+                                            <img src="~/uploads/@item.Photo" alt="">
                                         </a>
                                     </div>
                                     <div class="new-text">
@@ -721,7 +721,7 @@
                                 <div class="product-brand">
                                     <a href="#">
                                         <div class="brand-img">
-                                            <img src="~/assets/img/@item.Photo" alt="">
+                                            <img src="~/uploads/@item.Photo" alt="">
                                         </div>
                                     </a>
                                 </div>
@@ -736,9 +736,8 @@
 
 
 @section Scripts{
-    
-    <script>
 
+    <script>
         toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -760,19 +759,19 @@
         AllAddSpan.forEach(item => {
             item.addEventListener("click", function (e) {
                 e.preventDefault();
-                
+
                 let images = this.parentNode.nextElementSibling.children;
-                
+
                 for (let sekil of images) {
-                    
+
                     if (sekil.classList.contains('hide-img') === false) {
-                        
+
                         selectedPhoto = sekil.getAttribute("src");
                     }
                 }
-                
+
                 let id = $(this).attr("data-id");
-                
+
                 toastr.success(`the product added to your wishlist`);
                 $.ajax({
                     url: "/WishList/AddToWish?Id=" + id + "&selectedPhoto=" + selectedPhoto,
@@ -786,8 +785,7 @@
         })
     </script>
 
-   <script>
-
+    <script>
        toastr.options = {
            "closeButton": false,
            "debug": false,
@@ -812,15 +810,11 @@
                let images = this.parentNode.parentNode.parentNode.previousElementSibling
                    .firstChild.nextElementSibling.nextElementSibling.nextElementSibling
                    .children;
-
                for (let sekil of images) {
-
                    if (sekil.classList.contains('hide-img') === false) {
-
                        selectedPhotos = sekil.getAttribute("src");
                    }
                }
-
                let id = $(this).attr("data-id");
                toastr.success(`the product added to your cartlist`);
                $.ajax({
@@ -829,13 +823,12 @@
                    success: function (res) {
                        let totalCountPrice = document.getElementById('totalCountPrice');
                        totalCountPrice.innerHTML = res.cartlistProductCount;
-                       
 
                    }
                })
            })
        })
-   </script>
+    </script>
 
 }
 
